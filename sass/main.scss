@@ -1,2 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono&display=swap');
+
+
+:root  {
+    font-family: 'Space Mono', sans-serif;
+}
+
+body{
+    margin: 0;
+}
+
+
+#navigation {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 80px;
+    margin-top: -8px;
+    width: 100%;
+    background: blue;
+ 
+#logo{
+    height: 13px;
+    margin-left: 100px;
+}
+
+.navbar-nav{
+    display: flex;
+    list-style: none;
+    margin-right: 80px;
+
+    a{
+        margin-right: 40px;
+        text-decoration: none;
+        color: black;
+    }
+}
+}
+
+#footer{
+    display: flex;
+    justify-content: center;
+    border-top: solid 1px black;
+    
+
+#menu-footer-menu{
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+    margin-right: 25px;
+    
+
+    li{
+        margin: 25px;
+        margin-bottom: 10px;
+        margin-top: 10px;
+        a{
+            color: black;
+            text-decoration: none;
+        }
+    }
+   
+}
+.textFooter{
+    margin-top: 10px;
+}
+}
+.banner{
+    
+  
+   h1{
+    margin-top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 80px;
+    -webkit-text-stroke: 1px black;
+    color: transparent;
+    font-style:oblique;
+    font-weight:500;
+   }
+}
 
 
