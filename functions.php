@@ -34,4 +34,15 @@ function your_theme_new_customizer_settings($wp_customize) {
     ) ) );
     }
     add_action('customize_register', 'your_theme_new_customizer_settings');
+
+
+// charge le fichier js
+function enqueue_animations_js()
+{
+    wp_enqueue_script('modale_js', get_stylesheet_directory_uri() . '/js/modale.js', array(), '1.1', true);
+}
+add_action('wp_enqueue_scripts', 'enqueue_animations_js');
+
+
+
 ?>
