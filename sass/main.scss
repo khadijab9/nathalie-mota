@@ -69,21 +69,40 @@ body{
 }
 }
 .banner{
-    
+
+  text-align: center;
+  img{
+    width: 100%;
+    position: relative;
+   
+  }
   
    h1{
+  
    
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 80px;
-    -webkit-text-stroke: 1px black;
+  //transform: translateX(-50%);
+
+    font-size: 100px;
+    -webkit-text-stroke: 1px white;
     color: transparent;
     font-style:oblique;
     font-weight:500;
+    top: 60%;
+    left: 100px;
+    right:100px;
+    
+    position: absolute;
+    
+//top: 50%;
+//left: 50%;
+
+
+
    
     
    }
 }
+
+
 
 
