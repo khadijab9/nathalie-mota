@@ -6,7 +6,7 @@
     'theme_location' => 'footer-menu', 
     ) )
     ; ?>
-    <p class=textFooter> TOUS DROITS RESERVES</p>
+    <p class=textFooter> TOUS DROITS RESERVÉS</p>
 </footer>
 </div>
 <?php wp_footer() ?>
