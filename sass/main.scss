@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Space+Mono&display=swap');
 @import 'modale';
+@import 'single';
 
 :root  {
     font-family: 'Space Mono', sans-serif;
@@ -7,6 +8,7 @@
 
 body{
     margin: 0;
+    text-transform: uppercase;
 }
 
 
@@ -17,7 +19,7 @@ body{
     height: 80px;
     margin-top: -8px;
     width: 100%;
-    background: blue;
+  background: red;
  
 #logo{
     height: 13px;
