@@ -4,16 +4,18 @@
 /* The Modal (background) */
 .popup-overlay {
     position:fixed;
-    width:100%;
+    width: 100%;
     height:100%;
     background:#00000060;
-    display:flex;
+
     justify-content: center;
     align-items:center;
-    top:0;
+    top:10px;
     left:0;
     z-index: 999;
     cursor: pointer;
+    display: none;
+    
    
   
    
@@ -26,7 +28,8 @@
    height:620px ;
    // padding-top: 250px;
     border: 4px solid black;
-    width: 45%; /* Could be more or less, depending on screen size */
+    overflow: hidden;
+    width: 44%; /* Could be more or less, depending on screen size */
     animation: fadein 3s forwards;
 
 @keyframes fadein {

@@ -37,7 +37,6 @@ wp_nav_menu( array(
 </header>
 
 <main>
-    
-<?php get_template_part( 'template-parts/modale' ); ?>
+
 
 
