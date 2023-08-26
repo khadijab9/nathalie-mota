@@ -67,16 +67,9 @@
 
 .post-content {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   margin-top: 15px;
-  /* -webkit-box-shadow: 0 9px 7px 2px rgba(0, 0, 0, 0.2);
-    -moz-box-shadow: 0 9px 7px 2px rgba(0, 0, 0, 0.2);
-         box-shadow: 0 9px 7px 2px rgba(0, 0, 0, 0.1); */
-}
-.post-content .post-title {
-  font-size: 40px;
-  font-style: italic;
-  margin-bottom: 6px;
+  width: 100%;
 }
 .post-content .post-meta {
   display: flex;
@@ -94,19 +87,20 @@
 .post-content .post-meta .date {
   margin-bottom: 20px;
 }
+.post-content .post-title {
+  font-size: 40px;
+  font-style: italic;
+  margin-bottom: 6px;
+}
 
 .container-img {
   margin-right: 100px;
+  width: 50%;
 }
-.container-img .post-image {
-  max-width: 100%;
-  height: auto;
+.container-img .attachment-large {
+  width: 100%;
 }
 
-/* .attachment-large{
-    margin-right: 100px;
-
-} */
 .contact_btn {
   margin-top: 40px;
   display: flex;
@@ -150,7 +144,7 @@ body {
 #navigation .navbar-nav {
   display: flex;
   list-style: none;
-  margin-right: 80px;
+  margin-right: 65px;
 }
 #navigation .navbar-nav a {
   margin-right: 40px;

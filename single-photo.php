@@ -18,10 +18,12 @@ if (have_posts()) : ?>
       <!-- Affiche l'image mise en avant (the_post_tumbnail) -->
          <!-- Affiche l'image mise en avant (the_post_tumbnail) -->
          <div class="container-img">
-         <img class="post-image" src="<?php the_post_thumbnail_url('large'); ?>" alt="<?php the_title(); ?>">
+         <a class="post-image" href="<?php the_permalink(); ?>">
+        <?php the_post_thumbnail("large"); ?> </a> 
+        
         </div>
-         <!--  <a class="post-image" href="<?php the_permalink(); ?>">
-        <?php the_post_thumbnail("large"); ?> </a> -->
+         <!-- <img class="post-image" src="<?php the_post_thumbnail_url('large'); ?>" alt="<?php the_title(); ?>"> -->
+         
     </div>
   <?php endwhile; ?>
 <?php endif; ?>
