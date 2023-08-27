@@ -8,7 +8,7 @@ if (have_posts()) : ?>
       <div class="post-meta">
         <!-- Données meta de chaque post -->
         <h2 class="post-title"><?php the_title() ?></h2>
-          
+
         <span class="meta">REFERENCE : <?php the_field('Référence'); ?></span>
         <span class="meta"> CATEGORIE :<?php the_terms(get_the_ID(), 'categorie'); ?> </span>
         <span class="meta"> FORMAT :<?php the_terms(get_the_ID(), 'format'); ?> </span>
@@ -16,55 +16,59 @@ if (have_posts()) : ?>
         <span class="meta date"> DATE : <?php the_field('Date'); ?></span>
       </div>
       <!-- Affiche l'image mise en avant (the_post_tumbnail) -->
-         <!-- Affiche l'image mise en avant (the_post_tumbnail) -->
-         <div class="container-img">
-         <a class="post-image" href="<?php the_permalink(); ?>">
-        <?php the_post_thumbnail("large"); ?> </a> 
-        
-        </div>
-         <!-- <img class="post-image" src="<?php the_post_thumbnail_url('large'); ?>" alt="<?php the_title(); ?>"> -->
-         
+      <!-- Affiche l'image mise en avant (the_post_tumbnail) -->
+      <div class="container-img">
+        <a class="post-image" href="<?php the_permalink(); ?>">
+          <?php the_post_thumbnail("large"); ?> </a>
+
+      </div>
+      <!-- <img class="post-image" src="<?php the_post_thumbnail_url('large'); ?>" alt="<?php the_title(); ?>"> -->
+
     </div>
   <?php endwhile; ?>
 <?php endif; ?>
 
-<div class="contact_btn">
-  <p class="txt-contact"> Cette photo intéresse ? </p>
-  <form>
-    <input type="button" value="Contact" />
-  </form>
-  <!-- Champ caché pour préremplir la référence photo -->
-<input type="hidden" id="refPhoto" value="Valeur préremplie">
+<div class="containerBtn">
+  <div class="contact_btn">
+    <p class="txt-contact"> Cette photo intéresse ? </p>
+    <form id="contact-form">
+      <input type="button" id="contact-button" value="Contact" />
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    </form>
+  </div>
 
-  <div class="thumbnail-navigation">
-    <div class="thumbnail-gallery">
-        <?php
-        $args = array(
-            'post_type' => 'post',
-            'posts_per_page' => -1,
-        );
-        $query = new WP_Query($args);
-        
-        if ($query->have_posts()) :
-            while ($query->have_posts()) : $query->the_post();
-                $thumbnail_url = get_the_post_thumbnail_url(get_the_ID(), 'thumbnail');
-                ?>
-                <div class="thumbnail-slide">
-                    <img src="<?php echo esc_url($thumbnail_url); ?>" alt="<?php the_title(); ?>">
-                </div>
-                <?php
-            endwhile;
-            wp_reset_postdata();
-        endif;
-        ?>
+  <?php if (have_posts()) : ?>
+    <?php
+    $args = array(
+      'order' => 'DESC', // ASC ou DESC 
+      'orderby' => 'date',
+    );
+    $query = new WP_Query($args); ?>
+    <div class="post-carousel">
+      <div class="carousel-inner">
+        <?php while (have_posts()) : the_post(); ?>
+          <div class="post-cont">
+            <div class="container-img">
+              <a class="post-img" href="<?php the_permalink(); ?>">
+                <?php the_post_thumbnail("thumbnail"); ?>
+              </a>
+            </div>
+          </div>
+        <?php endwhile; ?>
+      </div>
+      <div class="carousel-navigation">
+        <div class="prev-arrow">&larr;</div>
+        <div class="next-arrow">&rarr;</div>
+      </div>
     </div>
-</div>
-
-    
+  <?php endif; ?>
 </div>
 
 
-</div>
+
+
+
+
 
 <p class="txt">Vous aimerez aussi</p>
 
