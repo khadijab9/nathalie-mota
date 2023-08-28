@@ -49,6 +49,7 @@ function enqueue_animations_js()
    // Déclarer le JS
    wp_enqueue_script( 'btn-contact', get_template_directory_uri() . '/js/btn-contact.js',  array( 'jquery' ), '1.0', true);
     wp_enqueue_script('modale_js', get_template_directory_uri() . '/js/modale.js', array('jquery'), '1.1', true);
+    wp_enqueue_script('hero_js', get_template_directory_uri() . '/js/hero.js', array('jquery'), '1.1', true);
 }
 add_action('wp_enqueue_scripts', 'enqueue_animations_js');
 

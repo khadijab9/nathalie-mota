@@ -62,6 +62,31 @@ if (have_posts()) : ?>
       </div>
     </div>
   <?php endif; ?>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+$(document).ready(function($) {
+    var currentSlide = 0;
+    var numSlides = $('.post-cont').length;
+
+    $('.next-arrow').click(function() {
+      currentSlide = (currentSlide + 1) % numSlides;
+      updateCarousel();
+    });
+
+    $('.prev-arrow').click(function() {
+      currentSlide = (currentSlide - 1 + numSlides) % numSlides;
+      updateCarousel();
+    });
+
+    function updateCarousel() {
+      $('.post-cont').removeClass('active');
+      $('.post-cont:eq(' + currentSlide + ')').addClass('active');
+    }
+  });
+
+
+
+  </script>
 </div>
 
 
@@ -71,21 +96,41 @@ if (have_posts()) : ?>
 
 
 <p class="txt">Vous aimerez aussi</p>
+  <!-- Deuxième boucle pour afficher les photos associées à la même catégorie -->
+  <?php
+    $current_category = wp_get_post_terms(get_the_ID(), 'categorie'); // Récupérer la catégorie du post courant
+
+    $args = array(
+      'post_type' => 'photo', //  type de contenu personnalisé utilisez
+      'posts_per_page' => 2,
+      'tax_query' => array(
+        array(
+          'taxonomy' => 'categorie',
+          'field'    => 'slug',
+          'terms'    => $current_category[0]->slug,
+        ),
+      ),
+    );
+
+    $related_photos = new WP_Query($args);
+
+    if ($related_photos->have_posts()) :
+      while ($related_photos->have_posts()) : $related_photos->the_post();
+        ?>
+        <div class="related-photo">
+          <a href="<?php the_permalink(); ?>">
+            <?php the_post_thumbnail("large"); ?> </a>
+          
+          <p><?php the_excerpt(); ?></p>
+        </div>
+      <?php endwhile;
+      wp_reset_postdata();
+    endif;
+    ?>
+
 
 <?php get_footer(); ?>
-<!--   Contenu -->
-<!-- <div id="article-content"> -->
-<!-- Ajoute l'id du post en ID HTML et la liste des classes générées avec la méthode post_class -->
-<!-- <article id="post<?php the_ID(); ?>" <?php post_class(); ?>> -->
-<!-- <div class="entry-content">
-                     
- // Afiche le contenu
-//  the_content();
-                    </div>
-                </article>
-            </div>
-      </div>
-    </div>
+
 
 
   
