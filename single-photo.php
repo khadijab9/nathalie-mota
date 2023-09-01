@@ -1,21 +1,21 @@
 <?php get_header(); ?>
 
-
 <?php
+// verifie si des publications existent
 if (have_posts()) : ?>
-  <?php while (have_posts()) : the_post(); ?>
+
+  <?php while (have_posts()) : the_post(); // Commence la boucle pour parcourir les publications ?>
     <div class="post-content">
       <div class="post-meta">
         <!-- Données meta de chaque post -->
         <h2 class="post-title"><?php the_title() ?></h2>
-
-        <span class="meta">REFERENCE : <?php the_field('Référence'); ?></span>
-        <span class="meta"> CATEGORIE :<?php the_terms(get_the_ID(), 'categorie'); ?> </span>
-        <span class="meta"> FORMAT :<?php the_terms(get_the_ID(), 'format'); ?> </span>
-        <span class="meta"> TYPE : <?php the_field('Type'); ?></span>
-        <span class="meta date"> DATE : <?php the_field('Date'); ?></span>
+        <p class="meta">REFERENCE : <span id="refPhoto"> <?php the_field('Référence'); ?> </span></p>
+        <p class="meta"> CATEGORIE :<?php the_terms(get_the_ID(), 'categorie'); ?> </p>
+        <p class="meta"> FORMAT :<?php the_terms(get_the_ID(), 'format'); ?> </p>
+        <p class="meta"> TYPE : <?php the_field('Type'); ?></p>
+        <p class="meta date"> DATE : <?php the_field('Date'); ?></p>
       </div>
-      <!-- Affiche l'image mise en avant (the_post_tumbnail) -->
+   
       <!-- Affiche l'image mise en avant (the_post_tumbnail) -->
       <div class="container-img">
         <a class="post-image" href="<?php the_permalink(); ?>">
@@ -31,22 +31,19 @@ if (have_posts()) : ?>
 <div class="containerBtn">
   <div class="contact_btn">
     <p class="txt-contact"> Cette photo intéresse ? </p>
-    <form id="contact-form">
-      <input type="button" id="contact-button" value="Contact" />
-      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    </form>
+  
+      <button type="button" id="contact-button" value="Contact" > Contact</button>
+   
+   
   </div>
 
+
+  <!-- navigation -->
   <?php if (have_posts()) : ?>
-    <?php
-    $args = array(
-      'order' => 'DESC', // ASC ou DESC 
-      'orderby' => 'date',
-    );
-    $query = new WP_Query($args); ?>
+  
     <div class="post-carousel">
       <div class="carousel-inner">
-        <?php while (have_posts()) : the_post(); ?>
+      
           <div class="post-cont">
             <div class="container-img">
               <a class="post-img" href="<?php the_permalink(); ?>">
@@ -54,79 +51,50 @@ if (have_posts()) : ?>
               </a>
             </div>
           </div>
-        <?php endwhile; ?>
+        
       </div>
+      <!-- flêches de navigation -->
       <div class="carousel-navigation">
         <div class="prev-arrow">&larr;</div>
         <div class="next-arrow">&rarr;</div>
       </div>
     </div>
   <?php endif; ?>
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script>
-$(document).ready(function($) {
-    var currentSlide = 0;
-    var numSlides = $('.post-cont').length;
-
-    $('.next-arrow').click(function() {
-      currentSlide = (currentSlide + 1) % numSlides;
-      updateCarousel();
-    });
-
-    $('.prev-arrow').click(function() {
-      currentSlide = (currentSlide - 1 + numSlides) % numSlides;
-      updateCarousel();
-    });
-
-    function updateCarousel() {
-      $('.post-cont').removeClass('active');
-      $('.post-cont:eq(' + currentSlide + ')').addClass('active');
-    }
-  });
-
-
-
-  </script>
+ 
 </div>
 
 
-
-
-
-
+<!-- photos apparenté du post actuel -->
 
 <p class="txt">Vous aimerez aussi</p>
-  <!-- Deuxième boucle pour afficher les photos associées à la même catégorie -->
+  <!-- boucle pour afficher les photos associées à la même catégorie -->
   <?php
-    $current_category = wp_get_post_terms(get_the_ID(), 'categorie'); // Récupérer la catégorie du post courant
-
-    $args = array(
-      'post_type' => 'photo', //  type de contenu personnalisé utilisez
+    $category = wp_get_post_terms(get_the_ID(), 'categorie'); // Récupérer la catégorie du post courant
+    $args = array( // Définit les arguments pour la requête WP_Query
+      'post_type' => 'photo', //  type de contenu personnalisé à utiliser
       'posts_per_page' => 2,
+      'post__not_in' => array (get_the_ID()),
       'tax_query' => array(
         array(
-          'taxonomy' => 'categorie',
-          'field'    => 'slug',
-          'terms'    => $current_category[0]->slug,
+          'taxonomy' => 'categorie', // taxonomie à filtrer
+          'field'    => 'slug', // Champ utilisé pour la comparaison
+          'terms'    => $category[0]->slug, // Terme de la catégorie actuelle
         ),
       ),
     );
-
+    // Créer une requête WP_Query avec les arguments définis
     $related_photos = new WP_Query($args);
+    // Vérifier si des photos liées sont trouvées
+    if ($related_photos->have_posts()) : ?>
+      <div class="photo-connexe">
+      <!-- boucle pour parcourir les photos liées de la requête $related_photos -->
+     <?php while ($related_photos->have_posts()) : $related_photos->the_post(); ?>
+     
+     <?php get_template_part('template-parts/post') ;?>
 
-    if ($related_photos->have_posts()) :
-      while ($related_photos->have_posts()) : $related_photos->the_post();
-        ?>
-        <div class="related-photo">
-          <a href="<?php the_permalink(); ?>">
-            <?php the_post_thumbnail("large"); ?> </a>
-          
-          <p><?php the_excerpt(); ?></p>
-        </div>
-      <?php endwhile;
-      wp_reset_postdata();
-    endif;
-    ?>
+      <?php endwhile; ?>
+      </div>
+  <?php  endif;  ?>
 
 
 <?php get_footer(); ?>

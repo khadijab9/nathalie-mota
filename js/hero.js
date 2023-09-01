@@ -1,4 +1,4 @@
-$(document).ready(function($){
+/* $(document).ready(function($){
     
     var image = new Array ();
     image[0] = "/uploads/08/nathalie-0-scaled.jpeg"; 
@@ -9,4 +9,4 @@ $(document).ready(function($){
 
     $('#hero').css({'background-image': 'url(http://localhost/nathalie-mota/wp-content/uploads/2023' +  image[aleatoire] +  ")"});
 
-});
+}); */

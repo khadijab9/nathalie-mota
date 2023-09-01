@@ -15,4 +15,41 @@
 
 
 </section>
+
+ 
+ 
+    <?php
+
+// Créez une requête pour obtenir les photos
+$args = array(
+    'post_type' => 'photo', // Type de contenu personnalisé
+    'posts_per_page' => 8, // Afficher toutes les photos
+  );
+  
+  $photos = new WP_Query($args);
+  // Vérifiez si des photos sont trouvées
+  if ($photos->have_posts()) :
+    while ($photos->have_posts()) : $photos->the_post(); ?>
+        <!-- Affiche l'image mise en avant (the_post_thumbnail) -->
+          <a class="post-image" href="<?php the_permalink(); ?>">
+            <?php the_post_thumbnail("large"); ?>
+          </a>
+    <?php endwhile;
+
+  endif; ?>
+  <?php wp_reset_postdata(); ?>
+
+<div class="btn__wrapper">
+  <a href="#!" class="btn btn__primary" id="load-more">Charger plus</a>
+</div>
+  
+  
+  
+  
+  
+  
+  
+   
+   
+
 <?php get_footer() ?>

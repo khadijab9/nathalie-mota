@@ -10,3 +10,16 @@ modal.addEventListener('click', function(event) {
     modal.style.display = 'none';
   }
 });
+
+const contactBtn  = document.getElementById ('contact-button')
+contactBtn.addEventListener('click', function (event){
+
+  event.preventDefault()
+  modal.style.display = 'flex';
+});
+
+const refphoto = document.getElementById('refPhoto')
+const ref= document.getElementById('ref')
+ref.value= refphoto.innerText;
+
+
