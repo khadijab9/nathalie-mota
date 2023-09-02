@@ -7,31 +7,6 @@
 
 <section class="banner" id="hero">
     <div class=hero-content>
- 
-    <?php
-// WP_Query pour extraire des articles/pages avec des images de héros de manière aléatoire
-$args = array(
-    'post_type' => 'post', // Remplacez par le type de contenu que vous utilisez
-    'orderby' => 'rand',   // Triez aléatoirement
-    'posts_per_page' => 3, // Nombre d'images à afficher
-);
-
-$hero_query = new WP_Query($args);
-
-if ($hero_query->have_posts()) :
-    while ($hero_query->have_posts()) :
-        $hero_query->the_post();
-        $image = get_field('photo'); // Remplacez par le nom de votre champ personnalisé pour les images du héros
-        if ($image) :
-            // Affichez l'image
-            echo '<img src="' . esc_url($image['url']) . '" alt="' . esc_attr($image['alt']) . '">';
-        endif;
-    endwhile;
-    wp_reset_postdata();
-else :
-    // Aucun résultat trouvé
-endif;
-?>
 
  <!-- <img src=<?php echo get_template_directory_uri() . '/images/nathalie-7.png'; ?> alt="image oscar">  -->
     <!-- <h1> PHOTOGRAPHE EVENT</h1> -->
@@ -41,6 +16,9 @@ endif;
 
 
 </section>
+
+<!-- création des filtres -->
+
 
 <?php
 if( $terms = get_terms( array(
@@ -72,14 +50,14 @@ endif;
 // if the sorting options are available
 $sorting_options = array(
     'date' => 'Date',
-    'popularity' => 'Popularité',
+    
     // Ajoutez d'autres options de tri si nécessaire
 );
 
 $current_sort = isset($_GET['orderby']) ? $_GET['orderby'] : '';
 
 echo '<select name="orderby">';
-echo '<option value="">Date</option>'; // Texte pour le tri par date
+echo '<option value="">Trier par</option>'; // Texte pour le tri par date
 
 foreach ($sorting_options as $key => $label) {
     $selected = ($current_sort === $key) ? ' selected' : '';
@@ -90,6 +68,9 @@ echo '</select>';
 ?>
  
     <?php
+
+
+<?php 
 
 // Créez une requête pour obtenir les photos
 $args = array(
