@@ -7,9 +7,23 @@
 
 <section class="banner" id="hero">
     <div class=hero-content>
+  <?php  $args = array(
+    'post_type' => 'attachment', // Type de post pour les médias
+    'post_status' => 'inherit',
+    'orderby' => 'rand', // Tri aléatoire
+    'posts_per_page' => 1, // Une seule image aléatoire
+);
 
- <!-- <img src=<?php echo get_template_directory_uri() . '/images/nathalie-7.png'; ?> alt="image oscar">  -->
-    <!-- <h1> PHOTOGRAPHE EVENT</h1> -->
+$random_image = get_posts($args);
+if ($random_image) {
+    foreach ($random_image as $post) {
+        // Obtenez l'URL de l'image
+        $image_url = wp_get_attachment_url($post->ID);
+        // Affichez l'image
+        echo '<img src="' . esc_url($image_url) . '" alt="Image aléatoire">';
+    } 
+} ?>
+    <h1> PHOTOGRAPHE EVENT</h1> 
     
 
     </div>
@@ -22,10 +36,10 @@
 
 <?php
 if( $terms = get_terms( array(
-    'taxonomy' => 'categorie', // to make it simple I use default categories
+    'taxonomy' => 'categorie', 
     'orderby' => 'name'
 ) ) ) : 
-	// if categories exist, display the dropdown
+	// si les catégories existent affiche la liste 
 	echo '<select name="categoryfilter"><option value="">Catégories</option>';
 	foreach ( $terms as $term ) :
 		echo '<option value="' . $term->term_id . '">' . $term->name . '</option>'; // ID of the category as an option value
@@ -35,7 +49,7 @@ endif;
 ?>
 <?php
 if( $terms = get_terms( array(
-    'taxonomy' => 'format', // Remplacez 'product_format' par le nom de votre taxonomie de format
+    'taxonomy' => 'format', 
     'orderby' => 'name'
 ) ) ) : 
     // Si des formats existent, affichez la liste déroulante
@@ -47,11 +61,10 @@ if( $terms = get_terms( array(
 endif;
 ?>
 <?php
-// if the sorting options are available
+// vérifie si des options de tri sont disponible
 $sorting_options = array(
     'date' => 'Date',
     
-    // Ajoutez d'autres options de tri si nécessaire
 );
 
 $current_sort = isset($_GET['orderby']) ? $_GET['orderby'] : '';
@@ -70,7 +83,7 @@ echo '</select>';
     <?php
 
 
-<?php 
+
 
 // Créez une requête pour obtenir les photos
 $args = array(
