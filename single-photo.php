@@ -1,5 +1,6 @@
 <?php get_header(); ?>
 
+<div class="containerPost">
 <?php
 // verifie si des publications existent
 if (have_posts()) : ?>
@@ -41,10 +42,12 @@ if (have_posts()) : ?>
     </div>
   <?php endwhile; ?>
 <?php endif; ?>
+</div>
 
+<div id=containerBtn-nav>
 <div class="containerBtn">
   <div class="contact_btn">
-    <p class="txt-contact"> Cette photo intéresse ? </p>
+    <p class="txt-contact"> Cette photo vous intéresse ? </p>
 
     <button type="button" id="contact-button" value="Contact"> Contact</button>
 
@@ -76,10 +79,11 @@ if (have_posts()) : ?>
   <?php endif; ?>
 
 </div>
+</div>
 
 
 <!-- photos apparenté du post actuel -->
-
+<div class="photoApparente">
 <p class="txt">Vous aimerez aussi</p>
 <!-- boucle pour afficher les photos associées à la même catégorie -->
 <?php
@@ -96,19 +100,22 @@ $args = array( // Définit les arguments pour la requête WP_Query
     ),
   ),
 );
+
 // Créer une requête WP_Query avec les arguments définis
-$related_photos = new WP_Query($args);
+$photos = new WP_Query($args);
 // Vérifier si des photos liées sont trouvées
-if ($related_photos->have_posts()) : ?>
+if ($photos->have_posts()) : ?>
   <div class="photo-connexe">
     <!-- boucle pour parcourir les photos liées de la requête $related_photos -->
-    <?php while ($related_photos->have_posts()) : $related_photos->the_post(); ?>
+    <?php while ($photos->have_posts()) : $photos->the_post(); ?>
 
       <?php get_template_part('template-parts/post'); ?>
 
     <?php endwhile; ?>
   </div>
+  <?php wp_reset_postdata(); ?>
 <?php endif;  ?>
+</div>
 
 
 <?php get_footer(); ?>

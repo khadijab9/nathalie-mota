@@ -66,40 +66,41 @@
   border-radius: 3px;
 }
 
-.post-content {
+.containerPost {
+  margin-left: 100px;
+  margin-right: 100px;
+}
+.containerPost .post-content {
   display: flex;
   justify-content: space-between;
   margin-top: 15px;
   width: 100%;
 }
-.post-content .post-meta {
+.containerPost .post-content .post-meta {
   display: flex;
   flex-direction: column;
   justify-content: end;
   width: 50%;
-  margin-left: 100px;
   margin-bottom: 6px;
   margin-right: 16px;
   border-bottom: 1px solid black;
 }
-.post-content .post-meta .meta {
+.containerPost .post-content .post-meta .meta {
   margin-bottom: 10px;
 }
-.post-content .post-meta .date {
+.containerPost .post-content .post-meta .date {
   margin-bottom: 45px;
 }
-.post-content .post-title {
+.containerPost .post-content .post-title {
   font-size: 40px;
   font-style: italic;
   margin-bottom: 6px;
 }
-
-.container-img {
-  margin-right: 100px;
+.containerPost .container-img {
   width: 50%;
   object-fit: cover;
 }
-.container-img .attachment-large {
+.containerPost .container-img .attachment-large {
   width: 100%;
   object-fit: cover;
 }
@@ -115,7 +116,6 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-left: 100px;
   flex-wrap: wrap;
 }
 .containerBtn .contact_btn .txt-contact {
@@ -128,7 +128,6 @@
 }
 .containerBtn .post-carousel {
   width: 80px;
-  margin-right: 100px;
 }
 .containerBtn .carousel-inner {
   width: 50%;
@@ -142,7 +141,7 @@
 .containerBtn .carousel-navigation {
   margin-top: -10px;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 .containerBtn .carousel-navigation .next-arrow {
   font-size: 30px;
@@ -151,19 +150,29 @@
   font-size: 30px;
 }
 
-.txt {
+#containerBtn-nav {
   margin-left: 100px;
-  border-top: 1px solid black;
   margin-right: 100px;
+}
+#containerBtn-nav .containerBtn {
+  border-bottom: 1px solid black;
+}
+
+.photoApparente {
+  margin-left: 100px;
+  margin-right: 100px;
+}
+
+.txt {
+  margin-right: 100px;
+  margin-top: 70px;
   margin-bottom: 50px;
 }
 
 .photo-connexe {
   display: flex;
-  justify-content: center;
-  overflow: hidden;
-  gap: 30px;
-  width: 100%;
+  justify-content: space-between;
+  gap: 10px;
 }
 .photo-connexe .related-photo .attachment-large {
   width: 40vw; /* La moitié de la largeur du viewport */
@@ -182,6 +191,27 @@ border: 1px solid #ddd;
 padding: 5px;
 box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
 display: none; */
+.containerPhoto {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Deux colonnes */
+  gap: 10px; /* Espacement entre les images */
+  margin-right: 100px;
+  margin-left: 100px;
+}
+
+/* .photo-connexe{
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    gap: 30px;
+    width: 100%; 
+} */
+.related-photo .attachment-large {
+  width: 40vw; /* La moitié de la largeur du viewport */
+  height: 40vw; /* La moitié de la largeur du viewport, pour former un carré */
+  object-fit: cover;
+}
+
 :root {
   font-family: "Space Mono", sans-serif;
 }

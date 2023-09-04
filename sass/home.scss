@@ -1,0 +1,27 @@
+.containerPhoto {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Deux colonnes */
+    gap: 10px; /* Espacement entre les images */
+    margin-right: 100px;
+    margin-left: 100px;
+}
+
+
+/* .photo-connexe{
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    gap: 30px;
+    width: 100%; 
+} */
+    
+.related-photo{
+  
+        .attachment-large  {
+            width: 40vw; /* La moitié de la largeur du viewport */
+            height: 40vw; /* La moitié de la largeur du viewport, pour former un carré */
+            object-fit: cover;     
+        }
+    
+    }
+    

@@ -1,3 +1,7 @@
+.containerPost{
+
+margin-left: 100px;
+margin-right: 100px;
 
 .post-content{
    display: flex;
@@ -10,7 +14,7 @@
             flex-direction: column;
             justify-content: end;
             width: 50%;
-            margin-left: 100px;
+            // margin-left: 100px;
             margin-bottom: 6px;
             margin-right: 16px;
             border-bottom: 1px solid black;
@@ -30,7 +34,7 @@
 }
 
 .container-img{
-margin-right: 100px;
+// margin-right: 100px;
   width: 50%;
   object-fit: cover;
     
@@ -39,7 +43,7 @@ margin-right: 100px;
     width: 100%;
     object-fit: cover;
 }
-}
+}}
 
 .containerBtn{
      display: flex;
@@ -53,7 +57,7 @@ padding-right: 0;
     display: flex;
     align-items: center;
    justify-content: space-between;
-    margin-left : 100px;
+ 
     flex-wrap: wrap;
     
     
@@ -74,7 +78,7 @@ padding-right: 0;
 
 .post-carousel{
     width: 80px;
-    margin-right: 100px;
+    
 }
   
     .carousel-inner{
@@ -91,7 +95,7 @@ padding-right: 0;
 .carousel-navigation{
     margin-top: -10px;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
 
     .next-arrow{
         font-size: 30px;
@@ -103,20 +107,33 @@ padding-right: 0;
   
 }
 
-.txt{
+#containerBtn-nav{
     margin-left: 100px;
-    border-top: 1px solid black ;
     margin-right: 100px;
-    margin-bottom: 50px;
-   
+
+.containerBtn{
+    border-bottom: 1px solid black;
+
+}}
+
+.photoApparente{
+    margin-left: 100px;
+    margin-right: 100px;
+    
 }
+
+.txt{
+    
+
+    margin-right: 100px;
+    margin-top : 70px;
+    margin-bottom: 50px;
+}
+
 .photo-connexe{
 display: flex;
-justify-content: center;
-overflow: hidden;
-gap: 30px;
-width: 100%;
-
+justify-content:space-between;
+gap : 10px;
 
 
 
@@ -125,15 +142,8 @@ width: 100%;
     .attachment-large  {
         width: 40vw; /* La moitié de la largeur du viewport */
         height: 40vw; /* La moitié de la largeur du viewport, pour former un carré */
-        object-fit: cover;
-        
-      
-       
-        
-
-     
+        object-fit: cover;     
     }
-    
 
 }
 }
