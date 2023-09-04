@@ -191,12 +191,15 @@ border: 1px solid #ddd;
 padding: 5px;
 box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
 display: none; */
+#filter-photo {
+  margin-right: 100px;
+  margin-left: 100px;
+}
+
 .containerPhoto {
   display: grid;
   grid-template-columns: repeat(2, 1fr); /* Deux colonnes */
   gap: 10px; /* Espacement entre les images */
-  margin-right: 100px;
-  margin-left: 100px;
 }
 
 /* .photo-connexe{
@@ -210,6 +213,26 @@ display: none; */
   width: 40vw; /* La moitié de la largeur du viewport */
   height: 40vw; /* La moitié de la largeur du viewport, pour former un carré */
   object-fit: cover;
+}
+
+.btn-cont {
+  margin-bottom: 40px;
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+}
+.btn-cont .loadMore {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-right: 90px;
+  padding-left: 90px;
+  border: none;
+  background-color: #D8D8D8;
+  border-radius: 3px;
+  cursor: pointer;
+  text-transform: none;
+  text-decoration: none;
+  color: black;
 }
 
 :root {
@@ -228,27 +251,64 @@ body {
   height: 80px;
   margin-top: -8px;
   width: 100%;
-  background: red;
 }
 #navigation #logo {
   height: 13px;
   margin-left: 100px;
 }
-#navigation .navbar-nav {
+#navigation .burgerMenu {
+  width: 50px;
+  display: flex;
+  cursor: pointer;
+}
+#navigation .burgerMenu .line {
+  width: 100%;
+  height: 1.5px;
+  margin-bottom: 5px;
+  color: black;
+  transition: all 0.3s linear;
+}
+
+.navbar-nav {
   display: flex;
   list-style: none;
   margin-right: 65px;
 }
-#navigation .navbar-nav a {
+@media screen and (max-width: 785px) {
+  .navbar-nav {
+    flex-direction: column;
+    z-index: 10;
+  }
+}
+
+a {
   margin-right: 40px;
   text-decoration: none;
   color: black;
 }
+@media screen and (max-width: 785px) {
+  a {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+}
 
+/* .menu-full {
+    @media screen  and (max-width :785px) {
+    display: none; /* menu caché par défaut */
 #footer {
   display: flex;
   justify-content: center;
   border-top: solid 1px black;
+}
+#footer .footerColumn {
+  display: flex;
+}
+@media screen and (max-width: 580px) {
+  #footer .footerColumn {
+    flex-direction: column;
+  }
 }
 #footer #menu-footer-menu {
   display: flex;
@@ -258,6 +318,11 @@ body {
   padding: 0;
   align-items: center;
   margin-right: 25px;
+}
+@media screen and (max-width: 580px) {
+  #footer #menu-footer-menu {
+    flex-direction: column;
+  }
 }
 #footer #menu-footer-menu li {
   margin: 25px;

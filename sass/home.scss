@@ -1,9 +1,14 @@
+#filter-photo{
+    margin-right: 100px;
+    margin-left: 100px;
+}   
+
+
 .containerPhoto {
     display: grid;
     grid-template-columns: repeat(2, 1fr); /* Deux colonnes */
     gap: 10px; /* Espacement entre les images */
-    margin-right: 100px;
-    margin-left: 100px;
+   
 }
 
 
@@ -14,7 +19,9 @@
     gap: 30px;
     width: 100%; 
 } */
-    
+ 
+
+
 .related-photo{
   
         .attachment-large  {
@@ -23,5 +30,26 @@
             object-fit: cover;     
         }
     
+    }
+
+    .btn-cont{
+        margin-bottom: 40px;
+        margin-top: 40px;
+        display: flex;
+        justify-content: center;
+
+        .loadMore{
+            padding-top: 20px;
+            padding-bottom: 20px;
+            padding-right: 90px;
+            padding-left: 90px;
+            border: none;
+            background-color: #D8D8D8;   
+            border-radius: 3px; 
+            cursor: pointer;
+            text-transform: none;
+            text-decoration: none;
+            color : black;
+        }
     }
     
