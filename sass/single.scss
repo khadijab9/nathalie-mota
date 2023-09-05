@@ -3,6 +3,9 @@
 margin-left: 100px;
 margin-right: 100px;
 
+border-top: 1px solid blueviolet;
+box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+
 .post-content{
    display: flex;
    justify-content: space-between;
@@ -146,5 +149,19 @@ gap : 10px;
     }
 
 }
+}
+
+.btn-photo{
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-right: 90px;
+    padding-left: 90px;
+    border: none;
+    background-color: #D8D8D8;   
+    border-radius: 3px; 
+    cursor: pointer;
+    text-transform: none;
+    text-decoration: none;
+    color : black;
 }
 

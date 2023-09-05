@@ -7,21 +7,21 @@
 <section class="banner" id="hero">
     <div class=hero-content>
         <?php $args = array(
-            'post_type' => 'attachment', // Type de post pour les médias
+            'post_type' => 'photo', // Type de post pour les médias
             'orderby' => 'rand', // Tri aléatoire
             'posts_per_page' => 1, // Une seule image aléatoire
         );
 
-        $random_image = get_posts($args);
-        if ($random_image) {
-            foreach ($random_image as $post) {
-                // Obtenez l'URL de l'image
-                $image_url = wp_get_attachment_url($post->ID);
-                // Affichez l'image
-                echo '<img src="' . esc_url($image_url) . '" alt="Image aléatoire">';
+        $random_image = get_posts($args); // Récupère une image aléatoire 
+        if ($random_image) { // vérifie si une image a été trouvé
+            foreach ($random_image as $post) { //// Boucle pour traiter chaque image
+                // Obtient l'URL de l'image
+              the_post_thumbnail ('large');
+                // Affiche l'image
+               
             }
         } ?>
-        <!-- <h1> PHOTOGRAPHE EVENT</h1> -->
+        <h1> PHOTOGRAPHE EVENT</h1> 
     </div>
 </section>
 

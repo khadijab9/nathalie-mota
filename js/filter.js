@@ -55,7 +55,7 @@
             var tri = $('#tri-filter').val();
     
             $.ajax({
-                url: ajaxurl, // Utilisez la variable 'ajaxurl' fournie par WordPress
+                url: '/nathalie-mota/wp-admin/admin-ajax.php', // Utilisez la variable 'ajaxurl' fournie par WordPress
                 type: 'POST',
                 data: {
                     action: 'filter_photos',

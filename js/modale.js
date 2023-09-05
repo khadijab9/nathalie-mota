@@ -11,15 +11,21 @@ modal.addEventListener('click', function(event) {
   }
 });
 
+
 const contactBtn  = document.getElementById ('contact-button')
+console.log(contactBtn)
+if (contactBtn !== null){
 contactBtn.addEventListener('click', function (event){
 
   event.preventDefault()
   modal.style.display = 'flex';
 });
 
+
+
 const refphoto = document.getElementById('refPhoto')
 const ref= document.getElementById('ref')
 ref.value= refphoto.innerText;
+}
 
 

@@ -117,5 +117,10 @@ if ($photos->have_posts()) : ?>
 <?php endif;  ?>
 </div>
 
+<div class="btn-cont">
+        <!-- <a href="#!" class="btn btn__primary" id="load-more">Charger plus</a> -->
+        <a href="#!" class="btn-photo"> Toutes les photos</a>
+    </div>
+
 
 <?php get_footer(); ?>

@@ -45,9 +45,9 @@ add_action('customize_register', 'your_theme_new_customizer_settings');
 function enqueue_animations_js()
 {
    // Déclarer le JS
-   wp_enqueue_script( 'btn-contact', get_template_directory_uri() . '/js/btn-contact.js',  array( ), '1.0', true);
-    wp_enqueue_script('modale_js', get_template_directory_uri() . '/js/modale.js', array(), '1.1', true);
-    wp_enqueue_script('loadmore_js', get_template_directory_uri() . '/js/loadmore.js', array('jquery'), '1.1', true);
+ 
+    wp_enqueue_script('modale_js', get_template_directory_uri() . '/js/modale.js', array(), filemtime(get_template_directory() . '/js/modale.js'), true);
+    wp_enqueue_script('loadmore_js', get_template_directory_uri() . '/js/loadmore.js', array(), filemtime(get_template_directory() . '/js/loadmore.js'), true);
 }
 add_action('wp_enqueue_scripts', 'enqueue_animations_js');
 
@@ -58,8 +58,8 @@ add_action('wp_enqueue_scripts', 'enqueue_animations_js');
 function enqueue_ajax_scripts() {
     // Assurez-vous d'avoir inclus jQuery correctement
 wp_enqueue_script('jquery');
-    wp_enqueue_script('ajax-filter', get_template_directory_uri() . '/js/filter.js', array('jquery'), '1.0', true);
-    wp_localize_script('ajax-filter', 'ajaxfilter', array('ajaxurl' => admin_url('admin-ajax.php')));
+    wp_enqueue_script('ajax-filter', get_template_directory_uri() . '/js/filter.js', array(), filemtime(get_template_directory() . '/js/filter.js'), true);
+    // wp_localize_script('ajax-filter', 'ajaxfilter', array('ajaxurl' => admin_url('admin-ajax.php')));
  
 }
 
@@ -128,18 +128,26 @@ function load_more() {
     ]);
   
     $response = '';
+    $max_pages = $ajaxposts->max_num_pages;
    
 
     if($ajaxposts->have_posts()) {
+        ob_start();
       while($ajaxposts->have_posts()) : $ajaxposts->the_post();
         $response .= get_template_part('template-parts/post', 'photo');
       endwhile;
+      $output = ob_get_contents();
+      ob_end_clean();
     } else {
       $response = '';
     }
     
+    $result = [
+        'max' => $max_pages,
+        'html' => $output,
+      ];
   
-    echo $response;
+      echo json_encode($result);
     exit;
   }
   add_action('wp_ajax_load_more', 'load_more');
