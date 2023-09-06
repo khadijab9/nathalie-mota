@@ -16,12 +16,12 @@
         if ($random_image) { // vérifie si une image a été trouvé
             foreach ($random_image as $post) { //// Boucle pour traiter chaque image
                 // Obtient l'URL de l'image
-              the_post_thumbnail ('large');
+                the_post_thumbnail('large');
                 // Affiche l'image
-               
+
             }
         } ?>
-        <h1> PHOTOGRAPHE EVENT</h1> 
+        <h1> PHOTOGRAPHE EVENT</h1>
     </div>
 </section>
 
@@ -46,15 +46,37 @@
     <div class="container-filtre">
         <!-- création des filtres -->
         <div class="filterAjax">
-            <select id="categorie-filter">
-                <option value="">CATEGORIES</option>
-                <?php
-                $categories = get_terms('categorie');
-                foreach ($categories as $category) {
-                    echo '<option value="' . $category->slug . '">' . $category->name . '</option>';
-                } ?>
-            </select>
-            <select id="format-filter">
+            <div class="select-menu active">
+                <div class="select-btn">
+                    <span class="sBtn-text">CATEGORIE</span>
+                    <img src="<?php echo get_template_directory_uri() . '/images/chevron.png'; ?>" class="chevron-down">
+                </div>
+                <ul class="options">
+                    <li class="option">
+                      
+                        <span class="option-text">Concert</span>
+                    </li>
+                    <li class="option">
+                       
+                        <span class="option-text">Mariage</span>
+                    </li>
+                    <li class="option">
+                  
+                        <span class="option-text">Reception</span>
+                    </li>
+                    <li class="option">
+                     
+                        <span class="option-text">Television</span>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+
+
+            
+
+            <!-- <select id="format-filter">
                 <option value="">FORMATS</option>
                 <?php
                 $formats = get_terms('format');
@@ -69,8 +91,8 @@
                 foreach ($dates as $date) {
                     echo '<option value="' . $date->slug . '">' . $date->name . '</option>';
                 } ?>
-            </select>
-        </div>
+            </select> -->
+        
         <div class="containerPhoto">
             <?php
             // Vérifiez si des photos sont trouvées
