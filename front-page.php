@@ -43,40 +43,65 @@
 
     $photos = new WP_Query($args); ?>
 
-    <div class="container-filtre">
-        <!-- création des filtres -->
-        <div class="filterAjax">
-            <div class="select-menu active">
-                <div class="select-btn">
-                    <span class="sBtn-text">CATEGORIE</span>
-                    <img src="<?php echo get_template_directory_uri() . '/images/chevron.png'; ?>" class="chevron-down">
-                </div>
-                <ul class="options">
-                    <li class="option">
-                      
-                        <span class="option-text">Concert</span>
-                    </li>
-                    <li class="option">
-                       
-                        <span class="option-text">Mariage</span>
-                    </li>
-                    <li class="option">
-                  
-                        <span class="option-text">Reception</span>
-                    </li>
-                    <li class="option">
-                     
-                        <span class="option-text">Television</span>
-                    </li>
-                </ul>
-            </div>
-            
-        </div>
+<!-- filtre -->
+<div class="container-filtre">
+
+<?php
+// Obtenez l'ID de la catégorie par son slug
+$concert_category = get_term_by('slug', 'concert', 'categorie');
+$mariage_category = get_term_by('slug', 'mariage', 'categorie');
+$reception_category = get_term_by('slug', 'reception', 'categorie');
+$television_category = get_term_by('slug', 'television', 'categorie');
+?>
+<div id="filter">
+<div class="select-cat">
+    <div class="select-btn">
+        <span class="Btn-text">Catégories</span>
+        <img src="<?php echo get_template_directory_uri() . '/images/chevron.png'; ?>" class="chevron-down">
+    </div>
+    <ul class="list">
+        <li class="option" data-slug="<?= $concert_category->slug; ?>">
+            <span class="textOption"><?= $concert_category->name; ?></span>
+        </li>
+        <li class="option" data-slug="<?= $mariage_category->slug; ?>">
+            <span class="textOption"><?= $mariage_category->name; ?> </span>
+        </li>
+        <li class="option" data-slug="<?= $reception_category->slug; ?>">
+            <span class="textOption"><?= $reception_category->name; ?></span>
+        </li>
+        <li class="option" data-slug="<?= $television_category->slug; ?>">
+            <span class="textOption"><?= $television_category->name; ?></span>
+        </li>
+    </ul>
+</div>
+
+<?php
+//obtient l'Id du format par son slug
+$format_paysage = get_term_by('slug', 'paysage', 'format');
+$format_portrait = get_term_by('slug', 'portrait', 'format');
 
 
-            
+?>
+<div class="select-cat">
 
-            <!-- <select id="format-filter">
+    <div class="select-btn">
+        <span class="Btn-text">Format</span>
+        <img src="<?php echo get_template_directory_uri() . '/images/chevron.png'; ?>" class="chevron-down">
+    </div>
+    <ul class="list">
+        <li class="format-option" data-slug="<?= $format_paysage->slug; ?>">
+            <span class="textOption"><?= $format_paysage->name; ?></span>
+        </li>
+        <li class="format-option" data-slug="<?= $format_portrait->slug; ?>">
+            <span class="textOption"><?= $format_portrait->name; ?></span>
+        </li>
+    </ul>
+
+</div>
+</div>
+
+
+        <!-- <select id="format-filter">
                 <option value="">FORMATS</option>
                 <?php
                 $formats = get_terms('format');
@@ -92,7 +117,7 @@
                     echo '<option value="' . $date->slug . '">' . $date->name . '</option>';
                 } ?>
             </select> -->
-        
+
         <div class="containerPhoto">
             <?php
             // Vérifiez si des photos sont trouvées

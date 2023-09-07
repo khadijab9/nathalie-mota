@@ -1,14 +1,17 @@
 #filter-photo{
-    margin-right: 100px;
-    margin-left: 100px;
+    
+    margin-top: 50px;
 }   
 
 
 .containerPhoto {
-    display: grid;
+ 
+
+   display: grid;
     grid-template-columns: repeat(2, 1fr); /* Deux colonnes */
-    gap: 10px; /* Espacement entre les images */
-    margin-top: 100px;
+  //  gap: 10px; /* Espacement entre les images */ */ */
+    margin-top:100px;
+    
    
 }
 
@@ -52,6 +55,7 @@
             text-transform: none;
             text-decoration: none;
             color : black;
+            margin: 0;
         }
     }
     

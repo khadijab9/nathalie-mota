@@ -159,7 +159,7 @@ add_action('wp_ajax_nopriv_load_more', 'load_more');
 
 
 // filter
-
+/* 
 function filter_posts_by_category() {
     $category = sanitize_text_field($_POST['category']);
   
@@ -190,4 +190,53 @@ function filter_posts_by_category() {
   }
   
   add_action('wp_ajax_filter_posts_by_category', 'filter_posts_by_category');
-  add_action('wp_ajax_nopriv_filter_posts_by_category', 'filter_posts_by_category');
+  add_action('wp_ajax_nopriv_filter_posts_by_category', 'filter_posts_by_category'); */
+
+
+ // Créez une fonction pour filtrer les photos par catégorie
+function filter_photos_by_category() {
+  $category_slug = $_POST['category'];
+
+  $args = array(
+    'post_type' => 'photo', // Le type de publication personnalisé
+    'posts_per_page' => -1, // Afficher toutes les photos
+    'tax_query' => array(
+      array(
+        'taxonomy' => 'categorie',
+        'field' => 'slug',
+        'terms' => $category_slug,
+      ),
+    ),
+  );
+
+  $query = new WP_Query($args);
+
+  if ($query->have_posts()) :
+    while ($query->have_posts()) : $query->the_post();
+      get_template_part('template-parts/post');
+
+    endwhile;
+    wp_reset_postdata();
+  else :
+    // Aucune photo trouvée pour cette catégorie
+  endif;
+
+  wp_die();
+}
+
+// Ajoutez une action Ajax pour la fonction de filtrage des photos
+add_action('wp_ajax_filter_photos_by_category', 'filter_photos_by_category');
+add_action('wp_ajax_nopriv_filter_photos_by_category', 'filter_photos_by_category');
+ 
+
+
+
+
+
+
+
+
+
+
+
+   
