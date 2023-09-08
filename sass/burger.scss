@@ -1,0 +1,98 @@
+.burgerMenu {
+    @media screen and (max-width :785px) {
+        width: 50px;
+        height: 50px;
+        display: flex;
+        flex-direction: column;
+        cursor: pointer;
+        position: absolute;
+        right: 0;
+        margin-top: 25px;
+        margin-right: 25px;
+    }
+
+
+
+
+    .line {
+        width: 80%;
+        height: 2px;
+        margin-bottom: 10px;
+        background-color: black;
+        // créer une animation fluide lorsque'on clique sur l'icone burger
+        transition: all 0.3s linear;
+        
+    }
+}
+
+//Le bouton burger affiche une animation de transition lorsqu'il est activé.
+.burgerMenu.active {
+    span {
+        &.l2 {
+            opacity: 0;
+        }
+
+        // les deux span pivotent et se dépace pour former une croix
+        &.l1 {
+            transform: rotate(45deg) translate(6px, 11px);
+        }
+
+        &.l3 {
+            transform: rotate(-45deg) translate(6px, -11px);
+        }
+    }
+}
+
+.navbar-nav {
+    display: flex;
+
+    @media screen and (max-width :785px) {
+
+        display: none;
+        flex-direction: column;
+        z-index: 999;
+        height: 100%;
+        justify-content: center;
+        align-items: center;
+        background: red;
+        transition: top 1s ease;
+        position: absolute;
+        width: 100vw;
+        top: 105px;
+        margin: 0;
+        padding: 0;
+        padding-top: 130px;
+
+        &.active {
+            display: block;
+            animation: fadeMenu 3s forwards;
+        }
+        
+    a {
+        @media screen and (max-width :785px) {
+            margin-right: 0;
+            padding-bottom: 30px;
+            font-size: 40px;
+            color: white !important;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+        }
+
+    }
+    }
+
+    @keyframes fadeMenu {
+        from {
+            opacity: 0;
+            transform: translateY(-100px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+
+}

@@ -5,6 +5,7 @@
 @import 'home';
 @import 'overlay';
 @import 'filter';
+@import'burger';
 
 :root {
     font-family: 'Space Mono', sans-serif;
@@ -24,47 +25,26 @@ body {
     margin-top: -8px;
     width: 100%;
 
+ 
+
     #logo {
         height: 13px;
         margin-left: 100px;
+
+        @media screen and (max-width :785px) {
+            margin-left: 25px;
+            height: 11px;
     }
 
-    .burgerMenu {
-        width: 50px;
-        height: 50px;
-        display: flex;
-        flex-direction: column;
-        cursor: pointer;
-       
-    
-
-        .line {
-            width: 100%;
-            height: 1.5px;
-            margin-bottom: 10px;
-            background-color: black;
-            // créer une animation fluide lorsque'on clique sur l'icone burger
-            transition: all 0.3s linear;
-        }
-    }
+  
 }
 
-
-
-
-
 .navbar-nav {
-    display: flex;
+    
     list-style: none;
     margin-right: 65px;
 
-    @media screen and (max-width :785px) {
-
-
-        flex-direction: column;
-        z-index: 10;
-
-    }
+  
 
 }
 
@@ -73,14 +53,12 @@ a {
     text-decoration: none;
     color: black;
 
-    @media screen and (max-width :785px) {
-
-        display: flex;
-        align-items: center;
-        flex-direction: column;
+    &:hover{
+        font-weight: bold;
     }
-}
 
+}
+}
 /* .menu-full {
     @media screen  and (max-width :785px) {
     display: none; /* menu caché par défaut */
@@ -147,30 +125,32 @@ a {
 }
 
 .banner {
-
+    position: relative;
     text-align: center;
 
     img {
         position: relative;
-        height: 100vh;
+        height: calc((100vw / 16 * 9) - 80px); /* Soustraire la hauteur de l'en-tête */
       
-        width: 100%;
+        width: 100vw;
+        object-fit: cover;
 
     }
 
     h1 {
-
 
         //transform: translateX(-50%);
         position: absolute;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        font-size: 64px;
+        font-size: 70px;
         -webkit-text-stroke: 1px white;
         color: transparent;
         font-style: oblique;
         font-weight: 500;
+        width: 100%;
+        margin: 0;
 
 
 

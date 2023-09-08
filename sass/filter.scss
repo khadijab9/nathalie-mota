@@ -25,6 +25,10 @@
   }
 
 }
+#filter{
+	margin-left: 100px;
+	
+}
 
 .select-cat {
   max-width: 250px;
@@ -85,6 +89,7 @@
   .select-btn {
     img {
       transform: rotate(-180deg);
+	 
     }
   }
 

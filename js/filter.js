@@ -122,7 +122,7 @@
   //});
 //});
  
-
+/* 
 jQuery(document).ready(function($) {
   // Écouteur d'événement pour le clic sur le bouton "CATEGORIES"
   $('.btn-filter').on('click', function() {
@@ -157,7 +157,7 @@ jQuery(document).ready(function($) {
     // Fermez la liste déroulante des catégories
     $('.select-option').removeClass('active');
   });
-});
+}); */
 
 
 

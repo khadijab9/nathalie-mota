@@ -45,7 +45,6 @@
 
 <!-- filtre -->
 <div class="container-filtre">
-
 <?php
 // Obtenez l'ID de la catégorie par son slug
 $concert_category = get_term_by('slug', 'concert', 'categorie');

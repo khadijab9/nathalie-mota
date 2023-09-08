@@ -1,18 +1,19 @@
-#filter-photo{
-    
+#filter-photo {
+
     margin-top: 50px;
-}   
+}
 
 
 .containerPhoto {
- 
 
-   display: grid;
-    grid-template-columns: repeat(2, 1fr); /* Deux colonnes */
-  //  gap: 10px; /* Espacement entre les images */ */ */
-    margin-top:100px;
-    
-   
+
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    /* Deux colonnes */
+    //  gap: 10px; /* Espacement entre les images */ */ */
+    margin-top: 100px;
+
+
 }
 
 
@@ -23,39 +24,51 @@
     gap: 30px;
     width: 100%; 
 } */
- 
 
 
-.related-photo{
-  
-        .attachment-large  {
-            width: 40vw; /* La moitié de la largeur du viewport */
-            height: 40vw; /* La moitié de la largeur du viewport, pour former un carré */
-            object-fit: cover;     
-        }
-    
+
+.related-photo {
+
+    .attachment-large {
+        width: 40vw;
+        /* La moitié de la largeur du viewport */
+        height: 40vw;
+        /* La moitié de la largeur du viewport, pour former un carré */
+        object-fit: cover;
     }
 
-    .btn-cont{
-        margin-bottom: 40px;
-        margin-top: 40px;
+}
+
+.btn-cont {
+    margin-bottom: 40px;
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+
+
+    .loadMore {
+        width: 25%;
         display: flex;
+        height: 55px;
         justify-content: center;
-        
+        border: none;
+        align-items: center;
+        background-color: #D8D8D8;
+        border-radius: 4px;
+        cursor: pointer;
+        text-transform: none;
+        text-decoration: none;
+        color: black;
+        margin: 0;
 
-        .loadMore{
-            padding-top: 20px;
-            padding-bottom: 20px;
-            padding-right: 90px;
-            padding-left: 90px;
-            border: none;
-            background-color: #D8D8D8;   
-            border-radius: 3px; 
-            cursor: pointer;
-            text-transform: none;
-            text-decoration: none;
-            color : black;
-            margin: 0;
+        &:hover {
+            background-color: black;
+            color: white;
         }
+
+        @media screen and (max-width: 576px) {
+            padding-left: 40px;
+        }
+
     }
-    
+}
