@@ -69,6 +69,7 @@
 .containerPost {
   margin-left: 100px;
   margin-right: 100px;
+  object-fit: cover;
   /* border-top: 1px solid blueviolet;
   box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px; */
 }
@@ -177,8 +178,10 @@
   gap: 10px;
 }
 .photo-connexe .related-photo .attachment-large {
-  width: 40vw; /* La moitié de la largeur du viewport */
-  height: 40vw; /* La moitié de la largeur du viewport, pour former un carré */
+  width: 40vw;
+  /* La moitié de la largeur du viewport */
+  height: 40vw;
+  /* La moitié de la largeur du viewport, pour former un carré */
   object-fit: cover;
 }
 
@@ -201,38 +204,67 @@
   color: white;
 }
 
+.imageThumbnail img {
+  top: 0;
+  left: 0;
+}
+.imageThumbnail.show-image {
+  display: block;
+}
+
+.arrow {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.arrow .prev-arrow {
+  text-decoration: none;
+  color: black;
+  font-size: 30px;
+}
+.arrow .next-arrow {
+  text-decoration: none;
+  color: black;
+  font-size: 30px;
+}
+
 /* .thumbnail-preview {
     position: absolute;
     top: 0;
     left: 0;
     width: 100px; /* Ajustez la taille selon vos besoins */
 /* height: auto;
-background-color: rgba(255, 255, 255, 0.9);
-border: 1px solid #ddd;
-padding: 5px;
-box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-display: none; */
-#filter-photo {
+    background-color: rgba(255, 255, 255, 0.9);
+    border: 1px solid #ddd;
+    padding: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    display: none; */
+.containerPhoto {
+  margin-left: 100px;
+  margin-right: 100px;
   margin-top: 50px;
 }
-
-.containerPhoto {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr); /* Deux colonnes */
-  margin-top: 100px;
-}
-
-/* .photo-connexe{
-    display: flex;
-    justify-content: center;
-    overflow: hidden;
-    gap: 30px;
-    width: 100%; 
-} */
-.related-photo .attachment-large {
-  width: 40vw; /* La moitié de la largeur du viewport */
-  height: 40vw; /* La moitié de la largeur du viewport, pour former un carré */
+.containerPhoto .containerPhoto {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  /* Espace entre les colonnes */
   object-fit: cover;
+}
+.containerPhoto .imgPortfolio {
+  width: 48%;
+  gap: 50px;
+  /* Espace entre les images verticalement */
+  box-sizing: border-box;
+  /* Assurez-vous que les marges ne dépassent pas la largeur */
+  margin: 0;
+  display: inline-block;
+}
+.containerPhoto .imgPortfolio img {
+  max-width: 100%;
+  /* Pour s'assurer que les images ne dépassent pas leur conteneur */
+  max-height: 500px;
+  /* Conserver le rapport hauteur-largeur des images */
 }
 
 .btn-cont {
@@ -260,9 +292,14 @@ display: none; */
   background-color: black;
   color: white;
 }
-@media screen and (max-width: 576px) {
+@media screen and (max-width: 992px) {
   .btn-cont .loadMore {
-    width: 35%;
+    width: 40%;
+  }
+}
+@media screen and (min-width: 320px) and (max-width: 576px) {
+  .btn-cont .loadMore {
+    width: 50%;
   }
 }
 
@@ -282,42 +319,46 @@ display: none; */
 
     .overlay-link {
         display: block; /* Assurez-vous que le lien occupe tout l'espace du conteneur */
-#overlay {
-  position: relative;
-}
+/* #overlay {
+	position: relative;
 
-.overlay-effect {
-  overflow: hidden; /* Ajout de cette propriété pour empêcher le débordement */
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.7);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
 
-.overlay-link {
-  display: block;
-  position: relative;
-  z-index: 1;
-}
-.overlay-link:hover .overlay-effect {
-  opacity: 1;
-}
-.overlay-link .fa-light {
-  color: white;
-  font-size: 100px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  text-align: center;
-}
-
+} */
+/* 	position: absolute;
+	top: 0;
+	left: 0;
+    bottom: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.7);
+	opacity: 0;
+	transition: opacity 0.3s ease;
+} */
+/* .overlay-link {
+    display: block;
+	position: relative;
+  overflow: hidden;
+	z-index: 1;
+	&:hover {
+		.overlay-effect {
+			opacity: 1;
+		}
+	} */
+/*   img {
+    max-width: 100%;
+    height: auto;
+  }
+    .fa-light {
+        color: white;
+        font-size: 100px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        text-align: center;
+      }
+} */
 @keyframes fadeInUp {
   from {
     transform: translateY(-30px); /* Anciennement translate3d(0, 30px, 0); */
@@ -661,7 +702,8 @@ body {
   width: 100vw;
   object-fit: cover;
 }
-.banner h1 {
+
+h1 {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -673,6 +715,16 @@ body {
   font-weight: 500;
   width: 100%;
   margin: 0;
+}
+@media screen and (max-width: 768px) {
+  h1 {
+    font-size: 45px;
+  }
+}
+@media screen and (max-width: 576px) {
+  h1 {
+    font-size: 35px;
+  }
 }
 
 /*# sourceMappingURL=main.css.map */

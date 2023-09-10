@@ -41,15 +41,15 @@
 
 
 
-#overlay {
+/* #overlay {
 	position: relative;
    
     
-}
+} */
 
-.overlay-effect {  
-    overflow: hidden; /* Ajout de cette propriété pour empêcher le débordement */
-	position: absolute;
+//.overlay-effect {  
+  //  overflow: hidden; /* Ajout de cette propriété pour empêcher le débordement */
+/* 	position: absolute;
 	top: 0;
 	left: 0;
     bottom: 0;
@@ -58,16 +58,21 @@
 	background-color: rgba(0, 0, 0, 0.7);
 	opacity: 0;
 	transition: opacity 0.3s ease;
-}
-.overlay-link {
+} */
+/* .overlay-link {
     display: block;
 	position: relative;
+  overflow: hidden;
 	z-index: 1;
 	&:hover {
 		.overlay-effect {
 			opacity: 1;
 		}
-	}
+	} */
+/*   img {
+    max-width: 100%;
+    height: auto;
+  }
     .fa-light {
         color: white;
         font-size: 100px;
@@ -78,6 +83,6 @@
         -ms-transform: translate(-50%, -50%);
         text-align: center;
       }
-}
+} */
 
 

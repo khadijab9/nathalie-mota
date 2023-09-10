@@ -5,8 +5,11 @@
     </div>
 </div> -->
 
+
+
+
 <div id="overlay">
-    <div class="related-photo filter-post photo-connexe">
+    <div class="related-photo  imgPortfolio">
         <a href="<?php the_permalink(); ?>" class="overlay-link">
             <?php the_post_thumbnail("large"); ?>
             <div class="overlay-effect"></div>

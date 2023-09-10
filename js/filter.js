@@ -162,6 +162,13 @@ jQuery(document).ready(function($) {
 
 
 
+
+
+
+
+
+
+
 const optionMenu = document.querySelector(".select-cat"),
   selectBtn = optionMenu.querySelector(".select-btn"),
   options = optionMenu.querySelectorAll(".option"),

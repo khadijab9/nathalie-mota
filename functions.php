@@ -49,6 +49,7 @@ function enqueue_animations_js()
     wp_enqueue_script('modale_js', get_template_directory_uri() . '/js/modale.js', array(), filemtime(get_template_directory() . '/js/modale.js'), true);
     wp_enqueue_script('loadmore_js', get_template_directory_uri() . '/js/loadmore.js', array(), filemtime(get_template_directory() . '/js/loadmore.js'), true);
     wp_enqueue_script('burger_js', get_template_directory_uri() . '/js/burger.js', array(), filemtime(get_template_directory() . '/js/burger.js'), true);
+    wp_enqueue_script('burger_js', get_template_directory_uri() . '/js/navigation.js', array(), filemtime(get_template_directory() . '/js/navigation.js'), true);
   }
 add_action('wp_enqueue_scripts', 'enqueue_animations_js');
 
