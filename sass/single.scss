@@ -2,7 +2,7 @@
 
     margin-left: 100px;
     margin-right: 100px;
-    object-fit: cover;
+ 
 
     /* border-top: 1px solid blueviolet;
 box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px; */
@@ -22,6 +22,8 @@ box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px; */
             margin-bottom: 6px;
             margin-right: 16px;
             border-bottom: 1px solid black;
+            
+          
 
             .meta {
                 margin-bottom: 10px;
@@ -43,12 +45,14 @@ box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px; */
     .container-img {
         // margin-right: 100px;
         width: 50%;
-        object-fit: cover;
-
+        
 
         .attachment-large {
             width: 100%;
-            object-fit: cover;
+          
+             height: auto; 
+          
+            
         }
     }
 }
@@ -58,15 +62,31 @@ box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px; */
     justify-content: space-between;
     width: 100%;
     padding-right: 0;
+    height: 118px;
+    padding-bottom: 10px;
 
 
     .contact_btn {
+        width: 50%;
         margin-top: -40px;
         display: flex;
         align-items: center;
         justify-content: space-between;
-
         flex-wrap: wrap;
+
+      
+
+        #contact-button{
+            width: 40%;
+            height: 50px;
+            border-radius: 4px;
+            background-color: #D8D8D8;
+            border: none;
+            &:hover {
+                background-color: black;
+                color: white;
+            }
+        }
 
 
 
@@ -78,7 +98,7 @@ box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px; */
         form input {
             padding: 10px 80px;
             cursor: pointer;
-            margin-left: 135px;
+         
 
         }
     }
@@ -142,27 +162,44 @@ box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px; */
 }
 
 .photo-connexe {
-    display: flex;
+   /*  display: flex;
     justify-content: space-between;
-    gap: 10px;
+  */
+  display: grid;
+  grid-template-columns: 50% 50%; /* Définit deux colonnes, chacune avec une largeur de 50% */
+  gap : 15px;
+  flex-wrap: wrap;
     
 
 
 
     .related-photo {
-        .attachment-large {
-            width: 40vw;
+       
+
+         .attachment-large {
+          /*   width: 40vw;
+            /* La moitié de la largeur du viewport */
+           // height: 40vw;
+            /* La moitié de la largeur du viewport, pour former un carré */
+            //object-fit: cover; */
+            width: 100%;
             /* La moitié de la largeur du viewport */
             height: 40vw;
             /* La moitié de la largeur du viewport, pour former un carré */
             object-fit: cover;
         }
 
+
+
+        
+        }
     }
-}
+
 
 .btn-photo {
-    width: 25%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 20%;
     display: flex;
     height: 55px;
     justify-content: center;
@@ -179,4 +216,15 @@ box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px; */
         background-color: black;
         color: white;
     }
+    
+    @media screen and (max-width: 992px) {
+        width: 40%;
+
+    }
+
+    @media screen and (min-width: 320px) and (max-width :500px) {
+        width: 60%;
+    }
+
+
 }

@@ -1,14 +1,14 @@
 .burgerMenu {
     @media screen and (max-width :785px) {
         width: 50px;
-        height: 50px;
+        height: 35px;
         display: flex;
         flex-direction: column;
         cursor: pointer;
         position: absolute;
         right: 0;
         margin-top: 25px;
-        margin-right: 25px;
+        margin-right: 100px;
     }
 
 

@@ -1,55 +1,12 @@
-/* #overlay{
-    position: absolute;
-    top:0;
-    right:0;
-    left:0;
-    bottom: 0;
-    opacity: 0;
-    transition: opacity 0.4s ease-in-out;
-    background: black;
-    cursor: pointer;
-} */
-
-/* #overlay {
-    position: relative;
-
-    .overlay-link {
-        display: block; /* Assurez-vous que le lien occupe tout l'espace du conteneur */
-       // position: relative; /* Position relative pour le z-index */
-       // z-index: 1; /* Placez-le au-dessus de l'overlay-effect */
-    
-
-        //&.hover{
-     //       opacity: 1; /* Rendre l'overlay visible au survol du lien */
-       // }
-
-    //    .overlay-effect {
-      //      position: absolute;
-        //    top: 0;
-          //  left: 0;
-           // width: 100%;
-           // height: 100%;
-          //  background-color: rgba(0, 0, 0, 0.7); /* Noir semi-transparent */
-        //    opacity: 0; /* Initialement invisible */
-      //      transition: opacity 0.3s ease; /* Animation de transition */
-    //    }
-
-  //  }
-//} */
-
-
-
-
-
-/* #overlay {
+ #overlay {
 	position: relative;
    
     
-} */
+} 
 
-//.overlay-effect {  
-  //  overflow: hidden; /* Ajout de cette propriété pour empêcher le débordement */
-/* 	position: absolute;
+.overlay-effect {  
+    overflow: hidden; /* Ajout de cette propriété pour empêcher le débordement */
+ 	position: absolute;
 	top: 0;
 	left: 0;
     bottom: 0;
@@ -58,8 +15,8 @@
 	background-color: rgba(0, 0, 0, 0.7);
 	opacity: 0;
 	transition: opacity 0.3s ease;
-} */
-/* .overlay-link {
+} 
+.overlay-link {
     display: block;
 	position: relative;
   overflow: hidden;
@@ -68,21 +25,43 @@
 		.overlay-effect {
 			opacity: 1;
 		}
-	} */
-/*   img {
-    max-width: 100%;
-    height: auto;
-  }
-    .fa-light {
+    .eye-icon {
+			display: block;
+		}
+		.fullscreen-icon {
+			display: block;
+		}
+
+	} 
+
+   img {
+     max-width: 100%;
+    height: auto; 
+  } 
+    .eye-icon
+     {
+        display: none;
         color: white;
         font-size: 100px;
         position: absolute;
+        height: 20px;
         top: 50%;
         left: 50%;
-        transform: translate(-50%, -50%);
-        -ms-transform: translate(-50%, -50%);
+         transform: translate(-50%, -50%);
+       
         text-align: center;
+        
       }
-} */
+      .fullscreen-icon{
+      display: none;
+        font-size: 50px;
+        height: 20px;
+        position: absolute;
+        top: 5%;
+        right: 0;
+        transform: translate(-50%, -50%);
+      
+      }
+}
 
 

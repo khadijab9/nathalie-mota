@@ -74,17 +74,11 @@
       $next_post_image_url = get_the_post_thumbnail_url($next_post->ID, 'thumbnail');
     } ?>
 
-
-
-
-
-
     <div class="containerNav">
       <!-- <div class="image-gallery"> -->
 
       <div class="imageThumbnail">
         <?php if (has_post_thumbnail()) : ?>
-
           <?php the_post_thumbnail('thumbnail'); ?>
         <?php endif; ?>
       </div>
@@ -150,7 +144,6 @@
       ),
     ),
   );
-
   // Créer une requête WP_Query avec les arguments définis
   $photos = new WP_Query($args);
   // Vérifier si des photos liées sont trouvées

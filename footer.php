@@ -2,6 +2,12 @@
 
 <?php get_template_part('template-parts/modale'); ?>
 
+
+
+<div class="lightbox"> </div> 
+
+
+
 <footer id=footer>
     <!-- <-- <div class="directionColumn"> -->
      <div class="footerColumn">

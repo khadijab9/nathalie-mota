@@ -169,6 +169,11 @@ jQuery(document).ready(function($) {
 
 
 
+// le 10 sept
+
+
+document.addEventListener("DOMContentLoaded", function () {
+
 const optionMenu = document.querySelector(".select-cat"),
   selectBtn = optionMenu.querySelector(".select-btn"),
   options = optionMenu.querySelectorAll(".option"),
@@ -186,14 +191,14 @@ options.forEach((option) => {
     optionMenu.classList.remove("active");
   });
 });
+});
 
-
-jQuery(document).ready(function ($) {
+ jQuery(document).ready(function ($) {
   const selectCat = $(".select-cat");
   const optionList = selectCat.find(".list");
-  const postContainer = $(".container-filtre");
+  const postContainer = $(".container-filtre"); 
 
-  // Écoutez le clic sur une catégorie
+   // Écoutez le clic sur une catégorie
   optionList.on("click", ".option", function () {
     const selectedSlug = $(this).data("slug");
 
@@ -211,4 +216,47 @@ jQuery(document).ready(function ($) {
       },
     });
   });
-});
+}); 
+
+
+
+/* 
+  // Écoutez les changements de sélection de filtres
+  $('#filter .select-cat').on('click', '.option', function () {
+      // Recueillir les sélections de filtres
+      var selectedCategories = [];
+      var selectedFormats = [];
+
+      $('#filter .select-cat').each(function () {
+          var filterType = $(this).find('.Btn-text').text();
+          var selectedValue = $(this).find('.option.active').data('slug');
+
+          if (filterType === 'Catégorie') {
+              selectedCategories.push(selectedValue);
+          } else if (filterType === 'Format') {
+              selectedFormats.push(selectedValue);
+          }
+      });
+
+      // Envoyer une requête AJAX avec les filtres sélectionnés
+      $.ajax({
+          url: './wp-admin/admin-ajax.php',
+          type: 'POST',
+          dataType: 'html',
+            data: {
+              action: "filter_photos_by_category", // Nom de l'action à définir
+              categories: selectedCategories,
+              formats: selectedFormats,
+          },
+          success: function (data) {
+              // Mettez à jour la page avec les résultats filtrés
+              // Vous pouvez afficher les résultats dans une div dédiée.
+              $('#result').html(data);
+          }
+      });
+  }); */
+
+
+
+  
+

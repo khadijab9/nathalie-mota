@@ -39,9 +39,10 @@
         <div class="select-cat">
             <div class="select-btn">
                 <span class="Btn-text">Catégories</span>
-                <img src="<?php echo get_template_directory_uri() . '/images/chevron.png'; ?>" class="chevron-down">
+                <img src="<?php echo get_template_directory_uri() . '/icon/chevron.png'; ?>" class="chevron-down">
             </div>
             <ul class="list">
+
                 <li class="option" data-slug="<?= $concert_category->slug; ?>">
                     <span class="textOption"><?= $concert_category->name; ?></span>
                 </li>
@@ -64,23 +65,43 @@
 
 
         ?>
-        <div class="select-cat">
+        <div class="select-cat ">
 
             <div class="select-btn">
                 <span class="Btn-text">Format</span>
-                <img src="<?php echo get_template_directory_uri() . '/images/chevron.png'; ?>" class="chevron-down">
+                <img src="<?php echo get_template_directory_uri() . '/icon/chevron.png'; ?>" class="chevron-down">
             </div>
             <ul class="list">
-                <li class="format-option" data-slug="<?= $format_paysage->slug; ?>">
+                <li class="option" data-slug="<?= $format_paysage->slug; ?>">
                     <span class="textOption"><?= $format_paysage->name; ?></span>
                 </li>
-                <li class="format-option" data-slug="<?= $format_portrait->slug; ?>">
+                <li class="option" data-slug="<?= $format_portrait->slug; ?>">
                     <span class="textOption"><?= $format_portrait->name; ?></span>
                 </li>
             </ul>
 
+            <div id="result">
+    <!-- Les résultats filtrés seront affichés ici -->
+</div>
+
+
+
+
+
+        </div>
+
+        <div class="select-cat">
+            <div class="select-btn">
+                <span class="Btn-text">Date</span>
+                <img src="<?php echo get_template_directory_uri() . '/icon/chevron.png'; ?>" class="chevron-down">
+            </div>
+            <select class="list" id="sort-by-date">
+                <option value="recent">Plus récentes aux plus anciennes</option>
+                <option value="old">Plus anciennes aux plus récentes</option>
+            </select>
         </div>
     </div>
+</div>
 
 </div>
 
@@ -95,7 +116,7 @@
 <?php
 $args = array(
     'post_type' => 'photo', // Type de contenu personnalisé
-    'posts_per_page' => 16, // Afficher toutes les photos
+    'posts_per_page' => 8, // Afficher toutes les photos
     'orderby' => 'date',
     'order' => 'DESC',
     'paged' => 1,
@@ -108,14 +129,9 @@ $photos = new WP_Query($args); ?>
     <?php
     // Vérifiez si des photos sont trouvées
     if ($photos->have_posts()) : ?>
-        <div class="container-portfolio">
+        <div class="container-row">
             <?php while ($photos->have_posts()) : $photos->the_post(); ?>
-                <div class="related-photo  imgPortfolio">
-                    <a href="<?php the_permalink(); ?>" class="overlay-link">
-                        <?php the_post_thumbnail("large"); ?>
-
-                    </a>
-                </div>
+                <?php get_template_part('template-parts/post') ?>
             <?php endwhile; ?>
         </div>
         <?php wp_reset_postdata(); ?>

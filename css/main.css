@@ -69,7 +69,6 @@
 .containerPost {
   margin-left: 100px;
   margin-right: 100px;
-  object-fit: cover;
   /* border-top: 1px solid blueviolet;
   box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px; */
 }
@@ -101,11 +100,10 @@
 }
 .containerPost .container-img {
   width: 50%;
-  object-fit: cover;
 }
 .containerPost .container-img .attachment-large {
   width: 100%;
-  object-fit: cover;
+  height: auto;
 }
 
 .containerBtn {
@@ -113,13 +111,27 @@
   justify-content: space-between;
   width: 100%;
   padding-right: 0;
+  height: 118px;
+  padding-bottom: 10px;
 }
 .containerBtn .contact_btn {
+  width: 50%;
   margin-top: -40px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
+}
+.containerBtn .contact_btn #contact-button {
+  width: 40%;
+  height: 50px;
+  border-radius: 4px;
+  background-color: #D8D8D8;
+  border: none;
+}
+.containerBtn .contact_btn #contact-button:hover {
+  background-color: black;
+  color: white;
 }
 .containerBtn .contact_btn .txt-contact {
   text-transform: none;
@@ -127,7 +139,6 @@
 .containerBtn .contact_btn form input {
   padding: 10px 80px;
   cursor: pointer;
-  margin-left: 135px;
 }
 .containerBtn .post-carousel {
   width: 80px;
@@ -173,12 +184,19 @@
 }
 
 .photo-connexe {
-  display: flex;
-  justify-content: space-between;
-  gap: 10px;
+  /*  display: flex;
+    justify-content: space-between;
+  */
+  display: grid;
+  grid-template-columns: 50% 50%; /* Définit deux colonnes, chacune avec une largeur de 50% */
+  gap: 15px;
+  flex-wrap: wrap;
 }
 .photo-connexe .related-photo .attachment-large {
-  width: 40vw;
+  /*   width: 40vw;
+    /* La moitié de la largeur du viewport */
+  /* La moitié de la largeur du viewport, pour former un carré */
+  width: 100%;
   /* La moitié de la largeur du viewport */
   height: 40vw;
   /* La moitié de la largeur du viewport, pour former un carré */
@@ -186,7 +204,9 @@
 }
 
 .btn-photo {
-  width: 25%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 20%;
   display: flex;
   height: 55px;
   justify-content: center;
@@ -203,13 +223,20 @@
   background-color: black;
   color: white;
 }
+@media screen and (max-width: 992px) {
+  .btn-photo {
+    width: 40%;
+  }
+}
+@media screen and (min-width: 320px) and (max-width: 500px) {
+  .btn-photo {
+    width: 60%;
+  }
+}
 
 .imageThumbnail img {
   top: 0;
   left: 0;
-}
-.imageThumbnail.show-image {
-  display: block;
 }
 
 .arrow {
@@ -244,27 +271,18 @@
   margin-right: 100px;
   margin-top: 50px;
 }
-.containerPhoto .containerPhoto {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  /* Espace entre les colonnes */
+.containerPhoto .container-row {
+  display: grid;
+  grid-template-columns: 50% 50%; /* Définit deux colonnes, chacune avec une largeur de 50% */
+  gap: 15px;
+  width: 100%;
+}
+.containerPhoto .imgPortfolio .attachment-large {
+  width: 100%;
+  /* La moitié de la largeur du viewport */
+  height: 40vw;
+  /* La moitié de la largeur du viewport, pour former un carré */
   object-fit: cover;
-}
-.containerPhoto .imgPortfolio {
-  width: 48%;
-  gap: 50px;
-  /* Espace entre les images verticalement */
-  box-sizing: border-box;
-  /* Assurez-vous que les marges ne dépassent pas la largeur */
-  margin: 0;
-  display: inline-block;
-}
-.containerPhoto .imgPortfolio img {
-  max-width: 100%;
-  /* Pour s'assurer que les images ne dépassent pas leur conteneur */
-  max-height: 500px;
-  /* Conserver le rapport hauteur-largeur des images */
 }
 
 .btn-cont {
@@ -274,9 +292,9 @@
   justify-content: center;
 }
 .btn-cont .loadMore {
-  width: 25%;
+  width: 20%;
   display: flex;
-  height: 55px;
+  height: 50px;
   justify-content: center;
   border: none;
   align-items: center;
@@ -287,6 +305,8 @@
   text-decoration: none;
   color: black;
   margin: 0;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 .btn-cont .loadMore:hover {
   background-color: black;
@@ -294,71 +314,72 @@
 }
 @media screen and (max-width: 992px) {
   .btn-cont .loadMore {
-    width: 40%;
+    width: 30%;
   }
 }
 @media screen and (min-width: 320px) and (max-width: 576px) {
   .btn-cont .loadMore {
-    width: 50%;
+    width: 40%;
   }
 }
 
-/* #overlay{
-    position: absolute;
-    top:0;
-    right:0;
-    left:0;
-    bottom: 0;
-    opacity: 0;
-    transition: opacity 0.4s ease-in-out;
-    background: black;
-    cursor: pointer;
-} */
-/* #overlay {
-    position: relative;
+#overlay {
+  position: relative;
+}
 
-    .overlay-link {
-        display: block; /* Assurez-vous que le lien occupe tout l'espace du conteneur */
-/* #overlay {
-	position: relative;
+.overlay-effect {
+  overflow: hidden; /* Ajout de cette propriété pour empêcher le débordement */
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
 
-
-} */
-/* 	position: absolute;
-	top: 0;
-	left: 0;
-    bottom: 0;
-	width: 100%;
-	height: 100%;
-	background-color: rgba(0, 0, 0, 0.7);
-	opacity: 0;
-	transition: opacity 0.3s ease;
-} */
-/* .overlay-link {
-    display: block;
-	position: relative;
+.overlay-link {
+  display: block;
+  position: relative;
   overflow: hidden;
-	z-index: 1;
-	&:hover {
-		.overlay-effect {
-			opacity: 1;
-		}
-	} */
-/*   img {
-    max-width: 100%;
-    height: auto;
-  }
-    .fa-light {
-        color: white;
-        font-size: 100px;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        -ms-transform: translate(-50%, -50%);
-        text-align: center;
-      }
-} */
+  z-index: 1;
+}
+.overlay-link:hover .overlay-effect {
+  opacity: 1;
+}
+.overlay-link:hover .eye-icon {
+  display: block;
+}
+.overlay-link:hover .fullscreen-icon {
+  display: block;
+}
+.overlay-link img {
+  max-width: 100%;
+  height: auto;
+}
+.overlay-link .eye-icon {
+  display: none;
+  color: white;
+  font-size: 100px;
+  position: absolute;
+  height: 20px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+.overlay-link .fullscreen-icon {
+  display: none;
+  font-size: 50px;
+  height: 20px;
+  position: absolute;
+  top: 5%;
+  right: 0;
+  transform: translate(-50%, -50%);
+}
+
 @keyframes fadeInUp {
   from {
     transform: translateY(-30px); /* Anciennement translate3d(0, 30px, 0); */
@@ -398,6 +419,9 @@
   align-items: center;
   cursor: pointer;
   justify-content: space-between;
+}
+.select-cat .select-btn:hover {
+  border: 2px solid blue;
 }
 .select-cat .list {
   display: none;
@@ -534,14 +558,14 @@
 @media screen and (max-width: 785px) {
   .burgerMenu {
     width: 50px;
-    height: 50px;
+    height: 35px;
     display: flex;
     flex-direction: column;
     cursor: pointer;
     position: absolute;
     right: 0;
     margin-top: 25px;
-    margin-right: 25px;
+    margin-right: 100px;
   }
 }
 .burgerMenu .line {
@@ -607,6 +631,21 @@
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+.lightbox {
+  display: none; /* cachée par défaut */
+  position: fixed; /* fixée et qui prend tout l'écran */
+  z-index: 1000; /* Pour être sûr de passer au dessus du reste */
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.7); /* noire avec transparence */
+  background-size: contain; /* l'image occupe tout l'espace disponible */
+  opacity: 0;
+  background-position: center;
+  cursor: pointer; /* Le curseur a la même forme que sur un lien */
 }
 
 :root {
