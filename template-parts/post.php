@@ -7,7 +7,7 @@
 
 
 
-
+<div class="container-row">
 <div id="overlay">
     <div class="related-photo  imgPortfolio container-img">
         <a href="<?php the_permalink(); ?>" class="overlay-link post-image">
@@ -17,4 +17,5 @@
              <img src="<?php echo get_template_directory_uri() . '/icon/Icon_fullscreen.png'; ?>" class="fullscreen-icon"> 
         </a>
     </div>
+</div>
 </div>

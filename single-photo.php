@@ -1,5 +1,9 @@
 <?php get_header(); ?>
 
+
+
+<hr class="borderShadow"> 
+
 <div class="containerPost">
   <?php
   // verifie si des publications existent
@@ -67,6 +71,7 @@
 
     // Vérifier s'il y a un post précédent
     if ($previous_post) {
+    // ds ce cas il extrait l'URL de l'image
       $previous_post_image_url = get_the_post_thumbnail_url($previous_post->ID, 'thumbnail');
     }
 
@@ -84,7 +89,9 @@
       </div>
       <!-- </div> -->
       <div class="arrow">
+        <!-- Vérifie si un article précédent existe et s'il y a une image associée -->
         <?php if ($previous_post && $previous_post_image_url) : ?>
+          <!-- Génère un lien vers l'article précédent avec l'URL de l'article et l'image en data -->
           <a href="<?php echo get_permalink($previous_post->ID); ?>" class="prev-arrow" data-image="<?php echo esc_url($previous_post_image_url); ?>">&larr;</a>
         <?php endif; ?>
 

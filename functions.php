@@ -199,16 +199,29 @@ function filter_posts_by_category() {
  // Créez une fonction pour filtrer les photos par catégorie
  function filter_photos_by_category() {
   $category_slug = $_POST['category'];
+  // $selectFormat = $_POST ['format'];
+
+/* 
+  $tax_query =  array('relation' => 'AND');
+  if ($category_slug != '') {
+    $tax_query[] = array(
+      'taxonomy' => 'categorie',
+      'field' => 'slug',
+      'terms' => $_POST ($category_slug),
+    );
+  } */
 
   $args = array(
     'post_type' => 'photo', // Le type de publication personnalisé
     'posts_per_page' => -1, // Afficher toutes les photos
     'tax_query' => array(
+      'relation' => 'AND',
       array(
         'taxonomy' => 'categorie',
         'field' => 'slug',
         'terms' => $category_slug,
       ),
+   
     ),
   );
 
@@ -216,7 +229,8 @@ function filter_posts_by_category() {
 
   if ($query->have_posts()) :
     while ($query->have_posts()) : $query->the_post();
-      get_template_part('template-parts/post');
+    
+    get_template_part('template-parts/post' , 'photo');
 
     endwhile;
     wp_reset_postdata();

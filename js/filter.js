@@ -172,6 +172,11 @@ jQuery(document).ready(function($) {
 // le 10 sept
 
 
+let category = '';
+let format = '';
+let date = '';
+const containerPhoto = document.querySelector('.containerPhoto');
+
 document.addEventListener("DOMContentLoaded", function () {
 
 const optionMenu = document.querySelector(".select-cat"),
@@ -183,40 +188,57 @@ selectBtn.addEventListener("click", () =>
   optionMenu.classList.toggle("active")
 );
 
+// Parcoursles options et ajoute un écouteur d'événements au clic sur chaque option
 options.forEach((option) => {
   option.addEventListener("click", () => {
+        // Récupère le texte de l'option sélectionnée
     let selectedOption = option.querySelector(".textOption").innerText;
+    // Met à jour le texte du bouton avec l'option sélectionnée
     Btn_text.innerText = selectedOption;
-
     optionMenu.classList.remove("active");
   });
 });
 });
 
- jQuery(document).ready(function ($) {
-  const selectCat = $(".select-cat");
-  const optionList = selectCat.find(".list");
-  const postContainer = $(".container-filtre"); 
 
-   // Écoutez le clic sur une catégorie
-  optionList.on("click", ".option", function () {
-    const selectedSlug = $(this).data("slug");
-
+function ajaxFilter (){ 
     // Effectuer une requête Ajax pour charger les photos en fonction de la catégorie
     $.ajax({
-      url: './wp-admin/admin-ajax.php', // Utilisez la variable WordPress ajaxurl
+      url: './wp-admin/admin-ajax.php',
       type: "POST",
       data: {
         action: "filter_photos_by_category", // Nom de l'action à définir dans WordPress
-        category: selectedSlug,
+        category: category, // envoi le slug de la catégorie
+         format: format, // Envoi  le format sélectionné
+         date: date,
       },
       success: function (response) {
-        // Mettez à jour le contenu de la section des photos avec les nouvelles photos chargées via Ajax
-        postContainer.html(response);
+        // Met à jour le contenu des photos avec les nouvelles photos chargées via Ajax
+        containerPhoto.innerHTML =  response;
       },
     });
+  }
+
+ // selection des éléments du dom 
+  const selectCat = $(".select-cat");
+  const optionList = selectCat.find(".list");
+
+   // Écoutez le clic sur une catégorie
+  optionList.on("click", ".option", function () {
+    // Récupérez le slug de la catégorie sélectionnée depuis l'attribut data
+    category = $(this).data("slug");
+  //  format = $("#format-filter").val(); // Récupérez la valeur du menu déroulant "format"
+
+    // Masquer toutes les images qui ne sont pas de la catégorie sélectionnée
+  /*   $(".related-photo").hide();
+    $(`.categorie-${selectedSlug}`).show(); */
+
+   containerPhoto.innerHTML = '';
+
+   ajaxFilter()
+
   });
-}); 
+
 
 
 

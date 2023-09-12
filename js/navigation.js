@@ -20,7 +20,7 @@ arrows.forEach((arrow) => {
     });
 }); */
 
-    const imageThumbnail = $(".imageThumbnail img");
+/*     const imageThumbnail = $(".imageThumbnail img");
     const prevArrow = $(".prev-arrow");
     const nextArrow = $(".next-arrow");
     const postContainer = $(".container-filtre");
@@ -48,5 +48,31 @@ arrows.forEach((arrow) => {
         imageThumbnail.attr("src", currentImageURL);
         postContainer.html("");
       }
-    );
+    ); */
+
+
+
+   /*  $('.prev-arrow .next-arrow').hover(function(){
+        var image = $(this).data('image');
+        if (image){
+            $('.containerNav img').attr('src', image);
+        }
+    }, function(){
+        $('.containerNav img').attr('src', );
+    });
+ */
+
+// Sélectionne les éléments avec les classes .prev-arrow et .next-arrow et ajoute un écouteur au survol (hover)
+    $('.prev-arrow, .next-arrow').hover(
+      // Fonction exécutée lorsque la souris entre dans l'élément
+        function () {
+          // Récupère la valeur de 'data-image' de l'élément survolé et la stocke dans la variable 'image'
+          var image = $(this).data('image');
+          // Vérifie si 'image' contient une valeur
+          if (image) {
+            // Si 'image' contient une valeur, met à jour 'src' de l'élément avec la classe .containerNav img pour afficher l'image
+            $('.containerNav img').attr('src', image);
+          }
+        },
+      );
     

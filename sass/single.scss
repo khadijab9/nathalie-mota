@@ -1,5 +1,10 @@
-.containerPost {
+.borderShadow{
+    border-top : transparent;
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2); 
+}
 
+.containerPost {
+margin-top: 40px ;
     margin-left: 100px;
     margin-right: 100px;
  
