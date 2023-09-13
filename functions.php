@@ -68,54 +68,10 @@ function enqueue_ajax_scripts()
 add_action('wp_enqueue_scripts', 'enqueue_ajax_scripts');
 
 
-// Fonction pour filtrer les photos
-/* 
-add_action('wp_ajax_filter_photos', 'filter_photos');
-add_action('wp_ajax_nopriv_filter_photos', 'filter_photos');
 
-function filter_photos()
-{
+    
 
-    $args = array(
-        'post_type' => 'photo',
-        'posts_per_page' => -1,
-        'order' => 'DESC', // Ordre de tri
-        'orderby' => $tri, // Champ de tri
-    );
-
-    if (!empty($cat)) {
-        $args['tax_query'][] = array(
-            'taxonomy' => 'categorie',
-            'field' => 'slug',
-            'terms' => $cat,
-        );
-    }
-
-    if (!empty($format)) {
-        $args['tax_query'][] = array(
-            'taxonomy' => 'format',
-            'field' => 'slug',
-            'terms' => $format,
-        );
-    }
-
-    $photos = new WP_Query($args);
-
-    if ($photos->have_posts()) :
-        while ($photos->have_posts()) : $photos->the_post(); ?>
-            <div class="related-photo filter-post">
-                <a href="<?php the_permalink(); ?>">
-                    <?php the_post_thumbnail("large"); ?>
-                </a>
-            </div>
-<?php endwhile;
-        wp_reset_postdata();
-    else :
-        echo 'Aucune photo trouvée.';
-    endif;
-
-    die(); // Important pour terminer correctement la réponse AJAX
-} */
+ 
 
 
 
@@ -162,69 +118,49 @@ add_action('wp_ajax_nopriv_load_more', 'load_more');
 
 
 // filter
-/* 
-function filter_posts_by_category() {
-    $category = sanitize_text_field($_POST['category']);
-  
-    $args = array(
-      'post_type' => 'votre_type_de_post', // Remplacez par le type de publication que vous utilisez
-      'posts_per_page' => -1, // Pour récupérer toutes les publications de la catégorie
-      'tax_query' => array(
-        array(
-          'taxonomy' => 'categorie',
-          'field' => 'slug',
-          'terms' => $category,
-        ),
-      ),
-    );
-  
-    $query = new WP_Query($args);
-  
-    if ($query->have_posts()) :
-      while ($query->have_posts()) : $query->the_post();
-        // Affichez ici les publications correspondantes, vous pouvez utiliser la structure HTML existante
-      endwhile;
-    else :
-      // Aucune publication trouvée
-    endif;
-  
-    wp_reset_postdata();
-    die();
-  }
-  
-  add_action('wp_ajax_filter_posts_by_category', 'filter_posts_by_category');
-  add_action('wp_ajax_nopriv_filter_posts_by_category', 'filter_posts_by_category'); */
+
 
 
  // Créez une fonction pour filtrer les photos par catégorie
- function filter_photos_by_category() {
-  $category_slug = $_POST['category'];
-  // $selectFormat = $_POST ['format'];
-
-/* 
-  $tax_query =  array('relation' => 'AND');
-  if ($category_slug != '') {
-    $tax_query[] = array(
-      'taxonomy' => 'categorie',
-      'field' => 'slug',
-      'terms' => $_POST ($category_slug),
-    );
-  } */
+ function filter_by_categorie() {
+  $categorie = $_POST['categorie'];
+  $format = $_POST['format'];
+  $sort = $_POST ['sort'];
 
   $args = array(
     'post_type' => 'photo', // Le type de publication personnalisé
     'posts_per_page' => -1, // Afficher toutes les photos
-    'tax_query' => array(
-      'relation' => 'AND',
+   
+    
+  'tax_query' => array(
+       'relation' => 'AND',
       array(
         'taxonomy' => 'categorie',
         'field' => 'slug',
-        'terms' => $category_slug,
-      ),
-   
-    ),
-  );
+        'terms' => $categorie,
+      ), 
 
+    ),
+    'orderby' => 'date', // Tri par date
+    'order' => 'DESC',   // Dans l'ordre décroissant par défaut
+  );
+  
+    // Ajoutez le critère de format uniquement s'il est spécifié
+    if (!empty($format)) {
+      $args['tax_query'][] = array(
+          'taxonomy' => 'format',
+          'field' => 'slug',
+          'terms' => $format,
+      );
+  }
+
+
+    // Si l'option de tri est "categorie", triez par catégorie au lieu de la date
+    if ($sort === 'categorie') {
+      unset($args['orderby']); // Supprimez le tri par date
+      unset($args['order']);   // Supprimez l'ordre par défaut
+  }
+ 
   $query = new WP_Query($args);
 
   if ($query->have_posts()) :
@@ -242,63 +178,15 @@ function filter_posts_by_category() {
 }
 
 // Ajoutez une action Ajax pour la fonction de filtrage des photos
-add_action('wp_ajax_filter_photos_by_category', 'filter_photos_by_category');
-add_action('wp_ajax_nopriv_filter_photos_by_category', 'filter_photos_by_category'); 
+add_action('wp_ajax_filter_photos_by_category', 'filter_by_categorie');
+add_action('wp_ajax_nopriv_filter_photos_by_category', 'filter_by_categorie'); 
  
 
 
  
 
 
- /* function filter_photos_by_category() {
-  // Récupérez les filtres sélectionnés depuis la requête AJAX
-  $selectedCategories = $_POST['categorie'];
-  $selectedFormats = $_POST['format'];
-
-  // Construisez la requête WP_Query en fonction des filtres sélectionnés (relation "et")
-  $queryArgs = array(
-      'post_type' => 'photo',
-      'posts_per_page' => -1,
-      'orderby' => 'date',
-      'order' => 'DESC',
-      'tax_query' => array(
-          'relation' => 'AND', 
-          array(
-              'taxonomy' => 'categorie',
-              'field' => 'slug',
-              'terms' => $selectedCategories,
-          ),
-          array(
-              'taxonomy' => 'format',
-              'field' => 'slug',
-              'terms' => $selectedFormats,
-          ),
-      ),
-  );
-
-  $query = new WP_Query($queryArgs);
-
-  // Boucle pour afficher les résultats filtrés
-  if ($query->have_posts()) :
-    while ($query->have_posts()) : $query->the_post();
-    get_template_part('template-parts/post', 'photo');
-    endwhile;
-  else :
-    // Aucune publication trouvée
-  endif;
-
-  // Réinitialisez la requête WP
-  wp_reset_postdata();
-
-  // Assurez-vous d'arrêter l'exécution ici pour éviter toute sortie indésirable
-  wp_die();
-}
-
-// Ajoutez une action pour les utilisateurs non connectés
-add_action('wp_ajax_filter_photos_by_category', 'filter_photos_by_category');
-
-// Ajoutez une action pour les utilisateurs connectés
-add_action('wp_ajax_nopriv_filter_photos_by_category', 'filter_photos_by_category');
+    
 
 
 
@@ -313,6 +201,7 @@ add_action('wp_ajax_nopriv_filter_photos_by_category', 'filter_photos_by_categor
 
 
 
-    */
 
+
+    
     

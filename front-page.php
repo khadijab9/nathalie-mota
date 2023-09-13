@@ -28,13 +28,13 @@
 
 <!-- filtre -->
 <div class="container-filtre">
-    <?php
-    // Obtenez l'ID de la catégorie par son slug
-    $concert_category = get_term_by('slug', 'concert', 'categorie');
-    $mariage_category = get_term_by('slug', 'mariage', 'categorie');
-    $reception_category = get_term_by('slug', 'reception', 'categorie');
-    $television_category = get_term_by('slug', 'television', 'categorie');
-    ?> 
+    <!--  <?php
+            // Obtenez l'ID de la catégorie par son slug
+            $concert_category = get_term_by('slug', 'concert', 'categorie');
+            $mariage_category = get_term_by('slug', 'mariage', 'categorie');
+            $reception_category = get_term_by('slug', 'reception', 'categorie');
+            $television_category = get_term_by('slug', 'television', 'categorie');
+            ?>
     <div id="filter">
         <div class="cat-format">
             <div class="select-cat">
@@ -57,14 +57,14 @@
                         <span class="textOption"><?= $television_category->name; ?></span>
                     </li>
                 </ul>
-            </div>
+            </div> -->
 
-            <?php
-            //obtient l'Id du format par son slug
-            $format_paysage = get_term_by('slug', 'paysage', 'format');
-            $format_portrait = get_term_by('slug', 'portrait', 'format');
-            ?>
-            <div class="select-cat ">
+    <?php
+    //obtient l'Id du format par son slug
+    // $format_paysage = get_term_by('slug', 'paysage', 'format');
+    //$format_portrait = get_term_by('slug', 'portrait', 'format');
+    ?>
+    <!--  <div class="select-cat ">
                 <div class="select-btn">
                     <span class="Btn-text">Format</span>
                     <img src="<?php echo get_template_directory_uri() . '/icon/chevron.png'; ?>" class="chevron-down">
@@ -77,14 +77,10 @@
                         <span class="textOption"><?= $format_portrait->name; ?></span>
                     </li>
                 </ul>
-
-                <div id="result">
-                    <!-- Les résultats filtrés seront affichés ici -->
-                </div>
             </div>
-        </div>
+        </div> -->
 
-        <div class="flexRow">
+    <!--     <div class="flexRow">
             <div class="select-cat">
                 <div class="select-btn">
                     <span class="Btn-text">Date</span>
@@ -95,37 +91,59 @@
                     <option value="old">Plus anciennes aux plus récentes</option>
                 </select>
             </div>
-        </div>
-        <select id="format-filter">
-                <option value="">CATEGORIES</option>
-                <?php
-                $categories = get_terms('categorie');
-                foreach($categories as $categorie){
-                    echo '<option value="' . $categorie->slug . '">' . $categorie->name . '</option>';
-                }?>
-            </select>
+        </div> -->
 
-    
-        <select id="format-filter">
-                <option value="">FORMATS</option>
+
+
+    <select id="categorie-filter">
+        <option value="">CATEGORIES</option>
+        <?php
+        $categories = get_terms('categorie');
+        foreach ($categories as $categorie) {
+            echo '<option value="' . $categorie->slug . '">' . $categorie->name . '</option>';
+        } ?>
+    </select>
+
+
+    <select id="format-filter">
+        <option class="formatOption" value="">FORMATS</option>
+        <?php
+        $formats = get_terms('format');
+        foreach ($formats as $format) {
+            echo '<option class="formatOption" value="' . $format->slug . '">' . $format->name . '</option>';
+        } ?>
+    </select>
+
+    <select id="sort-filter">
+        <option class="formatOption" value="">DATE</option>
+        <option value="date">Plus anciens </option>
+        <option value="categorie">Plus récents</option>
+    </select>
+    </select>
+
+
+
+
+    <!--  <select id="format-filter">
+            <ul id="format-filter-list" class="cat-list">
+                <li class="cat-list_item active" data-slug="">All projects</li>
                 <?php
                 $formats = get_terms('format');
-                foreach($formats as $format){
-                    echo '<option value="' . $format->slug . '">' . $format->name . '</option>';
-                }?>
-            </select>
-    </div>
+                foreach ($formats as $format) {
+                    echo '<li class="cat-list_item formatOption" data-slug="' . $format->slug . '">' . $format->name . '</li>';
+                }
+                ?>
+                </ul>
+        </select>  -->
+
+
+
+</div>
 </div>
 
 
 
-
-
-
-
 <!-- Créez une requête pour obtenir toutes les photos -->
-
-
 
 <?php
 $args = array(
@@ -143,11 +161,11 @@ $photos = new WP_Query($args); ?>
     <?php
     // Vérifiez si des photos sont trouvées
     if ($photos->have_posts()) : ?>
-       
-            <?php while ($photos->have_posts()) : $photos->the_post(); ?>
-                <?php get_template_part('template-parts/post') ?>
-            <?php endwhile; ?>
-        
+
+        <?php while ($photos->have_posts()) : $photos->the_post(); ?>
+            <?php get_template_part('template-parts/post') ?>
+        <?php endwhile; ?>
+
         <?php wp_reset_postdata(); ?>
     <?php endif;  ?>
 </div>

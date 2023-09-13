@@ -67,7 +67,7 @@
 }
 
 .borderShadow {
-  border-top: transparent;
+  border-top: 1px solid transparent;
   box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
 }
 
@@ -198,7 +198,7 @@
   gap: 15px;
   flex-wrap: wrap;
 }
-.photo-connexe .related-photo .attachment-large {
+.photo-connexe .attachment-large {
   /*   width: 40vw;
     /* La moitié de la largeur du viewport */
   /* La moitié de la largeur du viewport, pour former un carré */
@@ -273,20 +273,18 @@
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
     display: none; */
 .containerPhoto {
-  gap: 15px; /* Espacement entre les colonnes */
   margin-left: 100px;
   margin-right: 100px;
   margin-top: 50px;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  gap: 15px;
 }
 .containerPhoto .container-row {
-  display: grid;
-  grid-template-columns: 50% 50%; /* Définit deux colonnes, chacune avec une largeur de 50% */
-  gap: 15px;
   /* L'espace est soustrait pour prendre en compte l'espacement entre les colonnes */
   /* Ajustez la largeur selon vos préférences */
 }
-
-.imgPortfolio .attachment-large {
+.containerPhoto .attachment-large {
   width: 100%;
   /* La moitié de la largeur du viewport */
   height: 40vw;
@@ -387,6 +385,44 @@
   top: 5%;
   right: 0;
   transform: translate(-50%, -50%);
+}
+
+#format-filter {
+  position: relative;
+  display: flex;
+  width: 25%;
+  height: 45px;
+  background: #fff;
+  padding: 5px;
+  padding-left: 15px;
+  padding-right: 15px;
+  border-radius: 8px;
+  border: 2px solid #D8D8D8;
+  align-items: center;
+  cursor: pointer;
+  justify-content: space-between;
+}
+#format-filter:hover {
+  border: 2px solid blue;
+}
+
+#categorie-filter {
+  position: relative;
+  display: flex;
+  width: 25%;
+  height: 45px;
+  background: #fff;
+  padding: 5px;
+  padding-left: 15px;
+  padding-right: 15px;
+  border-radius: 8px;
+  border: 2px solid #D8D8D8;
+  align-items: center;
+  cursor: pointer;
+  justify-content: space-between;
+}
+#categorie-filter:hover {
+  border: 2px solid blue;
 }
 
 @keyframes fadeInUp {

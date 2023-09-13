@@ -1,41 +1,42 @@
 .containerPhoto {
    
- 
-  gap: 15px; /* Espacement entre les colonnes */
+
   margin-left: 100px;
   margin-right: 100px;
   margin-top: 50px;
-
+  
+  display: grid;
+  grid-template-columns: 50% 50%; 
+  gap : 15px;
    
  
     .container-row {
-         display: grid;
-        grid-template-columns: 50% 50%; /* Définit deux colonnes, chacune avec une largeur de 50% */
-    gap : 15px;
- 
+   
+    
     // display: flex;
     // justify-content: space-between; */
-
 
     //  flex: 0 0 calc(50% - 7.5px); /* Répartit les colonnes en deux avec un espacement entre elles */
      /* L'espace est soustrait pour prendre en compte l'espacement entre les colonnes */
      /* Ajustez la largeur selon vos préférences */
    }
+   .attachment-large {
+    width: 100%;
+    /* La moitié de la largeur du viewport */
+    height: 40vw;
+    /* La moitié de la largeur du viewport, pour former un carré */
+    object-fit: cover;
+  
+}
     
     }
 
-    .imgPortfolio {
+ 
+   
        
       
-                .attachment-large {
-                    width: 100%;
-                    /* La moitié de la largeur du viewport */
-                    height: 40vw;
-                    /* La moitié de la largeur du viewport, pour former un carré */
-                    object-fit: cover;
-                  
-                }
-            }
+             
+
         
     
 

@@ -1,4 +1,43 @@
+#format-filter{
+	position: relative;
+    display: flex;
+	width: 25%;
+    height: 45px;
+    background: #fff;
+    padding: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-radius: 8px;
+    border: 2px solid #D8D8D8;
+    align-items: center;
+    cursor: pointer;
+    justify-content: space-between;
+	&:hover{
+		border: 2px solid blue;
+	}
+		
+		
+	}
+	#categorie-filter{
+		position: relative;
+		display: flex;
+		width: 25%;
+		height: 45px;
+		background: #fff;
+		padding: 5px;
+		padding-left: 15px;
+		padding-right: 15px;
+		border-radius: 8px;
+		border: 2px solid #D8D8D8;
+		align-items: center;
+		cursor: pointer;
+		justify-content: space-between;
+		&:hover{
+			border: 2px solid blue;
+		}
+	}
 
+	
 
 
 
