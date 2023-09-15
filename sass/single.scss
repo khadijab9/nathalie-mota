@@ -176,7 +176,11 @@ box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px; */
   flex-wrap: wrap;
     
 
+  @media screen and (max-width : 576px) {
+    grid-template-columns: 1fr;
+    
 
+  }
 
     
        

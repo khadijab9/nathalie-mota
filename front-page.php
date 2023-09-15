@@ -94,7 +94,8 @@
         </div> -->
 
 
-
+<div id="container-filter">
+    <div class="cat-format">
     <select id="categorie-filter">
         <option value="">CATEGORIES</option>
         <?php
@@ -113,13 +114,15 @@
             echo '<option class="formatOption" value="' . $format->slug . '">' . $format->name . '</option>';
         } ?>
     </select>
+    </div>
 
+    <div class="container-date"> 
     <select id="sort-filter">
         <option class="formatOption" value="">DATE</option>
         <option value="date">Plus anciens </option>
         <option value="categorie">Plus récents</option>
     </select>
-    </select>
+   </div> 
 
 
 

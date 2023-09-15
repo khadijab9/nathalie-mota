@@ -7,7 +7,15 @@
   
   display: grid;
   grid-template-columns: 50% 50%; 
-  gap : 15px;
+  gap : 10px;
+
+  @media screen and (max-width : 576px) {
+    grid-template-columns: 1fr;
+    height: auto;
+   
+  }
+    
+  
    
  
     .container-row {
@@ -26,10 +34,12 @@
     height: 40vw;
     /* La moitié de la largeur du viewport, pour former un carré */
     object-fit: cover;
-  
-}
+
+    
+ 
     
     }
+}
 
  
    

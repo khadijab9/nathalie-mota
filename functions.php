@@ -130,22 +130,23 @@ add_action('wp_ajax_nopriv_load_more', 'load_more');
   $args = array(
     'post_type' => 'photo', // Le type de publication personnalisé
     'posts_per_page' => -1, // Afficher toutes les photos
-   
-    
-  'tax_query' => array(
-       'relation' => 'AND',
-      array(
-        'taxonomy' => 'categorie',
-        'field' => 'slug',
-        'terms' => $categorie,
-      ), 
-
-    ),
     'orderby' => 'date', // Tri par date
     'order' => 'DESC',   // Dans l'ordre décroissant par défaut
+    
   );
   
-    // Ajoutez le critère de format uniquement s'il est spécifié
+    // Si la catégorie est vide, récupérez toutes les photos
+    if (empty($categorie)) {
+      $query = new WP_Query($args);
+  } else {
+      // Sinon, filtrez par catégorie
+      $args['tax_query'][] = array(
+          'taxonomy' => 'categorie',
+          'field' => 'slug',
+          'terms' => $categorie,
+      );
+    }
+    // Ajoute le critère de format uniquement s'il est spécifié
     if (!empty($format)) {
       $args['tax_query'][] = array(
           'taxonomy' => 'format',
@@ -153,14 +154,8 @@ add_action('wp_ajax_nopriv_load_more', 'load_more');
           'terms' => $format,
       );
   }
+  
 
-
-    // Si l'option de tri est "categorie", triez par catégorie au lieu de la date
-    if ($sort === 'categorie') {
-      unset($args['orderby']); // Supprimez le tri par date
-      unset($args['order']);   // Supprimez l'ordre par défaut
-  }
- 
   $query = new WP_Query($args);
 
   if ($query->have_posts()) :
@@ -182,26 +177,4 @@ add_action('wp_ajax_filter_photos_by_category', 'filter_by_categorie');
 add_action('wp_ajax_nopriv_filter_photos_by_category', 'filter_by_categorie'); 
  
 
-
- 
-
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
     

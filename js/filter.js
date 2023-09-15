@@ -123,6 +123,7 @@ $('#categorie-filter, #format-filter').change(function() {
       // Si "Toutes les catégories" est sélectionné, réinitialisez la catégorie à vide
       categorie = '';
   }
+  
 
     $.ajax({
         url: './wp-admin/admin-ajax.php',
@@ -140,13 +141,43 @@ $('#categorie-filter, #format-filter').change(function() {
     });
 }
 
+
 // Sélection des éléments du DOM
+
+
 const selectCat = $("#categorie-filter, #format-filter, #sort-filter");
 
 // Écoutez le changement d'options de filtre
 selectCat.change(function() {
+  $('.containerPhoto').empty();
     filter_photos(); // Mettre à jour les photos lorsqu'une option est modifiée
 });
+
+
+
+
+/* // Sélectionnez le menu déroulant par son ID
+const selectMenu = document.getElementById('format-filter');
+
+// Sélectionnez toutes les options du menu déroulant
+const options = selectMenu.querySelector('.formatOption');
+
+// Parcourez toutes les options et ajoutez des gestionnaires d'événements pour le survol
+options.forEach(option => {
+    option.addEventListener('mouseover', () => {
+        // Appliquez les styles au survol
+        option.style.backgroundColor = '#FF0000'; // Nouvelle couleur de fond au survol
+        // Autres styles au survol
+    });
+
+    option.addEventListener('mouseout', () => {
+        // Réinitialisez les styles lorsque le survol se termine
+        option.style.backgroundColor = ''; // Réinitialisez la couleur de fond
+        // Réinitialisez les autres styles au survol
+    });
+}); */
+
+
 
 
 
