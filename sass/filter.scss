@@ -2,7 +2,8 @@
 	display: flex;
 	
 	width: 100%;
-
+	
+gap : 10px;
 	.cat-format{
 		display: flex;
 		width: 50%;
@@ -11,13 +12,19 @@
 			display: block;
 			width: 100%;
 			padding-bottom: 15px;
+
+			
 		}
+
 	}
+
+
 
 	.container-date{
 		display: flex;
 		justify-content: end;
 		width: 50%;
+		
 		@media screen and (max-width : 576px) {
 			display: block;
 			width: 100%;

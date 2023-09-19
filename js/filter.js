@@ -118,12 +118,10 @@ $('#categorie-filter, #format-filter').change(function() {
     var format = $('#format-filter').val();
     var sort = $('#sort-filter').val();
 
-
     if (categorie === '') {
       // Si "Toutes les catégories" est sélectionné, réinitialisez la catégorie à vide
       categorie = '';
   }
-  
 
     $.ajax({
         url: './wp-admin/admin-ajax.php',
@@ -140,13 +138,8 @@ $('#categorie-filter, #format-filter').change(function() {
         }
     });
 }
-
-
 // Sélection des éléments du DOM
-
-
 const selectCat = $("#categorie-filter, #format-filter, #sort-filter");
-
 // Écoutez le changement d'options de filtre
 selectCat.change(function() {
   $('.containerPhoto').empty();

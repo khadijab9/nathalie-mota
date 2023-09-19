@@ -1,15 +1,59 @@
-.lightbox {
-    display: none; /* cachée par défaut */
+#lightbox {
+ //display: none;
     position: fixed; /* fixée et qui prend tout l'écran */
     z-index: 1000; /* Pour être sûr de passer au dessus du reste */
     top: 0;
     left: 0;
     bottom: 0;
     right: 0;
-    background-color: rgba(0,0,0,.7); /* noire avec transparence */
+    background-color: rgba(0,0,0, 0.8); /* noire avec transparence */
     background-size: contain; /* l'image occupe tout l'espace disponible */
-    
-    opacity: 0;
-    background-position: center;
-    cursor: pointer; /* Le curseur a la même forme que sur un lien */
+
+  .close{
+    position: fixed;
+    font-size: 50px;
+    color: white;
+    right: 20px;
+    top : 20px;
+  
+    cursor : pointer;
+
+  
+
+ 
   }
+
+  .prevArrow{
+    position: fixed;
+    color: white;
+    text-transform: none;
+   top: 50%;
+   
+
+  }
+  .nextArrow{
+    position: fixed;
+    color: white;
+    text-transform: none;
+    right: 0;
+    top : 50%;
+  
+  }
+
+  .lightbox-contain{
+    position: fixed;
+    width: 50%;
+    margin: auto;
+    max-width: 1200px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+   
+     img {
+
+    width: 100%;
+    max-width: 100%;
+  
+
+  }
+  }}

@@ -114,13 +114,6 @@ add_action('wp_ajax_load_more', 'load_more');
 add_action('wp_ajax_nopriv_load_more', 'load_more');
 
 
-
-
-
-// filter
-
-
-
  // Créez une fonction pour filtrer les photos par catégorie
  function filter_by_categorie() {
   $categorie = $_POST['categorie'];
@@ -132,7 +125,6 @@ add_action('wp_ajax_nopriv_load_more', 'load_more');
     'posts_per_page' => -1, // Afficher toutes les photos
     'orderby' => 'date', // Tri par date
     'order' => 'DESC',   // Dans l'ordre décroissant par défaut
-    
   );
   
     // Si la catégorie est vide, récupérez toutes les photos
@@ -155,7 +147,6 @@ add_action('wp_ajax_nopriv_load_more', 'load_more');
       );
   }
   
-
   $query = new WP_Query($args);
 
   if ($query->have_posts()) :

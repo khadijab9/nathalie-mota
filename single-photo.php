@@ -42,6 +42,7 @@
         <div class="container-img">
           <a class="post-image" href="<?php the_permalink(); ?>">
             <?php the_post_thumbnail("large"); ?> </a>
+           
         </div>
         <!-- <img class="post-image" src="<?php the_post_thumbnail_url('large'); ?>" alt="<?php the_title(); ?>"> -->
 
@@ -160,7 +161,6 @@
       <?php while ($photos->have_posts()) : $photos->the_post(); ?>
 
         <?php get_template_part('template-parts/post'); ?>
-
       <?php endwhile; ?>
     </div>
     <?php wp_reset_postdata(); ?>

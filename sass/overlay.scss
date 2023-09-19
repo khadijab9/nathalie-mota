@@ -31,6 +31,9 @@
 		.fullscreen-icon {
 			display: block;
 		}
+    .text-overlay{
+      display: block;
+    }
 
 	} 
 
@@ -62,6 +65,15 @@
         transform: translate(-50%, -50%);
       
       }
+}
+.text-overlay{
+
+position: absolute;
+display: none;
+left: 2%;
+bottom: 2%;
+color: white;
+
 }
 
 

@@ -3,15 +3,15 @@
 <?php get_template_part('template-parts/modale'); ?>
 
 
-<div class="lightbox">
-    <button class="lightbox-close">Fermer</button>
-    <button class="lightbox-next">Suivant</button>
-    <button class="lightbox-prev">Précédent</button>
+<div id="lightbox" >
+    <span class="close">&times; </span>
+    <div class="prevArrow">&larr; Précédente</div>
+    <div class="nextArrow"> Suivante &rarr;</div>
     <div class="lightbox-contain">
-        <?php the_post_thumbnail("large"); ?>
+    <?php  the_post_thumbnail("large"); ?> 
     </div>
-</div>
-
+</div> 
+ 
 
 
 <footer id=footer>
@@ -31,3 +31,7 @@
 </body>
 
 </html>
+
+
+
+

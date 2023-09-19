@@ -15,6 +15,13 @@
             <div class="overlay-effect"></div>
             <img src="<?php echo get_template_directory_uri() . '/icon/eye-icon.png'; ?>" class="eye-icon">
              <img src="<?php echo get_template_directory_uri() . '/icon/Icon_fullscreen.png'; ?>" class="fullscreen-icon"> 
+             <div class="text-overlay">
+           
+            <?php the_title() ?>
+            <?php
+                $formatFound = '';  
+              echo $formatFound ?>
+            </div> 
         </a>
     </div>
 </div>

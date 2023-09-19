@@ -17,8 +17,7 @@
             foreach ($random_image as $post) { //// Boucle pour traiter chaque image
                 // Obtient l'URL de l'image
                 the_post_thumbnail('large');
-                // Affiche l'image
-
+    
             }
         } ?>
         <h1> PHOTOGRAPHE EVENT</h1>
@@ -105,7 +104,6 @@
         } ?>
     </select>
 
-
     <select id="format-filter">
         <option class="formatOption" value="">FORMATS</option>
         <?php
@@ -147,7 +145,6 @@
 
 
 <!-- Créez une requête pour obtenir toutes les photos -->
-
 <?php
 $args = array(
     'post_type' => 'photo', // Type de contenu personnalisé
@@ -158,7 +155,6 @@ $args = array(
 );
 
 $photos = new WP_Query($args); ?>
-
 
 <div class="containerPhoto">
     <?php

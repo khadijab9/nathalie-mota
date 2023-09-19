@@ -7,8 +7,8 @@
         cursor: pointer;
         position: absolute;
         right: 0;
-        margin-top: 25px;
-        margin-right: 100px;
+        margin-top: 15px;
+        margin-right: 50px;
     }
 
     .line {
@@ -18,6 +18,7 @@
         background-color: black;
         // créer une animation fluide lorsque'on clique sur l'icone burger
         transition: all 0.3s linear;
+   
         
     }
 }

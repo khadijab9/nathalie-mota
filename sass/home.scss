@@ -4,10 +4,11 @@
   margin-left: 100px;
   margin-right: 100px;
   margin-top: 50px;
-  
   display: grid;
   grid-template-columns: 50% 50%; 
-  gap : 10px;
+gap : 5px;
+
+
 
   @media screen and (max-width : 576px) {
     grid-template-columns: 1fr;
@@ -21,6 +22,8 @@
     .container-row {
    
     
+        
+        
     // display: flex;
     // justify-content: space-between; */
 
@@ -34,6 +37,8 @@
     height: 40vw;
     /* La moitié de la largeur du viewport, pour former un carré */
     object-fit: cover;
+  
+   
 
     
  
