@@ -33,7 +33,7 @@
 		}
     .text-overlay{
       display: block;
-    }
+    } 
 
 	} 
 
@@ -63,16 +63,18 @@
         top: 5%;
         right: 0;
         transform: translate(-50%, -50%);
+        z-index : 999;
+        cursor: pointer;
       
       }
 }
 .text-overlay{
 
 position: absolute;
-display: none;
 left: 2%;
 bottom: 2%;
 color: white;
+display: none;
 
 }
 

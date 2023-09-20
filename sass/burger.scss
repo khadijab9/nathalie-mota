@@ -17,7 +17,7 @@
         margin-bottom: 10px;
         background-color: black;
         // créer une animation fluide lorsque'on clique sur l'icone burger
-        transition: all 0.3s linear;
+        transition: all 0.7s linear;
    
         
     }
@@ -32,11 +32,11 @@
 
         // les deux span pivotent et se dépace pour former une croix
         &.l1 {
-            transform: rotate(45deg) translate(6px, 11px);
+            transform: rotate(45deg) translate(6px, 10px);
         }
 
         &.l3 {
-            transform: rotate(-45deg) translate(6px, -11px);
+            transform: rotate(-45deg) translate(6px, -10px);
         }
     }
 }
@@ -56,15 +56,15 @@
         transition: top 1s ease;
         position: fixed;
         width: 100vw;
-        top: 0;
-    
+       bottom: 0;
+    top : 80px;
         margin: 0;
         padding: 0;
         padding-top: 130px;
 
         &.active {
             display: block;
-            animation: fadeMenu 3s forwards;
+            animation: fadeMenu 1.5s forwards;
         }
         
     a {

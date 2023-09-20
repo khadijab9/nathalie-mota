@@ -104,6 +104,10 @@
         } ?>
     </select>
 
+
+ 
+
+
     <select id="format-filter">
         <option class="formatOption" value="">FORMATS</option>
         <?php
@@ -117,8 +121,8 @@
     <div class="container-date"> 
     <select id="sort-filter">
         <option class="formatOption" value="">DATE</option>
-        <option value="date">Plus anciens </option>
-        <option value="categorie">Plus récents</option>
+        <option value="ASC">Plus anciens </option>
+        <option value="DESC">Plus récents</option>
     </select>
    </div> 
 

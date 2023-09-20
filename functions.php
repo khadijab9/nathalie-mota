@@ -101,17 +101,20 @@ function load_more()
     } else {
         $response = '';
     }
-
     $result = [
         'max' => $max_pages,
         'html' => $output,
     ];
-
     echo json_encode($result);
     exit;
 }
 add_action('wp_ajax_load_more', 'load_more');
 add_action('wp_ajax_nopriv_load_more', 'load_more');
+
+
+
+
+
 
 
  // Créez une fonction pour filtrer les photos par catégorie
@@ -124,11 +127,16 @@ add_action('wp_ajax_nopriv_load_more', 'load_more');
     'post_type' => 'photo', // Le type de publication personnalisé
     'posts_per_page' => -1, // Afficher toutes les photos
     'orderby' => 'date', // Tri par date
-    'order' => 'DESC',   // Dans l'ordre décroissant par défaut
+    // 'order' => $_POST['order'] != '' ? $_POST['order'] : 'DESC',
+    'order' => $sort != '' ? $sort : 'DESC',
+    
+  /*   'tax_query' => array(
+        'relation' => 'AND', 
+      ), */
   );
-  
     // Si la catégorie est vide, récupérez toutes les photos
     if (empty($categorie)) {
+        // Crée une requête pour récupérer toutes les photos
       $query = new WP_Query($args);
   } else {
       // Sinon, filtrez par catégorie
@@ -140,6 +148,7 @@ add_action('wp_ajax_nopriv_load_more', 'load_more');
     }
     // Ajoute le critère de format uniquement s'il est spécifié
     if (!empty($format)) {
+        // Si un format est spécifié, on filtre par format
       $args['tax_query'][] = array(
           'taxonomy' => 'format',
           'field' => 'slug',
@@ -169,3 +178,9 @@ add_action('wp_ajax_nopriv_filter_photos_by_category', 'filter_by_categorie');
  
 
     
+
+
+
+
+
+

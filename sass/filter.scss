@@ -15,10 +15,17 @@ gap : 10px;
 
 			
 		}
-
+		option:nth-child(1){
+			&:hover{
+				background-color: red;
+			}
+		}
 	}
 
-
+	select:first-child
+	&:hover{
+		background-color: red;
+	}
 
 	.container-date{
 		display: flex;

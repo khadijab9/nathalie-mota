@@ -118,11 +118,6 @@ $('#categorie-filter, #format-filter').change(function() {
     var format = $('#format-filter').val();
     var sort = $('#sort-filter').val();
 
-    if (categorie === '') {
-      // Si "Toutes les catégories" est sélectionné, réinitialisez la catégorie à vide
-      categorie = '';
-  }
-
     $.ajax({
         url: './wp-admin/admin-ajax.php',
         type: 'POST',
@@ -149,26 +144,7 @@ selectCat.change(function() {
 
 
 
-/* // Sélectionnez le menu déroulant par son ID
-const selectMenu = document.getElementById('format-filter');
 
-// Sélectionnez toutes les options du menu déroulant
-const options = selectMenu.querySelector('.formatOption');
-
-// Parcourez toutes les options et ajoutez des gestionnaires d'événements pour le survol
-options.forEach(option => {
-    option.addEventListener('mouseover', () => {
-        // Appliquez les styles au survol
-        option.style.backgroundColor = '#FF0000'; // Nouvelle couleur de fond au survol
-        // Autres styles au survol
-    });
-
-    option.addEventListener('mouseout', () => {
-        // Réinitialisez les styles lorsque le survol se termine
-        option.style.backgroundColor = ''; // Réinitialisez la couleur de fond
-        // Réinitialisez les autres styles au survol
-    });
-}); */
 
 
 
