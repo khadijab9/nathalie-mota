@@ -8,7 +8,10 @@ margin-top: 40px ;
     margin-left: 100px;
     margin-right: 100px;
  
-
+    @media screen and (max-width: 589px){
+        margin-left: 0;
+        margin-right: 0;
+    }
     /* border-top: 1px solid blueviolet;
 box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px; */
 
@@ -18,16 +21,25 @@ box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px; */
         margin-top: 15px;
         width: 100%;
 
+        @media screen and (max-width: 589px){
+         flex-wrap: wrap-reverse;
+
+         
+        }
         .post-meta {
             display: flex;
             flex-direction: column;
             justify-content: end;
             width: 50%;
             // margin-left: 100px;
-            margin-bottom: 6px;
+        
             margin-right: 16px;
             border-bottom: 1px solid black;
             
+              @media screen and (max-width: 589px){
+            width: 100%;
+            margin-right: 0;
+        }
           
 
             .meta {
@@ -43,44 +55,105 @@ box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px; */
             font-size: 40px;
             font-style: italic;
             margin-bottom: 6px;
-
+@media screen and (max-width: 400px){
+font-size: 25px;
+}
+    
+}
         }
-    }
+    
 
     .container-img {
         // margin-right: 100px;
         width: 50%;
-        
+        @media screen and (max-width: 589px){
+            width: 100%;
+            margin-left: 70px;
+            margin-right: 70px;
+        }
+
+
+        .post-image{
+            display: flex;
+            width: 100%;
+            height: 100vh;
+        }
+        @media screen and (max-width: 530px){
+
+        }
 
         .attachment-large {
             width: 100%;
           
-             height: auto; 
+         height: 100vh; 
+             object-fit: cover;
           
             
         }
     }
 }
 
+
+
+
+
+
+
+// container bouton contact et nav
+
+#containerBtn-nav {
+    margin-left: 100px;
+    margin-right: 100px;
+
+
+    @media screen and (max-width: 513px){
+        margin-top: 25px;
+        margin-bottom: 25px;
+    }
+    @media screen and (max-width: 589px){
+        margin-left: 0;
+        margin-right: 0;
+    }
+  
+
 .containerBtn {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     width: 100%;
     padding-right: 0;
     height: 118px;
     padding-bottom: 10px;
+    margin-top: 15px;
+    border-bottom: 1px solid black;
 
+  
+  //  @media screen and (max-width: 514px){
+    //    flex-wrap: wrap;
+    //}
+  
+  
 
     .contact_btn {
         width: 50%;
-        margin-top: -40px;
+        margin-top: 0;
         display: flex;
         align-items: center;
         justify-content: space-between;
         flex-wrap: wrap;
 
       
-
+        @media screen and (max-width: 748px){
+            padding-bottom: 10px;
+        }
+        @media screen and (max-width: 513px){
+            margin-bottom: 30px;
+        }
+        @media screen and (max-width: 589px){
+            width: 100%;
+           margin-right: 70px;
+           margin-left: 70px;
+        }
         #contact-button{
             width: 40%;
             height: 50px;
@@ -91,6 +164,10 @@ box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px; */
                 background-color: black;
                 color: white;
             }
+            @media screen and (max-width: 845px){
+                width: 100%;
+            }
+           
         }
 
 
@@ -98,6 +175,9 @@ box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px; */
 
         .txt-contact {
             text-transform: none;
+            @media screen and (max-width: 513px){
+                margin-top: 25px;
+            }
         }
 
         form input {
@@ -108,6 +188,14 @@ box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px; */
         }
     }
 
+
+
+    .containerNav{
+        @media screen and (max-width: 589px){
+            display: none;
+        }
+
+    
     .post-carousel {
         width: 80px;
 
@@ -140,21 +228,23 @@ box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px; */
     }
 
 }
+}}
 
-#containerBtn-nav {
-    margin-left: 100px;
-    margin-right: 100px;
 
-    .containerBtn {
-        border-bottom: 1px solid black;
 
-    }
-}
+
+
+
+//photo connexes
 
 .photoApparente {
     margin-left: 100px;
     margin-right: 100px;
  
+    @media screen and (max-width: 589px){
+        margin-left: 70px;
+        margin-right: 70px;
+    }
 
 }
 
@@ -164,6 +254,14 @@ box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px; */
     margin-right: 100px;
     margin-top: 70px;
     margin-bottom: 50px;
+
+    @media screen and (max-width: 589px){
+      display: flex;
+      justify-content: center;
+      margin: 0;
+      margin-bottom: 15px;
+      margin-top: 15px;
+    }
 }
 
 .photo-connexe {
@@ -178,9 +276,11 @@ box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px; */
 
   @media screen and (max-width : 576px) {
     grid-template-columns: 1fr;
+  
     
 
   }
+
 
     
        
@@ -196,6 +296,14 @@ box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px; */
             height: 40vw;
             /* La moitié de la largeur du viewport, pour former un carré */
             object-fit: cover;
+
+            
+  @media screen and (max-width : 576px) {
+   
+  
+    
+
+  }
         }
 
 
@@ -204,6 +312,9 @@ box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px; */
         }
     
 
+
+
+//bouton toutes les photos
 .btn-photo {
     margin-top: 20px;
     margin-bottom: 20px;

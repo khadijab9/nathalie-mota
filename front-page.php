@@ -17,7 +17,6 @@
             foreach ($random_image as $post) { //// Boucle pour traiter chaque image
                 // Obtient l'URL de l'image
                 the_post_thumbnail('large');
-    
             }
         } ?>
         <h1> PHOTOGRAPHE EVENT</h1>
@@ -93,57 +92,59 @@
         </div> -->
 
 
-<div id="container-filter">
-    <div class="cat-format">
-    <select id="categorie-filter">
-        <option value="">CATEGORIES</option>
-        <?php
-        $categories = get_terms('categorie');
-        foreach ($categories as $categorie) {
-            echo '<option value="' . $categorie->slug . '">' . $categorie->name . '</option>';
-        } ?>
-    </select>
+    <div id="container-filter">
+        <div class="cat-format">
+            <div id="categorie-filter">
+                <div class="select-btn" id="select-btn">
+                    <span class="text">CATEGORIES</span>
+                    <img src="<?php echo get_template_directory_uri() . '/icon/chevron.png'; ?>" class="chevron">
+                </div>
+                <ul id="categorie-list">
+                    <li class="option" value="">CATEGORIES</li>
+                    <?php
+                    $categories = get_terms('categorie');
+                    foreach ($categories as $categorie) {
+                        echo '<li class="option" value="' . $categorie->slug . '">' . $categorie->name . '</li>';
+                    } ?>
+                </ul>
 
+            </div>
+        </div>
 
- 
+        <div class="container-date">
+            <select id="sort-filter">
+                <option class="formatOption" value="">DATE</option>
+                <option value="ASC">Plus anciens </option>
+                <option value="DESC">Plus récents</option>
+            </select>
+        </div>
 
-
-    <select id="format-filter">
-        <option class="formatOption" value="">FORMATS</option>
-        <?php
-        $formats = get_terms('format');
-        foreach ($formats as $format) {
-            echo '<option class="formatOption" value="' . $format->slug . '">' . $format->name . '</option>';
-        } ?>
-    </select>
     </div>
 
-    <div class="container-date"> 
-    <select id="sort-filter">
-        <option class="formatOption" value="">DATE</option>
-        <option value="ASC">Plus anciens </option>
-        <option value="DESC">Plus récents</option>
-    </select>
-   </div> 
 
-
-
-
-    <!--  <select id="format-filter">
-            <ul id="format-filter-list" class="cat-list">
-                <li class="cat-list_item active" data-slug="">All projects</li>
-                <?php
-                $formats = get_terms('format');
-                foreach ($formats as $format) {
-                    echo '<li class="cat-list_item formatOption" data-slug="' . $format->slug . '">' . $format->name . '</li>';
-                }
-                ?>
+    <!-- <div id="container-filter">
+        <div class="cat-format">
+            <div id="categorie-filter">
+                <div class="select-btn">
+                    <span class="text">CATEGORIES</span>
+                    <img src="<?php echo get_template_directory_uri() . '/icon/chevron.png'; ?>" class="chevron">
+                </div>
+                <ul id="categorie-list">
+                    <li class="option" value="">CATEGORIES</li>
+                    <?php
+                    $categories = get_terms('categorie');
+                    foreach ($categories as $categorie) {
+                        echo '<li class="option" value="' . $categorie->slug . '">' . $categorie->name . '</li>';
+                    } ?>
                 </ul>
-        </select>  -->
+
+            </div>
+
+        </div> 
 
 
 
-</div>
+    </div> -->
 </div>
 
 

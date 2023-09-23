@@ -17,12 +17,12 @@
           <h2 class="post-title"><?php the_title() ?></h2>
           <p class="meta">REFERENCE : <span id="refPhoto"> <?php the_field('Référence'); ?> </span></p>
           <!-- Affiche la catégorie  -->
-          <?php $terms = get_the_terms(get_the_ID(), 'categorie');
-          if (!empty($terms)) {
+          <?php $categories = get_the_terms(get_the_ID(), 'categorie');
+          if (!empty($categories)) {
             echo '<p class="meta">CATÉGORIE : ';
-            foreach ($terms as $term) {
-              echo $term->name . '';
-              $categoryFound = $term->slug;
+            foreach ($categories as $categories) {
+              echo $categories->name . '';
+              $categoryFound = $categories->slug;
             }
           }
           echo '</p>'; ?>

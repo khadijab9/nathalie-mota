@@ -21,6 +21,8 @@ loadMoreButton.on('click', function (e) {
         loadMoreButton.hide(); // Masquer le bouton si la réponse est vide
         // Ajoutez le contenu de la réponse à l'élément HTML avec la classe ".containerPhoto"
         $('.containerPhoto').append(res.html);
+
+        openLightbox();
       }
     }
   });

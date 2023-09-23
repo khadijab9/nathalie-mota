@@ -119,9 +119,13 @@ add_action('wp_ajax_nopriv_load_more', 'load_more');
 
  // Créez une fonction pour filtrer les photos par catégorie
  function filter_by_categorie() {
+
   $categorie = $_POST['categorie'];
+
   $format = $_POST['format'];
   $sort = $_POST ['sort'];
+
+
 
   $args = array(
     'post_type' => 'photo', // Le type de publication personnalisé
@@ -129,10 +133,6 @@ add_action('wp_ajax_nopriv_load_more', 'load_more');
     'orderby' => 'date', // Tri par date
     // 'order' => $_POST['order'] != '' ? $_POST['order'] : 'DESC',
     'order' => $sort != '' ? $sort : 'DESC',
-    
-  /*   'tax_query' => array(
-        'relation' => 'AND', 
-      ), */
   );
     // Si la catégorie est vide, récupérez toutes les photos
     if (empty($categorie)) {
@@ -145,6 +145,7 @@ add_action('wp_ajax_nopriv_load_more', 'load_more');
           'field' => 'slug',
           'terms' => $categorie,
       );
+      
     }
     // Ajoute le critère de format uniquement s'il est spécifié
     if (!empty($format)) {
@@ -154,8 +155,9 @@ add_action('wp_ajax_nopriv_load_more', 'load_more');
           'field' => 'slug',
           'terms' => $format,
       );
+    
   }
-  
+
   $query = new WP_Query($args);
 
   if ($query->have_posts()) :
@@ -171,6 +173,7 @@ add_action('wp_ajax_nopriv_load_more', 'load_more');
 
   wp_die();
 }
+
 
 // Ajoutez une action Ajax pour la fonction de filtrage des photos
 add_action('wp_ajax_filter_photos_by_category', 'filter_by_categorie');
