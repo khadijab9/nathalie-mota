@@ -9,6 +9,8 @@
     <div class="nextArrow"> Suivante &rarr;</div>
     <div class="lightbox-contain">
         <img src="" class="photoLightbox">
+        <span class="reference"></span>
+        <span class="categorie"> </span>
 
     </div>
 </div>

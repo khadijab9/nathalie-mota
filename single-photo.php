@@ -40,8 +40,9 @@
           <p class="meta date"> DATE : <?php the_field('Date'); ?></p>
         </div>
         <div class="container-img">
-          <a class="post-image" href="<?php the_permalink(); ?>">
-            <?php the_post_thumbnail("large"); ?> </a>
+          <!-- <a class="post-image" href="<?php the_permalink(); ?>"> -->
+            <?php the_post_thumbnail("large"); ?> <!-- </a> -->
+            <img src="<?php echo get_template_directory_uri() . '/icon/Icon_fullscreen.png'; ?>" class="fullscreen-icon" id="fullscreen">
            
         </div>
         <!-- <img class="post-image" src="<?php the_post_thumbnail_url('large'); ?>" alt="<?php the_title(); ?>"> -->

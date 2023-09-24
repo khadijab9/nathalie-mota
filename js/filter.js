@@ -143,14 +143,13 @@ $('#categorie-filter, #format-filter').change(function() {
 
 
 function filter_photos() {
-
-  categorie = $('#categorie-filter').val();
-  
-  console.log('Catégorie envoyée via AJAX : ' + categorie); 
-  format = $('#format-filter').val();
+  const categorie = Btn_text.textContent; // Récupère le texte du bouton
+ const format = TextFormat.textContent;
+ // categorie = $('#categorie-list').val();
+ 
+  //format = $('#format-filter').val();
   sort = $('#sort-filter').val();
-  console.log('Catégorie envoyée via AJAX : ' + sort); 
-
+ 
   
 
   $.ajax({
@@ -165,23 +164,28 @@ function filter_photos() {
     success: function (response) {
       // Mettre à jour la liste des photos avec la réponse Ajax
       $('.containerPhoto').html(response);
+
+   
     }
+   
   });
+
 }
-// Sélection des éléments du DOM
-const selectCat = $("#categorie-filter, #format-filter, #sort-filter");
+
+      
 
 
 
 // Écoutez le changement d'options de filtre
-selectCat.change(function () {
-  $('.containerPhoto').empty();
-  filter_photos(); // Mettre à jour les photos lorsqu'une option est modifiée
-}); 
+//selectCat.change(function () {
+  //$('.containerPhoto').empty();
+  //filter_photos(); // Mettre à jour les photos lorsqu'une option est modifiée
+
 
 
 const categorieList = document.getElementById("categorie-list");
 const optionMenu = document.getElementById("categorie-filter"),
+
 selectBtn = optionMenu.querySelector(".select-btn"),
 options = optionMenu.querySelectorAll(".option"),
 Btn_text = optionMenu.querySelector(".text");
@@ -191,25 +195,98 @@ optionMenu.classList.toggle("active")
 
 );
 
-// Parcours les options et ajoute un écouteur d'événements au clic sur chaque option
-options.forEach((option) => {
-option.addEventListener("click", () => {
+// Écoute l'événement de clic sur la liste des catégories
+categorieList.addEventListener("click", (e) => {
+  // Vérifie si l'élément cliqué a la classe "option" (une option de catégorie)
+  if (e.target.classList.contains("option")) {
     // Récupère le texte de l'option sélectionnée
-    let selectedOption = option.innerText;
+    const selectedOption = e.target.textContent;
+
     // Met à jour le texte du bouton avec l'option sélectionnée
-    Btn_text.innerText = selectedOption;
-    optionMenu.classList.remove("active");
+    Btn_text.textContent = selectedOption;
+
+    // Cache la liste déroulante des catégories
+    categorieList.classList.remove("active");
 
 
-        // Appeler la fonction filter_photos lorsque l'option est sélectionnée
-  filter_photos();
-
-    
+    // Appelle la fonction filter_photos pour mettre à jour les photos
+    filter_photos();
+  }
 });
 
+
+
+
+
+
+
+// Sélectionnez les éléments du DOM pour la liste des formats
+const formatList = document.getElementById("format-list");
+const optionFormat = document.getElementById("format-filter");
+const selectFormat = optionFormat.querySelector(".btn-format");
+const optFormat = optionFormat.querySelectorAll(".options");
+const TextFormat = optionFormat.querySelector(".txtFormat");
+
+// Écoutez le clic sur le bouton de sélection des formats
+selectFormat.addEventListener("click", () =>
+  optionFormat.classList.toggle("active")
+  
+);
+
+
+// Écoutez l'événement de clic sur la liste des formats
+formatList.addEventListener("click", (e) => {
+  // Vérifiez si l'élément cliqué a la classe "options" (une option de format)
+  if (e.target.classList.contains("options")) {
+    // Récupérez le texte de l'option sélectionnée
+    const selectedOptionFormat = e.target.textContent;
+
+    // Mettez à jour le texte du bouton avec l'option sélectionnée
+    TextFormat.textContent = selectedOptionFormat;
+
+    // Cachez la liste déroulante des formats
+    formatList.classList.remove("active");
+
+    // Appelez la fonction filter_photos pour mettre à jour les photos
+    filter_photos();
+  }
 });
 
-/* 
+
+
+
+
+
+
+// Parcours les options et ajoute un écouteur d'événements au clic sur chaque option
+/* options.forEach((option) => {
+  option.addEventListener("click", () => {
+      // Récupère le texte de l'option sélectionnée
+      let selectedOption = option.innerText;
+      // Met à jour le texte du bouton avec l'option sélectionnée
+      Btn_text.innerText = selectedOption;
+      optionMenu.classList.remove("active");
+  
+  
+          // Appeler la fonction filter_photos lorsque l'option est sélectionnée
+    filter_photos();
+  
+      
+  });
+  
+  }); */
+
+
+
+
+
+
+
+
+
+
+
+  /* 
 $('#categorie-list .option').click(function() {
   var categorie = $(this).attr('value');
   

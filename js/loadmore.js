@@ -22,7 +22,7 @@ loadMoreButton.on('click', function (e) {
         // Ajoutez le contenu de la réponse à l'élément HTML avec la classe ".containerPhoto"
         $('.containerPhoto').append(res.html);
 
-        openLightbox();
+        
       }
     }
   });

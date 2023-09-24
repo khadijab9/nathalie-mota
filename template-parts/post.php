@@ -17,15 +17,13 @@
                 <img src="<?php echo get_template_directory_uri() . '/icon/Icon_fullscreen.png'; ?>" class="fullscreen-icon" id="fullscreen">
                 <div class="text-overlay">
                     <?php the_field('Référence') ?>
-                   <?php $terms = get_the_terms(get_the_ID(), 'categorie');
+                    <?php $terms = get_the_terms(get_the_ID(), 'categorie');
                     if (!empty($terms)) {
-            foreach ($terms as $term) {
-              echo $term->name . '';
-              $categoryFound = $term->slug;
-            }
-          } ?>
-                    
-                 
+                        foreach ($terms as $term) {
+                            echo $term->name . '';
+                            $categoryFound = $term->slug;
+                        }
+                    } ?>
                 </div>
             </span>
         </div>

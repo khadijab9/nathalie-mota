@@ -119,13 +119,9 @@ add_action('wp_ajax_nopriv_load_more', 'load_more');
 
  // Créez une fonction pour filtrer les photos par catégorie
  function filter_by_categorie() {
-
   $categorie = $_POST['categorie'];
-
-  $format = $_POST['format'];
+   $format = $_POST['format'];
   $sort = $_POST ['sort'];
-
-
 
   $args = array(
     'post_type' => 'photo', // Le type de publication personnalisé
@@ -133,11 +129,14 @@ add_action('wp_ajax_nopriv_load_more', 'load_more');
     'orderby' => 'date', // Tri par date
     // 'order' => $_POST['order'] != '' ? $_POST['order'] : 'DESC',
     'order' => $sort != '' ? $sort : 'DESC',
+    'tax_query' => array(), // Initialisez le tableau des requêtes taxonomiques
+    
   );
+  
+  
     // Si la catégorie est vide, récupérez toutes les photos
     if (empty($categorie)) {
         // Crée une requête pour récupérer toutes les photos
-      $query = new WP_Query($args);
   } else {
       // Sinon, filtrez par catégorie
       $args['tax_query'][] = array(
@@ -149,6 +148,7 @@ add_action('wp_ajax_nopriv_load_more', 'load_more');
     }
     // Ajoute le critère de format uniquement s'il est spécifié
     if (!empty($format)) {
+    }else{
         // Si un format est spécifié, on filtre par format
       $args['tax_query'][] = array(
           'taxonomy' => 'format',
@@ -157,6 +157,9 @@ add_action('wp_ajax_nopriv_load_more', 'load_more');
       );
     
   }
+
+ // Utilisez la relation "AND" pour que les deux clauses soient satisfaites
+ $args['tax_query']['relation'] = 'AND';
 
   $query = new WP_Query($args);
 
@@ -169,6 +172,8 @@ add_action('wp_ajax_nopriv_load_more', 'load_more');
     wp_reset_postdata();
   else :
     // Aucune photo trouvée pour cette catégorie
+
+    
   endif;
 
   wp_die();

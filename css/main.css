@@ -112,6 +112,12 @@
 .containerPost .post-content .post-meta .meta {
   margin-bottom: 10px;
 }
+@media screen and (max-width: 589px) {
+  .containerPost .post-content .post-meta .meta {
+    margin-right: 70px;
+    margin-left: 70px;
+  }
+}
 .containerPost .post-content .post-meta .date {
   margin-bottom: 45px;
 }
@@ -125,8 +131,15 @@
     font-size: 25px;
   }
 }
+@media screen and (max-width: 589px) {
+  .containerPost .post-content .post-title {
+    margin-right: 70px;
+    margin-left: 70px;
+  }
+}
 .containerPost .container-img {
   width: 50%;
+  height: 100vh;
 }
 @media screen and (max-width: 589px) {
   .containerPost .container-img {
@@ -139,6 +152,20 @@
   display: flex;
   width: 100%;
   height: 100vh;
+}
+.containerPost .container-img .fullscreen-icon {
+  display: none;
+  font-size: 50px;
+  height: 20px;
+  position: absolute;
+  top: 27%;
+  right: 10%;
+  transform: translate(-50%, -50%);
+  z-index: 999;
+  cursor: pointer;
+}
+.containerPost .container-img .fullscreen-icon:hover {
+  display: block;
 }
 .containerPost .container-img .attachment-large {
   width: 100%;
@@ -261,8 +288,8 @@
 }
 @media screen and (max-width: 589px) {
   .photoApparente {
-    margin-left: 70px;
-    margin-right: 70px;
+    margin-left: 40px;
+    margin-right: 40px;
   }
 }
 
@@ -380,6 +407,12 @@
   .containerPhoto {
     grid-template-columns: 1fr;
     height: auto;
+  }
+}
+@media screen and (max-width: 580px) {
+  .containerPhoto {
+    margin-left: 40px;
+    margin-right: 40px;
   }
 }
 .containerPhoto .container-row {
@@ -540,7 +573,7 @@
   align-items: flex-end;
   height: 20px;
   padding-right: 10px;
-  transition: 0.3s;
+  transition: 0.6s;
 }
 
 #categorie-list {
@@ -551,7 +584,7 @@
   z-index: 999;
   border-radius: 4px;
   width: 100%;
-  background-color: red;
+  border-radius: 4px;
   animation: fadeInDown 3s ease-in-out;
 }
 
@@ -566,7 +599,7 @@
 }
 
 #categorie-filter.active .select-btn img {
-  transform: rotate(-180deg);
+  transform: rotate(180deg);
 }
 #categorie-filter.active #categorie-list {
   display: block;
@@ -577,23 +610,96 @@
 @keyframes fadeInDown {
   from {
     transform: translateY(0);
-    /* Anciennement translate3d(0, 0, 0); */
     opacity: 1;
   }
   to {
     transform: translateY(20px);
-    /* Anciennement translate3d(0, 20px, 0); */
     opacity: 0;
   }
 }
 @keyframes fadeInUp {
   from {
     transform: translateY(-30px);
-    /* Anciennement translate3d(0, 30px, 0); */
   }
   to {
     transform: translateY(0);
-    /* Anciennement translate3d(0, 0, 0); */
+    opacity: 1;
+  }
+}
+#format-filter {
+  width: 50%;
+  /* border: 1px solid black; */
+}
+
+.btn-format {
+  border: 2px solid #D8D8D8;
+  display: flex;
+  justify-content: space-between;
+  padding-left: 10px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.btn-format:hover {
+  border: 2px solid blue;
+}
+
+.chevron {
+  display: flex;
+  align-items: flex-end;
+  height: 20px;
+  padding-right: 10px;
+  transition: 0.6s;
+}
+
+#format-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: none;
+  z-index: 999;
+  border-radius: 4px;
+  width: 100%;
+  border-radius: 4px;
+  animation: fadeDown 3s ease-in-out;
+}
+
+.options {
+  padding-bottom: 10px;
+  padding-top: 10px;
+  padding-left: 10px;
+  cursor: pointer;
+}
+.options:hover {
+  background-color: red;
+}
+
+#format-filter.active .btn-format img {
+  transform: rotate(180deg);
+}
+#format-filter.active #format-list {
+  display: block;
+  opacity: 0;
+  animation: fadeUp 2s forwards;
+}
+
+@keyframes fadeDown {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+}
+@keyframes fadeUp {
+  from {
+    transform: translateY(-30px);
+  }
+  to {
+    transform: translateY(0);
     opacity: 1;
   }
 }
@@ -932,7 +1038,7 @@ width: 25%;
 #lightbox .lightbox-contain img {
   width: 100%;
   max-width: 100%;
-  height: 100vh;
+  height: 70vh;
   /*   max-width: 100%;
    height: 100vh; */
 }
@@ -1005,6 +1111,8 @@ body {
 @media screen and (max-width: 580px) {
   #footer #menu-footer-menu {
     flex-direction: column;
+    margin-top: 30px;
+    margin-right: 0;
   }
 }
 #footer #menu-footer-menu li {
@@ -1012,12 +1120,23 @@ body {
   margin-bottom: 10px;
   margin-top: 10px;
 }
+@media screen and (max-width: 580px) {
+  #footer #menu-footer-menu li {
+    padding-top: 15px;
+  }
+}
 #footer #menu-footer-menu li a {
   color: black;
   text-decoration: none;
 }
 #footer .textFooter {
   margin-top: 10px;
+}
+@media screen and (max-width: 580px) {
+  #footer .textFooter {
+    padding-bottom: 40px;
+    padding-top: 15px;
+  }
 }
 
 .banner {

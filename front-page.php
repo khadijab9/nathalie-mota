@@ -96,15 +96,31 @@
         <div class="cat-format">
             <div id="categorie-filter">
                 <div class="select-btn" id="select-btn">
-                    <span class="text">CATEGORIES</span>
+                    <span class="text">categorie</span>
                     <img src="<?php echo get_template_directory_uri() . '/icon/chevron.png'; ?>" class="chevron">
                 </div>
                 <ul id="categorie-list">
-                    <li class="option" value="">CATEGORIES</li>
+                    <li class="option" value="">categorie</li>
                     <?php
                     $categories = get_terms('categorie');
                     foreach ($categories as $categorie) {
                         echo '<li class="option" value="' . $categorie->slug . '">' . $categorie->name . '</li>';
+                    } ?>
+                </ul>
+
+            </div>
+
+            <div id="format-filter">
+                <div class="btn-format">
+                    <span class="txtFormat">format</span>
+                    <img src="<?php echo get_template_directory_uri() . '/icon/chevron.png'; ?>" class="chevron">
+                </div>
+                <ul id="format-list">
+                    <li class="options" value="">formats</li>
+                    <?php
+                    $formats = get_terms('format');
+                    foreach ($formats as $format) {
+                        echo '<li class="options" value="' . $format->slug . '">' . $format->name . '</li>';
                     } ?>
                 </ul>
 
@@ -124,17 +140,17 @@
 
     <!-- <div id="container-filter">
         <div class="cat-format">
-            <div id="categorie-filter">
+            <div id="format-filter">
                 <div class="select-btn">
-                    <span class="text">CATEGORIES</span>
+                    <span class="text">FORMATS</span>
                     <img src="<?php echo get_template_directory_uri() . '/icon/chevron.png'; ?>" class="chevron">
                 </div>
-                <ul id="categorie-list">
-                    <li class="option" value="">CATEGORIES</li>
+                <ul id="format-list">
+                    <li class="option" value="">FORMATS</li>
                     <?php
-                    $categories = get_terms('categorie');
-                    foreach ($categories as $categorie) {
-                        echo '<li class="option" value="' . $categorie->slug . '">' . $categorie->name . '</li>';
+                    $formats = get_terms('categorie');
+                    foreach ($formats as $format) {
+                        echo '<li class="option" value="' . $format->slug . '">' . $format->name . '</li>';
                     } ?>
                 </ul>
 

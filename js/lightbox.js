@@ -108,6 +108,7 @@ iconFullList.forEach((iconFull, index) => {
      closeB.addEventListener("click", function () {
       lightbox.style.display = "none";
     });
+	
 
 
 // Fonction pour afficher une image dans la lightbox
@@ -117,8 +118,9 @@ function showImage(index) {
     }
 
 	const imageSrc = photos[index].image;
-    const imageElement = document.querySelector("img");
+    const imageElement = document.querySelector(".photoLightbox");
     imageElement.src = imageSrc;
+
 
     // Efface le contenu précédent de la lightbox
     containerImg.innerHTML = "";
