@@ -1,157 +1,8 @@
-/* let category = '';
+let categorie = '';
 let format = '';
-let date = '';
-const containerPhoto = document.querySelector('.containerPhoto');
-
-document.addEventListener("DOMContentLoaded", function () {
-
-const optionMenu = document.querySelector(".select-cat"),
-  selectBtn = optionMenu.querySelector(".select-btn"),
-  options = optionMenu.querySelectorAll(".option"),
-  Btn_text = optionMenu.querySelector(".Btn-text");
-
-selectBtn.addEventListener("click", () =>
-  optionMenu.classList.toggle("active")
-);
-
-// Parcoursles options et ajoute un écouteur d'événements au clic sur chaque option
-options.forEach((option) => {
-  option.addEventListener("click", () => {
-        // Récupère le texte de l'option sélectionnée
-    let selectedOption = option.querySelector(".textOption").innerText;
-    // Met à jour le texte du bouton avec l'option sélectionnée
-    Btn_text.innerText = selectedOption;
-    optionMenu.classList.remove("active");
-  });
-});
-});
-
-
-function ajaxFilter (){ 
-    // Effectuer une requête Ajax pour charger les photos en fonction de la catégorie
-    $.ajax({
-      url: './wp-admin/admin-ajax.php',
-      type: "POST",
-      data: {
-        action: "filter_photos_by_category", // Nom de l'action à définir dans WordPress
-        category: category, // envoi le slug de la catégorie
-         format: format, // Envoi  le format sélectionné
-         date: date,
-      },
-      success: function (response) {
-        // Met à jour le contenu des photos avec les nouvelles photos chargées via Ajax
-        containerPhoto.innerHTML =  response;
-      },
-    });
-  }
-
- // selection des éléments du dom 
-  const selectCat = $(".select-cat");
-  const optionList = selectCat.find(".list");
-
-   // Écoutez le clic sur une catégorie
-  optionList.on("click", ".option", function () {
-    // Récupérez le slug de la catégorie sélectionnée depuis l'attribut data
-    category = $(this).data("slug");
-   format = $("#format-filter").val(); // Récupérez la valeur du menu déroulant "format"
-
-
-//containerPhoto.innerHTML = '';
-
-//ajaxFilter();
-
-// }); */
-
-
-
-
-
-// Fonction pour effectuer l'appel Ajax et mettre à jour les photos
-/*   function filter_photos() {
-    var categorie = $('#categorie-filter').val();
-    var format = $('#format-filter').val();
-
-    $.ajax({
-         url: './wp-admin/admin-ajax.php',
-        type: 'POST',
-        data: {
-            action: 'filter_by_categorie', // Nom de l'action WordPress pour gérer la requête
-            categorie: categorie,
-            format: format
-        },
-        success: function(response) {
-            // Mettre à jour la liste des photos avec la réponse Ajax
-            $('.containerPhoto').html(response);
-        }
-    });
-}
-
- // selection des éléments du dom 
- const selectCat = $("#categorie-filter #format-filter");
- const optionList = selectCat.find("option");
-
-  // Écoutez le clic sur une catégorie
- optionList.on("click", ".option", function () {
-   // Récupérez le slug de la catégorie sélectionnée depuis l'attribut data
-   category = $("categorie-filter").val();
-  format = $("#format-filter").val(); // Récupérez la valeur du menu déroulant "format"
- 
-
-
-  containerPhoto.innerHTML = '';
-
-// Gérer le changement d'une option de filtre
-$('#categorie-filter, #format-filter').change(function() {
-    filter_photos(); // Mettre à jour les photos lorsqu'une option est modifiée
-}); 
-
-}); */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-      
-
-
-
-
+let sort =  '';
 
 function filter_photos() {
-  const categorie = Btn_text.textContent; // Récupère le texte du bouton
- const format = TextFormat.textContent;
- // categorie = $('#categorie-list').val();
- 
-  //format = $('#format-filter').val();
-  sort = $('#sort-filter').val();
- 
-  
-
   $.ajax({
     url: './wp-admin/admin-ajax.php',
     type: 'POST',
@@ -164,76 +15,64 @@ function filter_photos() {
     success: function (response) {
       // Mettre à jour la liste des photos avec la réponse Ajax
       $('.containerPhoto').html(response);
-
-   
     }
-   
   });
-
+}
+ 
+const categorieList = document.getElementById("categorie-list");
+const optionMenu = document.getElementById("categorie-filter");
+let selectBtn = null, options = null, Btn_text = null;
+if (optionMenu){
+selectBtn = optionMenu.querySelector(".select-btn"),
+options = optionMenu.querySelector(".option"),
+Btn_text = optionMenu.querySelector(".text");
 }
 
-      
-
-
-
-// Écoutez le changement d'options de filtre
-//selectCat.change(function () {
-  //$('.containerPhoto').empty();
-  //filter_photos(); // Mettre à jour les photos lorsqu'une option est modifiée
-
-
-
-const categorieList = document.getElementById("categorie-list");
-const optionMenu = document.getElementById("categorie-filter"),
-
-selectBtn = optionMenu.querySelector(".select-btn"),
-options = optionMenu.querySelectorAll(".option"),
-Btn_text = optionMenu.querySelector(".text");
-
+if (selectBtn) {
 selectBtn.addEventListener("click", () =>
 optionMenu.classList.toggle("active")
 
-);
-
+)};
+if (categorieList) {
 // Écoute l'événement de clic sur la liste des catégories
 categorieList.addEventListener("click", (e) => {
-  // Vérifie si l'élément cliqué a la classe "option" (une option de catégorie)
+  // Vérifie si l'élément cliqué a la classe "option"
   if (e.target.classList.contains("option")) {
     // Récupère le texte de l'option sélectionnée
     const selectedOption = e.target.textContent;
 
     // Met à jour le texte du bouton avec l'option sélectionnée
     Btn_text.textContent = selectedOption;
-
+categorie = e.target.getAttribute('data-value');
+console.log(e.target.getAttribute('data-value'));
     // Cache la liste déroulante des catégories
     categorieList.classList.remove("active");
-
 
     // Appelle la fonction filter_photos pour mettre à jour les photos
     filter_photos();
   }
 });
-
-
-
-
-
+};
 
 
 // Sélectionnez les éléments du DOM pour la liste des formats
 const formatList = document.getElementById("format-list");
 const optionFormat = document.getElementById("format-filter");
-const selectFormat = optionFormat.querySelector(".btn-format");
-const optFormat = optionFormat.querySelectorAll(".options");
-const TextFormat = optionFormat.querySelector(".txtFormat");
-
+let selectFormat = null, optFormat = null, TextFormat = null;
+if (optionFormat){
+ selectFormat = optionFormat.querySelector(".btn-format");
+ optFormat = optionFormat.querySelectorAll(".options");
+ TextFormat = optionFormat.querySelector(".txtFormat");
+}
 // Écoutez le clic sur le bouton de sélection des formats
+if (selectFormat){
 selectFormat.addEventListener("click", () =>
   optionFormat.classList.toggle("active")
   
-);
+)};
 
 
+if (formatList){
 // Écoutez l'événement de clic sur la liste des formats
 formatList.addEventListener("click", (e) => {
   // Vérifiez si l'élément cliqué a la classe "options" (une option de format)
@@ -243,6 +82,7 @@ formatList.addEventListener("click", (e) => {
 
     // Mettez à jour le texte du bouton avec l'option sélectionnée
     TextFormat.textContent = selectedOptionFormat;
+    format = e.target.getAttribute('data-value');
 
     // Cachez la liste déroulante des formats
     formatList.classList.remove("active");
@@ -251,105 +91,49 @@ formatList.addEventListener("click", (e) => {
     filter_photos();
   }
 });
-
-
-
-
-
-
-
-// Parcours les options et ajoute un écouteur d'événements au clic sur chaque option
-/* options.forEach((option) => {
-  option.addEventListener("click", () => {
-      // Récupère le texte de l'option sélectionnée
-      let selectedOption = option.innerText;
-      // Met à jour le texte du bouton avec l'option sélectionnée
-      Btn_text.innerText = selectedOption;
-      optionMenu.classList.remove("active");
-  
-  
-          // Appeler la fonction filter_photos lorsque l'option est sélectionnée
-    filter_photos();
-  
-      
-  });
-  
-  }); */
-
-
-
-
-
-
-
-
-
-
-
-  /* 
-$('#categorie-list .option').click(function() {
-  var categorie = $(this).attr('value');
-  
-  $.ajax({
-      url: './wp-admin/admin-ajax.php',
-      type: 'POST',
-      data: {
-          action: 'filter_photos_by_category',
-          categorie: categorie,
-      },
-      success:function(response) {
-          $('#photo-container').html(response);
-      }
-  });
-}); */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//filtre qui marche 
-
-// Fonction pour filtrer les photos
-/* function filter_photos() {
-  categorie = $('#categorie-filter').val();
-  format = $('#format-filter').val();
-  sort = $('#sort-filter').val();
-
-  $.ajax({
-    url: './wp-admin/admin-ajax.php',
-    type: 'POST',
-    data: {
-      action: 'filter_photos_by_category', // Nom de l'action WordPress pour gérer la requête
-      categorie: categorie,
-      format: format,
-      sort: sort,
-    },
-    success: function (response) {
-      // Mettre à jour la liste des photos avec la réponse Ajax
-      $('.containerPhoto').html(response);
-    }
-  });
 }
-// Sélection des éléments du DOM
-const selectCat = $("#categorie-filter, #format-filter, #sort-filter");
-// Écoutez le changement d'options de filtre
-selectCat.change(function () {
-  $('.containerPhoto').empty();
-  filter_photos(); // Mettre à jour les photos lorsqu'une option est modifiée
-}); */
+
+
+//date 
+const dateList = document.getElementById("sort-filter");
+const containerDate = document.getElementById("container-date");
+let btnDate = null, optionDate = null, textDate = null;
+if (containerDate){ 
+btnDate = containerDate.querySelector(".btn-date"),
+optionDate = containerDate .querySelectorAll(".optionDate"),
+textDate = containerDate .querySelector(".txtDate");
+
+};
+
+if(btnDate){
+btnDate.addEventListener("click", () =>
+containerDate .classList.toggle("active")
+
+)};
+if (dateList){
+// Écoute l'événement de clic sur la liste des catégories
+dateList.addEventListener("click", (e) => {
+  // Vérifie si l'élément cliqué a la classe "option"
+  if (e.target.classList.contains("optionDate")) {
+    // Récupère le texte de l'option sélectionnée
+    const selectedOptionDate = e.target.textContent;
+
+    // Met à jour le texte du bouton avec l'option sélectionnée
+    textDate.textContent = selectedOptionDate;
+    sort = e.target.getAttribute('data-value');
+
+    // Cache la liste déroulante des catégories
+    dateList.classList.remove("active");
+
+    // Appelle la fonction filter_photos pour mettre à jour les photos
+    filter_photos();
+  }
+});
+};
+
+
+
+  
 
 
 

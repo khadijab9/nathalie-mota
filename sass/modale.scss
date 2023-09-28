@@ -56,57 +56,63 @@
         margin : 0;
         width: 100%;
        
-       
+        
  
     }
    
 }
   
 
-
-// /* The Close Button */
-//  .popup-close {
-//     position:absolute;
-//     right:320px;
-//     top: 10px;
-  
-//     height:50px;
-//     width:50px;
-//     font-weight: bold;
-//     cursor:pointer;
-//     display:flex;
-//     justify-content:center;
-//     align-items:center;
-//     transition:all 0.4s ease;
-// } 
-
 .wpcf7 {
+ 
     position: absolute;
   height: 300px;
     padding-top: 110px;
     padding-bottom: 50px;
    
+    @media screen and (max-width : 768px){
+        width: 70%;
+       
+   
+      }
+   
 }
 
+
 .wpcf7-form-control {
+  display: flex;
+  justify-content: center;
     height: 40px;
     border-radius: 6px;
     border :1px solid #B8BBC2;
     width: 100%;
-}
+
+
+    
+  }
+
 .input-msg{
     .wpcf7-form-control {
         height: 130px;
         width: 100%;
-    }
+      
 }
-
+}
    
 .wpcf7-submit {
    height: 40px;
    width: 100%;
    border-radius: 3px;
+   font-family: 'poppins';
    
+}
+
+label{
+    
+    font-family: 'poppins';
+    font-weight: 500;
+    
+
 }
 
 

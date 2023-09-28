@@ -1,5 +1,5 @@
 @charset "UTF-8";
-@import url("https://fonts.googleapis.com/css2?family=Space+Mono&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400&family=Space+Mono&display=swap");
 /* The Modal (background) */
 .popup-overlay {
   position: fixed;
@@ -47,8 +47,15 @@
   padding-top: 110px;
   padding-bottom: 50px;
 }
+@media screen and (max-width: 768px) {
+  .wpcf7 {
+    width: 70%;
+  }
+}
 
 .wpcf7-form-control {
+  display: flex;
+  justify-content: center;
   height: 40px;
   border-radius: 6px;
   border: 1px solid #B8BBC2;
@@ -64,6 +71,12 @@
   height: 40px;
   width: 100%;
   border-radius: 3px;
+  font-family: "poppins";
+}
+
+label {
+  font-family: "poppins";
+  font-weight: 500;
 }
 
 .borderShadow {
@@ -148,24 +161,20 @@
     margin-right: 70px;
   }
 }
-.containerPost .container-img .post-image {
-  display: flex;
-  width: 100%;
-  height: 100vh;
-}
 .containerPost .container-img .fullscreen-icon {
-  display: none;
   font-size: 50px;
   height: 20px;
   position: absolute;
-  top: 27%;
+  top: 35%;
   right: 10%;
   transform: translate(-50%, -50%);
   z-index: 999;
   cursor: pointer;
 }
-.containerPost .container-img .fullscreen-icon:hover {
-  display: block;
+.containerPost .container-img .post-image {
+  display: flex;
+  width: 100%;
+  height: 100vh;
 }
 .containerPost .container-img .attachment-large {
   width: 100%;
@@ -243,6 +252,8 @@
 }
 #containerBtn-nav .containerBtn .contact_btn .txt-contact {
   text-transform: none;
+  font-family: "poppins";
+  font-weight: 300;
 }
 @media screen and (max-width: 513px) {
   #containerBtn-nav .containerBtn .contact_btn .txt-contact {
@@ -314,7 +325,7 @@
   */
   display: grid;
   grid-template-columns: 50% 50%; /* Définit deux colonnes, chacune avec une largeur de 50% */
-  gap: 15px;
+  gap: 5px;
   flex-wrap: wrap;
 }
 @media screen and (max-width: 576px) {
@@ -322,7 +333,7 @@
     grid-template-columns: 1fr;
   }
 }
-.photo-connexe .attachment-large {
+.photo-connexe .photoLightbox {
   /*   width: 40vw;
     /* La moitié de la largeur du viewport */
   /* La moitié de la largeur du viewport, pour former un carré */
@@ -419,7 +430,7 @@
   /* L'espace est soustrait pour prendre en compte l'espacement entre les colonnes */
   /* Ajustez la largeur selon vos préférences */
 }
-.containerPhoto .attachment-large {
+.containerPhoto .photoLightbox {
   width: 100%;
   /* La moitié de la largeur du viewport */
   height: 40vw;
@@ -535,16 +546,33 @@
   display: none;
 }
 
+.container-filtre {
+  margin-left: 100px;
+  margin-right: 100px;
+  margin-top: 80px;
+}
+@media screen and (max-width: 580px) {
+  .container-filtre {
+    margin-left: 40px;
+    margin-right: 40px;
+  }
+}
+
 #container-filter {
   display: flex;
   width: 100%;
+}
+@media screen and (max-width: 768px) {
+  #container-filter {
+    display: block;
+  }
 }
 #container-filter .cat-format {
   display: flex;
   width: 50%;
   justify-content: space-between;
 }
-@media screen and (max-width: 576px) {
+@media screen and (max-width: 768px) {
   #container-filter .cat-format {
     display: block;
     width: 100%;
@@ -552,8 +580,15 @@
   }
 }
 #container-filter #categorie-filter {
-  width: 50%;
+  width: 45%;
+  position: relative;
   /* border: 1px solid black; */
+}
+@media screen and (max-width: 768px) {
+  #container-filter #categorie-filter {
+    width: 100%;
+    padding-bottom: 15px;
+  }
 }
 #container-filter .select-btn {
   border: 2px solid #D8D8D8;
@@ -562,8 +597,9 @@
   padding-left: 10px;
   padding-bottom: 10px;
   padding-top: 10px;
-  border-radius: 5px;
+  border-radius: 8px;
   cursor: pointer;
+  font-family: "poppins";
 }
 #container-filter .select-btn:hover {
   border: 2px solid blue;
@@ -573,7 +609,7 @@
   align-items: flex-end;
   height: 20px;
   padding-right: 10px;
-  transition: 0.6s;
+  transition: transform 0.6s;
 }
 
 #categorie-list {
@@ -581,10 +617,12 @@
   padding: 0;
   margin: 0;
   display: none;
+  position: absolute;
   z-index: 999;
   border-radius: 4px;
   width: 100%;
   border-radius: 4px;
+  background-color: white;
   animation: fadeInDown 3s ease-in-out;
 }
 
@@ -593,6 +631,8 @@
   padding-top: 10px;
   padding-left: 10px;
   cursor: pointer;
+  font-family: "poppins";
+  text-transform: none;
 }
 .option:hover {
   background-color: red;
@@ -627,8 +667,14 @@
   }
 }
 #format-filter {
-  width: 50%;
+  width: 45%;
+  position: relative;
   /* border: 1px solid black; */
+}
+@media screen and (max-width: 768px) {
+  #format-filter {
+    width: 100%;
+  }
 }
 
 .btn-format {
@@ -638,7 +684,8 @@
   padding-left: 10px;
   padding-bottom: 10px;
   padding-top: 10px;
-  border-radius: 5px;
+  border-radius: 8px;
+  font-family: "poppins";
   cursor: pointer;
 }
 .btn-format:hover {
@@ -658,6 +705,8 @@
   padding: 0;
   margin: 0;
   display: none;
+  position: absolute;
+  background-color: white;
   z-index: 999;
   border-radius: 4px;
   width: 100%;
@@ -670,6 +719,9 @@
   padding-top: 10px;
   padding-left: 10px;
   cursor: pointer;
+  font-family: "poppins";
+  text-transform: none;
+  font-weight: 500;
 }
 .options:hover {
   background-color: red;
@@ -703,6 +755,104 @@
     opacity: 1;
   }
 }
+.flexEnd {
+  width: 50%;
+  display: flex;
+  justify-content: end;
+}
+@media screen and (max-width: 768px) {
+  .flexEnd {
+    width: 100%;
+  }
+}
+
+#container-date {
+  width: 45%;
+  position: relative;
+  /* border: 1px solid black; */
+}
+@media screen and (max-width: 768px) {
+  #container-date {
+    width: 100%;
+  }
+}
+#container-date .btn-date {
+  border: 2px solid #D8D8D8;
+  display: flex;
+  justify-content: space-between;
+  padding-left: 10px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  border-radius: 8px;
+  font-family: "poppins";
+  cursor: pointer;
+}
+#container-date .btn-date:hover {
+  border: 2px solid blue;
+}
+#container-date .chevron {
+  display: flex;
+  align-items: flex-end;
+  height: 20px;
+  padding-right: 10px;
+  transition: transform 0.6s;
+}
+
+#sort-filter {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: none;
+  position: absolute;
+  z-index: 999;
+  border-radius: 4px;
+  width: 100%;
+  border-radius: 4px;
+  background-color: white;
+  animation: fadeD 3s ease-in-out;
+}
+
+.optionDate {
+  padding-bottom: 10px;
+  padding-top: 10px;
+  padding-left: 10px;
+  cursor: pointer;
+  font-family: "poppins";
+  text-transform: none;
+  font-weight: 500;
+}
+.optionDate:hover {
+  background-color: red;
+}
+
+#container-date.active .btn-date img {
+  transform: rotate(180deg);
+}
+#container-date.active #sort-filter {
+  display: block;
+  opacity: 0;
+  animation: fadeIn 2s forwards;
+}
+
+@keyframes fadeD {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+}
+@keyframes fadeIn {
+  from {
+    transform: translateY(-30px);
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
 /* 
 
 
@@ -713,12 +863,6 @@
 @keyframes fadeInDown {
   from {
     transform: translateY(0); /* Anciennement translate3d(0, 0, 0); */
-.container-filtre {
-  margin-left: 100px;
-  margin-right: 100px;
-  margin-top: 80px;
-}
-
 /*
 #filter{
 width: 100%;
@@ -1013,6 +1157,7 @@ width: 25%;
   color: white;
   text-transform: none;
   top: 50%;
+  cursor: pointer;
 }
 #lightbox .nextArrow {
   position: fixed;
@@ -1020,6 +1165,7 @@ width: 25%;
   text-transform: none;
   right: 0;
   top: 50%;
+  cursor: pointer;
 }
 #lightbox .lightbox-contain {
   position: fixed;
@@ -1041,6 +1187,15 @@ width: 25%;
   height: 70vh;
   /*   max-width: 100%;
    height: 100vh; */
+  object-fit: cover;
+}
+#lightbox .lightbox-contain .infoPhoto {
+  display: flex;
+  justify-content: space-between;
+}
+#lightbox .lightbox-contain .infoPhoto p {
+  color: white;
+  margin: 0;
 }
 
 :root {

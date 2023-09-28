@@ -123,32 +123,31 @@ add_action('wp_ajax_nopriv_load_more', 'load_more');
    $format = $_POST['format'];
   $sort = $_POST ['sort'];
 
+
   $args = array(
     'post_type' => 'photo', // Le type de publication personnalisé
     'posts_per_page' => -1, // Afficher toutes les photos
     'orderby' => 'date', // Tri par date
     // 'order' => $_POST['order'] != '' ? $_POST['order'] : 'DESC',
     'order' => $sort != '' ? $sort : 'DESC',
-    'tax_query' => array(), // Initialisez le tableau des requêtes taxonomiques
-    
+   
   );
-  
+
   
     // Si la catégorie est vide, récupérez toutes les photos
-    if (empty($categorie)) {
+    if (!empty($categorie)) {
         // Crée une requête pour récupérer toutes les photos
-  } else {
       // Sinon, filtrez par catégorie
       $args['tax_query'][] = array(
           'taxonomy' => 'categorie',
           'field' => 'slug',
           'terms' => $categorie,
       );
-      
+     
     }
+  
     // Ajoute le critère de format uniquement s'il est spécifié
     if (!empty($format)) {
-    }else{
         // Si un format est spécifié, on filtre par format
       $args['tax_query'][] = array(
           'taxonomy' => 'format',
@@ -158,14 +157,14 @@ add_action('wp_ajax_nopriv_load_more', 'load_more');
     
   }
 
- // Utilisez la relation "AND" pour que les deux clauses soient satisfaites
- $args['tax_query']['relation'] = 'AND';
+
+  //var_dump($args);
 
   $query = new WP_Query($args);
 
   if ($query->have_posts()) :
     while ($query->have_posts()) : $query->the_post();
-    
+
     get_template_part('template-parts/post' , 'photo');
 
     endwhile;

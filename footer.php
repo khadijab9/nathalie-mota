@@ -8,10 +8,11 @@
     <div class="prevArrow">&larr; Précédente</div>
     <div class="nextArrow"> Suivante &rarr;</div>
     <div class="lightbox-contain">
-        <img src="" class="photoLightbox">
-        <span class="reference"></span>
-        <span class="categorie"> </span>
-
+      <img src="" class="photoLightbox">
+        <div class="infoPhoto">
+            <p class="reference"></p>
+            <p class="categorie"></p>
+        </div>
     </div>
 </div>
 

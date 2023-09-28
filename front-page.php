@@ -33,78 +33,25 @@
             $reception_category = get_term_by('slug', 'reception', 'categorie');
             $television_category = get_term_by('slug', 'television', 'categorie');
             ?>
-    <div id="filter">
-        <div class="cat-format">
-            <div class="select-cat">
-                <div class="select-btn">
-                    <span class="Btn-text">Catégories</span>
-                    <img src="<?php echo get_template_directory_uri() . '/icon/chevron.png'; ?>" class="chevron-down">
-                </div>
-                <ul class="list">
 
-                    <li class="option" data-slug="<?= $concert_category->slug; ?>">
-                        <span class="textOption"><?= $concert_category->name; ?></span>
-                    </li>
-                    <li class="option" data-slug="<?= $mariage_category->slug; ?>">
-                        <span class="textOption"><?= $mariage_category->name; ?> </span>
-                    </li>
-                    <li class="option" data-slug="<?= $reception_category->slug; ?>">
-                        <span class="textOption"><?= $reception_category->name; ?></span>
-                    </li>
-                    <li class="option" data-slug="<?= $television_category->slug; ?>">
-                        <span class="textOption"><?= $television_category->name; ?></span>
-                    </li>
-                </ul>
-            </div> -->
+    -->
 
-    <?php
-    //obtient l'Id du format par son slug
-    // $format_paysage = get_term_by('slug', 'paysage', 'format');
-    //$format_portrait = get_term_by('slug', 'portrait', 'format');
-    ?>
-    <!--  <div class="select-cat ">
-                <div class="select-btn">
-                    <span class="Btn-text">Format</span>
-                    <img src="<?php echo get_template_directory_uri() . '/icon/chevron.png'; ?>" class="chevron-down">
-                </div>
-                <ul class="list">
-                    <li class="option" data-slug="<?= $format_paysage->slug; ?>">
-                        <span class="textOption"><?= $format_paysage->name; ?></span>
-                    </li>
-                    <li class="option" data-slug="<?= $format_portrait->slug; ?>">
-                        <span class="textOption"><?= $format_portrait->name; ?></span>
-                    </li>
-                </ul>
-            </div>
-        </div> -->
-
-    <!--     <div class="flexRow">
-            <div class="select-cat">
-                <div class="select-btn">
-                    <span class="Btn-text">Date</span>
-                    <img src="<?php echo get_template_directory_uri() . '/icon/chevron.png'; ?>" class="chevron-down">
-                </div>
-                <select class="list" id="sort-by-date">
-                    <option value="recent">Plus récentes aux plus anciennes</option>
-                    <option value="old">Plus anciennes aux plus récentes</option>
-                </select>
-            </div>
-        </div> -->
 
 
     <div id="container-filter">
+
         <div class="cat-format">
             <div id="categorie-filter">
-                <div class="select-btn" id="select-btn">
-                    <span class="text">categorie</span>
+                <div class="select-btn">
+                    <span class="text">categories</span>
                     <img src="<?php echo get_template_directory_uri() . '/icon/chevron.png'; ?>" class="chevron">
                 </div>
                 <ul id="categorie-list">
-                    <li class="option" value="">categorie</li>
+                    <li class="option" data-value="">Catégories</li>
                     <?php
                     $categories = get_terms('categorie');
                     foreach ($categories as $categorie) {
-                        echo '<li class="option" value="' . $categorie->slug . '">' . $categorie->name . '</li>';
+                        echo '<li class="option" data-value="' . $categorie->slug . '">' . $categorie->name . '</li>';
                     } ?>
                 </ul>
 
@@ -112,55 +59,34 @@
 
             <div id="format-filter">
                 <div class="btn-format">
-                    <span class="txtFormat">format</span>
+                    <span class="txtFormat">formats</span>
                     <img src="<?php echo get_template_directory_uri() . '/icon/chevron.png'; ?>" class="chevron">
                 </div>
                 <ul id="format-list">
-                    <li class="options" value="">formats</li>
+                    <li class="options" data-value="">Formats</li>
                     <?php
                     $formats = get_terms('format');
                     foreach ($formats as $format) {
-                        echo '<li class="options" value="' . $format->slug . '">' . $format->name . '</li>';
+                        echo '<li class="options" data-value="' . $format->slug . '">' . $format->name . '</li>';
                     } ?>
                 </ul>
 
             </div>
         </div>
-
-        <div class="container-date">
-            <select id="sort-filter">
-                <option class="formatOption" value="">DATE</option>
-                <option value="ASC">Plus anciens </option>
-                <option value="DESC">Plus récents</option>
-            </select>
-        </div>
-
-    </div>
-
-
-    <!-- <div id="container-filter">
-        <div class="cat-format">
-            <div id="format-filter">
-                <div class="select-btn">
-                    <span class="text">FORMATS</span>
+        <div class="flexEnd">
+            <div id="container-date">
+                <div class="btn-date">
+                    <span class="txtDate">trier par</span>
                     <img src="<?php echo get_template_directory_uri() . '/icon/chevron.png'; ?>" class="chevron">
                 </div>
-                <ul id="format-list">
-                    <li class="option" value="">FORMATS</li>
-                    <?php
-                    $formats = get_terms('categorie');
-                    foreach ($formats as $format) {
-                        echo '<li class="option" value="' . $format->slug . '">' . $format->name . '</li>';
-                    } ?>
+                <ul id="sort-filter" class="filter-list">
+                    <li class="optionDate" data-value="DESC">Trier par</li>
+                    <li class="optionDate" data-value="ASC">Plus anciens</li>
+                    <li class="optionDate" data-value="DESC">Plus récents</li>
                 </ul>
-
             </div>
-
-        </div> 
-
-
-
-    </div> -->
+        </div>
+    </div>
 </div>
 
 
