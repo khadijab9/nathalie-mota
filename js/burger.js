@@ -9,7 +9,9 @@ document.addEventListener('DOMContentLoaded', function () {
        // Ajoute et supprime la classe active à l'élément "burger"
       // ce qui permet de basculer son état visuel 
       //pour créer un effet d'ouverture/fermeture du menu).
+      
      burger.classList.toggle("active");
+   
       // permet de basculer son affichage en rendant le menu visible ou caché.
      menu.classList.toggle("active");
     });  

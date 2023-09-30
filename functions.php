@@ -130,6 +130,7 @@ add_action('wp_ajax_nopriv_load_more', 'load_more');
     'orderby' => 'date', // Tri par date
     // 'order' => $_POST['order'] != '' ? $_POST['order'] : 'DESC',
     'order' => $sort != '' ? $sort : 'DESC',
+  
    
   );
 

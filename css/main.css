@@ -72,6 +72,7 @@
   width: 100%;
   border-radius: 3px;
   font-family: "poppins";
+  cursor: pointer;
 }
 
 label {
@@ -127,8 +128,8 @@ label {
 }
 @media screen and (max-width: 589px) {
   .containerPost .post-content .post-meta .meta {
-    margin-right: 70px;
-    margin-left: 70px;
+    margin-right: 40px;
+    margin-left: 40px;
   }
 }
 .containerPost .post-content .post-meta .date {
@@ -146,40 +147,61 @@ label {
 }
 @media screen and (max-width: 589px) {
   .containerPost .post-content .post-title {
-    margin-right: 70px;
-    margin-left: 70px;
+    margin-right: 40px;
+    margin-left: 40px;
   }
 }
 .containerPost .container-img {
   width: 50%;
   height: 100vh;
+  position: relative;
 }
 @media screen and (max-width: 589px) {
   .containerPost .container-img {
     width: 100%;
-    margin-left: 70px;
-    margin-right: 70px;
+    margin-left: 40px;
+    margin-right: 40px;
   }
+}
+.containerPost .container-img .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7); /* Couleur de fond semi-transparente (noir avec 50% d'opacité) */
+  overflow: hidden; /* Ajout de cette propriété pour empêcher le débordement */
+  bottom: 0;
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 .containerPost .container-img .fullscreen-icon {
   font-size: 50px;
   height: 20px;
   position: absolute;
-  top: 35%;
-  right: 10%;
+  top: 4%;
+  right: 0;
   transform: translate(-50%, -50%);
   z-index: 999;
   cursor: pointer;
+  display: none;
 }
-.containerPost .container-img .post-image {
+.containerPost .post-image {
   display: flex;
   width: 100%;
   height: 100vh;
 }
-.containerPost .container-img .attachment-large {
+.containerPost .attachment-large {
   width: 100%;
   height: 100vh;
   object-fit: cover;
+}
+
+.container-img:hover .overlay {
+  opacity: 1;
+}
+.container-img:hover .fullscreen-icon {
+  display: block;
 }
 
 #containerBtn-nav {
@@ -230,8 +252,8 @@ label {
 @media screen and (max-width: 589px) {
   #containerBtn-nav .containerBtn .contact_btn {
     width: 100%;
-    margin-right: 70px;
-    margin-left: 70px;
+    margin-right: 40px;
+    margin-left: 40px;
   }
 }
 #containerBtn-nav .containerBtn .contact_btn #contact-button {
@@ -343,6 +365,12 @@ label {
   /* La moitié de la largeur du viewport, pour former un carré */
   object-fit: cover;
 }
+@media screen and (max-width: 576px) {
+  .photo-connexe .photoLightbox {
+    height: 70vw;
+  }
+}
+
 .btn-photo {
   margin-top: 20px;
   margin-bottom: 20px;
@@ -436,6 +464,11 @@ label {
   height: 40vw;
   /* La moitié de la largeur du viewport, pour former un carré */
   object-fit: cover;
+}
+@media screen and (max-width: 576px) {
+  .containerPhoto .photoLightbox {
+    height: 70vw;
+  }
 }
 
 .btn-cont {
@@ -539,11 +572,17 @@ label {
 }
 
 .text-overlay {
-  position: absolute;
-  left: 2%;
-  bottom: 2%;
   color: white;
   display: none;
+}
+.text-overlay .textFormat {
+  position: absolute;
+  bottom: 2%;
+}
+.text-overlay .textCat {
+  position: absolute;
+  bottom: 2%;
+  right: 0;
 }
 
 .container-filtre {
@@ -1061,10 +1100,10 @@ width: 25%;
     display: flex;
     flex-direction: column;
     cursor: pointer;
-    position: absolute;
+    position: relative;
     right: 0;
     margin-top: 15px;
-    margin-right: 50px;
+    margin-right: 40px;
   }
 }
 .burgerMenu .line {
@@ -1092,19 +1131,19 @@ width: 25%;
   .navbar-nav {
     display: none;
     flex-direction: column;
-    z-index: 999;
-    height: 100vh;
+    z-index: 99;
+    height: 100%;
     justify-content: center;
     align-items: center;
     background: red;
     transition: top 1s ease;
     position: fixed;
-    width: 100vw;
+    width: 100%;
     bottom: 0;
     top: 80px;
     margin: 0;
-    padding: 0;
-    padding-top: 130px;
+    padding-left: 0;
+    padding-top: 100px;
   }
   .navbar-nav.active {
     display: block;
@@ -1205,6 +1244,7 @@ width: 25%;
 body {
   margin: 0;
   text-transform: uppercase;
+  height: 100%;
 }
 
 #navigation {

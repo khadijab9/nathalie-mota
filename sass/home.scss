@@ -42,6 +42,10 @@ gap : 5px;
     /* La moitié de la largeur du viewport, pour former un carré */
     object-fit: cover;
   
+   @media screen and (max-width : 576px){
+    height: 70vw;
+   }
+    
    
 
     

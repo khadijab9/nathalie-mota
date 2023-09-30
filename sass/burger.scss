@@ -5,10 +5,10 @@
         display: flex;
         flex-direction: column;
         cursor: pointer;
-        position: absolute;
+        position: relative;
         right: 0;
         margin-top: 15px;
-        margin-right: 50px;
+        margin-right: 40px;
     }
 
     .line {
@@ -48,19 +48,19 @@
 
         display: none;
         flex-direction: column;
-        z-index: 999;
-        height: 100vh;
+        z-index: 99;
+        height: 100%;
         justify-content: center;
         align-items: center;
         background: red;
         transition: top 1s ease;
         position: fixed;
-        width: 100vw;
+        width: 100%;
        bottom: 0;
-    top : 80px;
+       top: 80px;
         margin: 0;
-        padding: 0;
-        padding-top: 130px;
+        padding-left: 0;
+        padding-top: 100px;
 
         &.active {
             display: block;

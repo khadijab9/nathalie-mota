@@ -17,6 +17,8 @@ const src = image.getAttribute('src');
 });
 
 console.log (photos2);
+
+
   
 // déclare une variable et 'initialise à 0 
 let currentIndex = 0 ;
@@ -56,12 +58,15 @@ function showImage(index) {
 const photo = photos2[index];
 lightboxImg.src = photo.image;
 elementRef.textContent = photo.reference;
-elementRef.textContent = photo.categorie;
+elementCat.textContent = photo.categorie;
 
 currentIndex = index;
 
 
 }
+
+
+
 
 // Fonction pour afficher l'image précédente
 function PrevImage() {
@@ -86,14 +91,13 @@ function NextImage() {
 		}
     showImage(currentIndex);
 }
+
+
 // Gestionnaires d'événements pour les flèches précédente et suivante
 prevArrow.addEventListener("click", PrevImage);
 nextArrow.addEventListener("click", NextImage);
 
  
-
-
-
 
 
 

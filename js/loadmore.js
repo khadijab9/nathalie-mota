@@ -1,3 +1,4 @@
+
 // Initialisez une variable pour suivre la page actuelle
 let currentPage = 1;
 const loadMoreButton = $('.loadMore');
@@ -25,6 +26,7 @@ loadMoreButton.on('click', function (e) {
         $('.containerPhoto').append(res.html);
 
 
+   
       }
     }
   });

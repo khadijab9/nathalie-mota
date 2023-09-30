@@ -23,7 +23,6 @@
     </div>
 </section>
 
-
 <!-- filtre -->
 <div class="container-filtre">
     <!--  <?php
@@ -33,11 +32,7 @@
             $reception_category = get_term_by('slug', 'reception', 'categorie');
             $television_category = get_term_by('slug', 'television', 'categorie');
             ?>
-
     -->
-
-
-
     <div id="container-filter">
 
         <div class="cat-format">
@@ -89,8 +84,6 @@
     </div>
 </div>
 
-
-
 <!-- Créez une requête pour obtenir toutes les photos -->
 <?php
 $args = array(
@@ -103,7 +96,7 @@ $args = array(
 
 $photos = new WP_Query($args); ?>
 
-<div class="containerPhoto">
+<div class="containerPhoto ">
     <?php
     // Vérifiez si des photos sont trouvées
     if ($photos->have_posts()) : ?>
@@ -112,13 +105,13 @@ $photos = new WP_Query($args); ?>
             <?php get_template_part('template-parts/post') ?>
         <?php endwhile; ?>
 
+
         <?php wp_reset_postdata(); ?>
     <?php endif;  ?>
 </div>
 
 
 <div class="btn-cont">
-    <!-- <a href="#!" class="btn btn__primary" id="load-more">Charger plus</a> -->
     <a href="#!" class="loadMore"> Charger plus</a>
 </div>
 

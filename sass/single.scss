@@ -46,8 +46,8 @@ box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px; */
                 margin-bottom: 10px;
                 @media screen and (max-width: 589px){
                     
-                   margin-right: 70px;
-                   margin-left: 70px;
+                   margin-right: 40px;
+                   margin-left: 40px;
                 }
             }
 
@@ -65,8 +65,8 @@ font-size: 25px;
 }
 @media screen and (max-width: 589px){
     
-   margin-right: 70px;
-   margin-left: 70px;
+   margin-right: 40px;
+   margin-left: 40px;
 }
     
 }
@@ -77,26 +77,47 @@ font-size: 25px;
         // margin-right: 100px;
         width: 50%;
         height: 100vh;
+        position: relative;
         @media screen and (max-width: 589px){
             width: 100%;
-            margin-left: 70px;
-            margin-right: 70px;
+            margin-left: 40px;
+            margin-right: 40px;
+
+        
+        }
+        
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7); /* Couleur de fond semi-transparente (noir avec 50% d'opacité) */
+            //display: none; /* Initialement masqué */
+            overflow: hidden; /* Ajout de cette propriété pour empêcher le débordement */
+          
+           bottom: 0;
+        
+           opacity: 0;
+           transition: opacity 0.3s ease;
         }
         .fullscreen-icon{
-      
+  
             font-size: 50px;
-          height: 20px;
-          position: absolute;
-          top: 35%;
-          right: 10%;
-          transform: translate(-50%, -50%);
-          z-index : 999;
+            height: 20px;
+            position: absolute;
+            top: 4%;
+            right: 0;
+            transform: translate(-50%, -50%);
+            z-index : 999;
+            cursor: pointer;
+          display: none;
         
-          cursor: pointer;
-        
-               &:hover{
-                  
+       
                }
+           
+      
+        
                }
 
         .post-image{
@@ -116,14 +137,23 @@ font-size: 25px;
          height: 100vh; 
              object-fit: cover;
             
-            
+             
         }
        
     }
-}
 
 
 
+    .container-img {
+        &:hover {
+            .overlay {
+                opacity: 1;
+            }
+            .fullscreen-icon {
+                display: block;
+            }
+        }
+    }
 
 
 
@@ -180,8 +210,8 @@ font-size: 25px;
         }
         @media screen and (max-width: 589px){
             width: 100%;
-           margin-right: 70px;
-           margin-left: 70px;
+           margin-right: 40px;
+           margin-left: 40px;
         }
         #contact-button{
             width: 40%;
@@ -329,13 +359,15 @@ font-size: 25px;
             object-fit: cover;
 
             
-  @media screen and (max-width : 576px) {
+
    
-  
+    @media screen and (max-width : 576px){
+        height: 70vw;
+       }
     
 
   }
-        }
+        
 
 
 

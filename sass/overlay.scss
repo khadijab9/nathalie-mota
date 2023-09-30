@@ -70,12 +70,23 @@
 }
 .text-overlay{
 
-position: absolute;
-left: 2%;
-bottom: 2%;
+//position: absolute;
+//left: 2%;
+//bottom: 2%;
 color: white;
 display: none;
 
+.textFormat{
+position: absolute;
+bottom: 2%;
 }
+.textCat{
+position: absolute;
+bottom: 2%;
+right: 0;
+
+}
+}
+
 
 
