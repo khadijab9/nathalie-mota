@@ -5,10 +5,16 @@
         display: flex;
         flex-direction: column;
         cursor: pointer;
-        position: relative;
+    
         right: 0;
         margin-top: 15px;
+        margin-right: 100px;
+    }
+
+    @media screen and (max-width: 589px){
         margin-right: 40px;
+    }
+        
     }
 
     .line {
@@ -21,7 +27,7 @@
    
         
     }
-}
+
 
 //Le bouton burger affiche une animation de transition lorsqu'il est activé.
 .burgerMenu.active {
@@ -48,8 +54,8 @@
 
         display: none;
         flex-direction: column;
-        z-index: 99;
-        height: 100%;
+        z-index: 999;
+    height: calc(100% - 80px) ;
         justify-content: center;
         align-items: center;
         background: red;
@@ -57,11 +63,12 @@
         position: fixed;
         width: 100%;
        bottom: 0;
-       top: 80px;
-        margin: 0;
+      
+        margin: 0 !important;
         padding-left: 0;
         padding-top: 100px;
-
+      
+        
         &.active {
             display: block;
             animation: fadeMenu 1.5s forwards;

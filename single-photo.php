@@ -2,7 +2,7 @@
 
 
 
-<hr class="borderShadow"> 
+ <hr class="borderShadow"> 
 
 <div class="containerPost">
   <?php
@@ -38,10 +38,18 @@
           echo '</p>'; ?>
           <p class="meta"> TYPE : <?php the_field('Type'); ?></p>
           <p class="meta date"> DATE : <?php the_field('Date'); ?></p>
+       
+        
         </div>
         <div class="container-img">
           <!-- <a class="post-image" href="<?php the_permalink(); ?>"> -->
-            <?php the_post_thumbnail("large"); ?> <!-- </a> -->
+            <?php the_post_thumbnail('large', array(
+          'class' => 'photoLightbox',
+          'data-reference' => get_field('Référence'),
+          'data-categorie' => esc_attr($categoryFound)
+        ))  ?>
+            
+            <!-- </a> -->
           
             <img src="<?php echo get_template_directory_uri() . '/icon/Icon_fullscreen.png'; ?>" class="fullscreen-icon" id="fullscreen">
             <div class="overlay"></div> 

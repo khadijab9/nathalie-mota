@@ -13,8 +13,11 @@ function filter_photos() {
       sort: sort,
     },
     success: function (response) {
-      // Mettre à jour la liste des photos avec la réponse Ajax
+   
+      // Mett à jour la liste des photos avec la réponse Ajax
       $('.containerPhoto').html(response);
+        // Réattache les gestionnaires d'événements click aux nouvelles photos
+        buildContentLighbox();
     }
   });
 }
@@ -46,7 +49,7 @@ categorieList.addEventListener("click", (e) => {
 categorie = e.target.getAttribute('data-value');
 console.log(e.target.getAttribute('data-value'));
     // Cache la liste déroulante des catégories
-    categorieList.classList.remove("active");
+    optionMenu.classList.remove("active");
 
     // Appelle la fonction filter_photos pour mettre à jour les photos
     filter_photos();
@@ -85,7 +88,7 @@ formatList.addEventListener("click", (e) => {
     format = e.target.getAttribute('data-value');
 
     // Cachez la liste déroulante des formats
-    formatList.classList.remove("active");
+    optionFormat.classList.remove("active");
 
     // Appelez la fonction filter_photos pour mettre à jour les photos
     filter_photos();
@@ -123,7 +126,7 @@ dateList.addEventListener("click", (e) => {
     sort = e.target.getAttribute('data-value');
 
     // Cache la liste déroulante des catégories
-    dateList.classList.remove("active");
+    containerDate.classList.remove("active");
 
     // Appelle la fonction filter_photos pour mettre à jour les photos
     filter_photos();

@@ -15,11 +15,7 @@ display: none;
     color: white;
     right: 20px;
     top : 20px;
-  
     cursor : pointer;
-
-  
-
  
   }
 
@@ -28,17 +24,31 @@ display: none;
     color: white;
     text-transform: none;
    top: 50%;
+   left : 14%;
    cursor: pointer;
-   
+   font-size: 11px;
+   @media screen and (max-width: 776px){
+    top: 9%;
+    left: 25%;
+  }
 
   }
   .nextArrow{
     position: fixed;
     color: white;
     text-transform: none;
-    right: 0;
+    right: 15%;
     top : 50%;
+    font-size: 11px;
+
     cursor: pointer;
+     
+    @media screen and (max-width: 776px){
+      top: 9%;
+      right: 25%;
+    }
+      
+    }
   
   }
 
@@ -73,4 +83,4 @@ display: none;
       margin: 0;
     }
   }
-  }}
+  }

@@ -1,4 +1,4 @@
-<div class="container-row">
+<!-- <div class="container-row"> -->
   <div id="overlay">
     <div class="related-photo  imgPortfolio container-img">
       <span class="overlay-link post-image">
@@ -36,4 +36,3 @@
       </span>
     </div>
   </div>
-</div>

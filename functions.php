@@ -69,13 +69,6 @@ add_action('wp_enqueue_scripts', 'enqueue_ajax_scripts');
 
 
 
-    
-
- 
-
-
-
-
 // btn lord more 
 function load_more()
 {
@@ -110,10 +103,6 @@ function load_more()
 }
 add_action('wp_ajax_load_more', 'load_more');
 add_action('wp_ajax_nopriv_load_more', 'load_more');
-
-
-
-
 
 
 
