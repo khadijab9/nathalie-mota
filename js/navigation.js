@@ -7,7 +7,7 @@
           var image = $(this).data('image');
           // Vérifie si 'image' contient une valeur
           if (image) {
-            // Si 'image' contient une valeur, met à jour 'src' de l'élément avec la classe .containerNav img pour afficher l'image
+            // on met à jour 'src' de l'élément avec la classe .containerNav img pour afficher l'image
             $('.containerNav img').attr('src', image);
           }
         },

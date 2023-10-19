@@ -8,7 +8,7 @@
     <div class="prevArrow">&larr; Précédente</div>
     <div class="nextArrow"> Suivante &rarr;</div>
     <div class="lightbox-contain">
-      <img src="" class="photoLight">
+        <img src="" class="photoLight">
         <div class="infoPhoto">
             <p class="reference"></p>
             <p class="categorie"></p>
@@ -19,14 +19,14 @@
 
 
 <footer id=footer>
-    <!-- <-- <div class="directionColumn"> -->
+
     <div class="footerColumn">
         <?php wp_nav_menu(array(
             'theme_location' => 'footer-menu',
         )); ?>
         <p class=textFooter> TOUS DROITS RESERVÉS</p>
     </div>
-    <!-- </div> -->
+
 
 
 </footer>

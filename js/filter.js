@@ -1,99 +1,105 @@
+// initialise les variables qui stockeront les critères de iltrage envoyé au serveur
 let categorie = '';
 let format = '';
-let sort =  '';
+let sort = '';
 
+// Définit la fonction pour filtrer les photos
 function filter_photos() {
   $.ajax({
+    // Spécifie l'URL vers laquelle la requête est envoyée
     url: './wp-admin/admin-ajax.php',
+    // Utilise la méthode POST pour envoyer la requête au serveur
     type: 'POST',
+    //les données à envoyer au serveur
     data: {
-      action: 'filter_photos_by_category', // Nom de l'action WordPress pour gérer la requête
+      // Action pour gérer la requête de filtrage
+      action: 'filter_photos',
+      // Passe les valeurs acteulles des varibles de filtrage au serveur
       categorie: categorie,
       format: format,
       sort: sort,
     },
+
+    // Définit la fonction à exécuter en cas de succès de la requête
     success: function (response) {
-   
-      // Mett à jour la liste des photos avec la réponse Ajax
+      // Met à jour le contenu de l'élément HTML ayant la classe "containerPhoto"
       $('.containerPhoto').html(response);
-        // Réattache les gestionnaires d'événements click aux nouvelles photos
-        buildContentLighbox();
+      // Réattache les gestionnaires d'événements "click" aux nouvelles photos
+      buildContentLighbox();
     }
   });
 }
- 
+
+
 const categorieList = document.getElementById("categorie-list");
 const optionMenu = document.getElementById("categorie-filter");
 let selectBtn = null, options = null, Btn_text = null;
-if (optionMenu){
-selectBtn = optionMenu.querySelector(".select-btn"),
-options = optionMenu.querySelector(".option"),
-Btn_text = optionMenu.querySelector(".text");
+if (optionMenu) {
+  selectBtn = optionMenu.querySelector(".select-btn"),
+    options = optionMenu.querySelector(".option"),
+    Btn_text = optionMenu.querySelector(".text");
 }
 
 if (selectBtn) {
-selectBtn.addEventListener("click", () =>
-optionMenu.classList.toggle("active")
+  //ajoute un écouteur d'evenement au clic sur le bouton
+  selectBtn.addEventListener("click", () =>
+    optionMenu.classList.toggle("active")
 
-)};
+  )
+};
 if (categorieList) {
-// Écoute l'événement de clic sur la liste des catégories
-categorieList.addEventListener("click", (e) => {
-  // Vérifie si l'élément cliqué a la classe "option"
-  if (e.target.classList.contains("option")) {
-    // Récupère le texte de l'option sélectionnée
-    const selectedOption = e.target.textContent;
+  // Écoute l'événement de clic sur la liste des catégories
+  categorieList.addEventListener("click", (e) => {
+    // Vérifie si l'élément cliqué a la classe "option"
+    if (e.target.classList.contains("option")) {
+      // Récupère le texte de l'option sélectionnée
+      const selectedOption = e.target.textContent;
 
-    // Met à jour le texte du bouton avec l'option sélectionnée
-    Btn_text.textContent = selectedOption;
-categorie = e.target.getAttribute('data-value');
-console.log(e.target.getAttribute('data-value'));
-    // Cache la liste déroulante des catégories
-    optionMenu.classList.remove("active");
+      // Met à jour le texte du bouton avec l'option sélectionnée
+      Btn_text.textContent = selectedOption;
+      // Récupère la valeur de l'attribut "data-value" de l'option sélectionnée
+      categorie = e.target.getAttribute('data-value');
+      // Cache la liste déroulante des catégories en supprimant la class active
+      optionMenu.classList.remove("active");
 
-    // Appelle la fonction filter_photos pour mettre à jour les photos
-    filter_photos();
-  }
-});
+      // Appelle la fonction filter_photos pour mettre à jour les photos
+      filter_photos();
+    }
+  });
 };
 
 
-// Sélectionnez les éléments du DOM pour la liste des formats
 const formatList = document.getElementById("format-list");
 const optionFormat = document.getElementById("format-filter");
 let selectFormat = null, optFormat = null, TextFormat = null;
-if (optionFormat){
- selectFormat = optionFormat.querySelector(".btn-format");
- optFormat = optionFormat.querySelectorAll(".options");
- TextFormat = optionFormat.querySelector(".txtFormat");
+if (optionFormat) {
+  selectFormat = optionFormat.querySelector(".btn-format");
+  optFormat = optionFormat.querySelectorAll(".options");
+  TextFormat = optionFormat.querySelector(".txtFormat");
 }
-// Écoutez le clic sur le bouton de sélection des formats
-if (selectFormat){
-selectFormat.addEventListener("click", () =>
-  optionFormat.classList.toggle("active")
-  
-)};
+
+if (selectFormat) {
+  selectFormat.addEventListener("click", () =>
+    optionFormat.classList.toggle("active")
+
+  )
+};
 
 
-if (formatList){
-// Écoutez l'événement de clic sur la liste des formats
-formatList.addEventListener("click", (e) => {
-  // Vérifiez si l'élément cliqué a la classe "options" (une option de format)
-  if (e.target.classList.contains("options")) {
-    // Récupérez le texte de l'option sélectionnée
-    const selectedOptionFormat = e.target.textContent;
+if (formatList) {
 
-    // Mettez à jour le texte du bouton avec l'option sélectionnée
-    TextFormat.textContent = selectedOptionFormat;
-    format = e.target.getAttribute('data-value');
+  formatList.addEventListener("click", (e) => {
+    if (e.target.classList.contains("options")) {
+      const selectedOptionFormat = e.target.textContent;
 
-    // Cachez la liste déroulante des formats
-    optionFormat.classList.remove("active");
+      TextFormat.textContent = selectedOptionFormat;
+      format = e.target.getAttribute('data-value');
 
-    // Appelez la fonction filter_photos pour mettre à jour les photos
-    filter_photos();
-  }
-});
+      optionFormat.classList.remove("active");
+
+      filter_photos();
+    }
+  });
 }
 
 
@@ -101,42 +107,37 @@ formatList.addEventListener("click", (e) => {
 const dateList = document.getElementById("sort-filter");
 const containerDate = document.getElementById("container-date");
 let btnDate = null, optionDate = null, textDate = null;
-if (containerDate){ 
-btnDate = containerDate.querySelector(".btn-date"),
-optionDate = containerDate .querySelectorAll(".optionDate"),
-textDate = containerDate .querySelector(".txtDate");
+if (containerDate) {
+  btnDate = containerDate.querySelector(".btn-date"),
+    optionDate = containerDate.querySelectorAll(".optionDate"),
+    textDate = containerDate.querySelector(".txtDate");
 
 };
 
-if(btnDate){
-btnDate.addEventListener("click", () =>
-containerDate .classList.toggle("active")
+if (btnDate) {
+  btnDate.addEventListener("click", () =>
+    containerDate.classList.toggle("active")
+  )
+};
+if (dateList) {
 
-)};
-if (dateList){
-// Écoute l'événement de clic sur la liste des catégories
-dateList.addEventListener("click", (e) => {
-  // Vérifie si l'élément cliqué a la classe "option"
-  if (e.target.classList.contains("optionDate")) {
-    // Récupère le texte de l'option sélectionnée
-    const selectedOptionDate = e.target.textContent;
+  dateList.addEventListener("click", (e) => {
+    if (e.target.classList.contains("optionDate")) {
 
-    // Met à jour le texte du bouton avec l'option sélectionnée
-    textDate.textContent = selectedOptionDate;
-    sort = e.target.getAttribute('data-value');
+      const selectedOptionDate = e.target.textContent;
+      textDate.textContent = selectedOptionDate;
+      sort = e.target.getAttribute('data-value');
 
-    // Cache la liste déroulante des catégories
-    containerDate.classList.remove("active");
+      containerDate.classList.remove("active");
 
-    // Appelle la fonction filter_photos pour mettre à jour les photos
-    filter_photos();
-  }
-});
+      filter_photos();
+    }
+  });
 };
 
 
 
-  
+
 
 
 

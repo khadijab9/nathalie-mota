@@ -1,7 +1,5 @@
 <?php
-// require get_template_directory() . '/ajaxfilter.php';
 
-// require get_template_directory() . '/customizer/header-logo.php';
 function theme_enqueue_styles()
 {
     wp_enqueue_style('main-style', get_template_directory_uri() . '/css/main.css', array(), filemtime(get_template_directory() . '/css/main.css'));
@@ -20,7 +18,6 @@ function custom_theme_setup()
 }
 
 add_action('after_setup_theme', 'custom_theme_setup');
-
 
 
 //utilise le Customizer de WordPressa pour l'ajout d'une option permettant de télécharger un logo pour le site.
@@ -45,28 +42,15 @@ add_action('customize_register', 'your_theme_new_customizer_settings');
 function enqueue_animations_js()
 {
     // Déclarer le JS
-
+    wp_enqueue_script('jquery');
     wp_enqueue_script('modale_js', get_template_directory_uri() . '/js/modale.js', array(), filemtime(get_template_directory() . '/js/modale.js'), true);
     wp_enqueue_script('loadmore_js', get_template_directory_uri() . '/js/loadmore.js', array(), filemtime(get_template_directory() . '/js/loadmore.js'), true);
     wp_enqueue_script('burger_js', get_template_directory_uri() . '/js/burger.js', array(), filemtime(get_template_directory() . '/js/burger.js'), true);
     wp_enqueue_script('navigation_js', get_template_directory_uri() . '/js/navigation.js', array(), filemtime(get_template_directory() . '/js/navigation.js'), true);
     wp_enqueue_script('lightbox_js', get_template_directory_uri() . '/js/lightbox.js', array(), filemtime(get_template_directory() . '/js/lightbox.js'), true);
-  }
-add_action('wp_enqueue_scripts', 'enqueue_animations_js');
-
-
-// fonction pour les filtres 
-
-// charge e ficher fitre
-function enqueue_ajax_scripts()
-{
-    // Assurez-vous d'avoir inclus jQuery correctement
-    wp_enqueue_script('jquery');
     wp_enqueue_script('ajax-filter', get_template_directory_uri() . '/js/filter.js', array(), filemtime(get_template_directory() . '/js/filter.js'), true);
 }
-
-add_action('wp_enqueue_scripts', 'enqueue_ajax_scripts');
-
+add_action('wp_enqueue_scripts', 'enqueue_animations_js');
 
 
 // btn lord more 
@@ -77,27 +61,33 @@ function load_more()
         'posts_per_page' => 8,
         'orderby' => 'date',
         'order' => 'DESC',
-        'paged' => $_POST['paged'],
+        'paged' => $_POST['paged'], //Page actuel demandée via AJAX
     ]);
-
+    // initialise la variable $response, qui contiendra le HTML des photos à afficher
     $response = '';
+    //contient le nombre total de pages de photos en fonction du nombre de publications trouvées dans la requête WP_Query 
     $max_pages = $ajaxposts->max_num_pages;
 
-
+    //vérifie si la requête a trouvé des publications. 
     if ($ajaxposts->have_posts()) {
         ob_start();
         while ($ajaxposts->have_posts()) : $ajaxposts->the_post();
+            //si c'esst la cas on affiche les photos en appelant le template et l'ajoute a $response
             $response .= get_template_part('template-parts/post', 'photo');
         endwhile;
         $output = ob_get_contents();
         ob_end_clean();
     } else {
+        //Si aucune publication n'est trouvée, la variable $response reste vide.
         $response = '';
     }
+    // Prépare la réponse JSON à renvoyer via AJAX
     $result = [
-        'max' => $max_pages,
-        'html' => $output,
+        'max' => $max_pages, // nb total de pages
+        'html' => $output, //contenu html des posts
     ];
+    //Envoi de la réponse JSON via AJAX
+    //utilisée pour convertir le tableau $result en JSON
     echo json_encode($result);
     exit;
 }
@@ -106,78 +96,58 @@ add_action('wp_ajax_nopriv_load_more', 'load_more');
 
 
 
- // Créez une fonction pour filtrer les photos par catégorie
- function filter_by_categorie() {
-  $categorie = $_POST['categorie'];
-   $format = $_POST['format'];
-  $sort = $_POST ['sort'];
+//fonction pour gérer les filtres des photos 
+function filter()
+// récupére les paramètres de filtre depuis la requête AJAX.
+{
+    $categorie = $_POST['categorie'];
+    $format = $_POST['format'];
+    $sort = $_POST['sort'];
 
+    // Définit les arguments de la requête pour récupérer les photos
+    $args = array(
+        'post_type' => 'photo', // Le type de publication personnalisé
+        'posts_per_page' => -1, // Afficher toutes les photos
+        'orderby' => 'date', // Tri par date
+        'order' => $sort != '' ? $sort : 'DESC', //ordre de tri du plus récent
+    );
 
-  $args = array(
-    'post_type' => 'photo', // Le type de publication personnalisé
-    'posts_per_page' => -1, // Afficher toutes les photos
-    'orderby' => 'date', // Tri par date
-    // 'order' => $_POST['order'] != '' ? $_POST['order'] : 'DESC',
-    'order' => $sort != '' ? $sort : 'DESC',
-  
-   
-  );
-
-  
-    // Si la catégorie est vide, récupérez toutes les photos
+    // Si une catégorie est spécifié,  un critère de taxonomie est ajouté à la requête.
     if (!empty($categorie)) {
-        // Crée une requête pour récupérer toutes les photos
-      // Sinon, filtrez par catégorie
-      $args['tax_query'][] = array(
-          'taxonomy' => 'categorie',
-          'field' => 'slug',
-          'terms' => $categorie,
-      );
-     
+        //la fonction utilise la requête tax_query() pour rechercher les photos dans la taxo spécifiée.
+        $args['tax_query'][] = array(
+            'taxonomy' => 'categorie',
+            'field' => 'slug',
+            'terms' => $categorie,
+        );
     }
-  
-    // Ajoute le critère de format uniquement s'il est spécifié
+
     if (!empty($format)) {
         // Si un format est spécifié, on filtre par format
-      $args['tax_query'][] = array(
-          'taxonomy' => 'format',
-          'field' => 'slug',
-          'terms' => $format,
-      );
-    
-  }
+        $args['tax_query'][] = array(
+            'taxonomy' => 'format',
+            'field' => 'slug',
+            'terms' => $format,
+        );
+    }
+    //effectue une requête WP_Query avec les arguments spécifiés pour écupérér les photos 
+    $query = new WP_Query($args);
 
+    if ($query->have_posts()) :
+        while ($query->have_posts()) : $query->the_post();
 
-  //var_dump($args);
+            get_template_part('template-parts/post', 'photo');
 
-  $query = new WP_Query($args);
-
-  if ($query->have_posts()) :
-    while ($query->have_posts()) : $query->the_post();
-
-    get_template_part('template-parts/post' , 'photo');
-
-    endwhile;
-    wp_reset_postdata();
-  else :
+        endwhile;
+        //les données de publication sont réinitialisées
+        wp_reset_postdata();
+    else :
     // Aucune photo trouvée pour cette catégorie
-
-    
-  endif;
-
-  wp_die();
+    endif;
+    //on  termine la requête AJAX et on renvoie une réponse JSON au client
+    wp_die();
 }
 
-
 // Ajoutez une action Ajax pour la fonction de filtrage des photos
-add_action('wp_ajax_filter_photos_by_category', 'filter_by_categorie');
-add_action('wp_ajax_nopriv_filter_photos_by_category', 'filter_by_categorie'); 
- 
-
-    
-
-
-
-
-
-
+add_action('wp_ajax_filter_photos', 'filter');
+add_action('wp_ajax_nopriv_filter_photos', 'filter');

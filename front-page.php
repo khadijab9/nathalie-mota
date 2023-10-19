@@ -25,14 +25,6 @@
 
 <!-- filtre -->
 <div class="container-filtre">
-    <!--  <?php
-            // Obtenez l'ID de la catégorie par son slug
-            $concert_category = get_term_by('slug', 'concert', 'categorie');
-            $mariage_category = get_term_by('slug', 'mariage', 'categorie');
-            $reception_category = get_term_by('slug', 'reception', 'categorie');
-            $television_category = get_term_by('slug', 'television', 'categorie');
-            ?>
-    -->
     <div id="container-filter">
 
         <div class="cat-format">
@@ -44,8 +36,14 @@
                 <ul id="categorie-list">
                     <li class="option" data-value="">Catégories</li>
                     <?php
+
+                    //récupère la catégorie
                     $categories = get_terms('categorie');
+                    //parcourt chaque termes catégorie
                     foreach ($categories as $categorie) {
+                        //Pour chaque terme, on crée un nouvel élément de liste 
+                        //qui possède  un attribut data-value contenant le slug de la catégorie 
+                        //et affiche le nom de la catégorie.
                         echo '<li class="option" data-value="' . $categorie->slug . '">' . $categorie->name . '</li>';
                     } ?>
                 </ul>
@@ -86,6 +84,7 @@
 
 <!-- Créez une requête pour obtenir toutes les photos -->
 <?php
+//tableau qui contient les paramètres pour personnaliser la requête WordPress
 $args = array(
     'post_type' => 'photo', // Type de contenu personnalisé
     'posts_per_page' => 8, // Afficher toutes les photos
@@ -93,19 +92,19 @@ $args = array(
     'order' => 'DESC',
     'paged' => 1,
 );
-
+//exécute la requête WordPress avec les paramètres définis dans $args pour obtenir une liste de photos.
 $photos = new WP_Query($args); ?>
 
 <div class="containerPhoto ">
     <?php
     // Vérifiez si des photos sont trouvées
     if ($photos->have_posts()) : ?>
-
+        <!-- va parcourir chaque résultat de la requête -->
         <?php while ($photos->have_posts()) : $photos->the_post(); ?>
+            <!-- va appelé le template post pour afficher les photos -->
             <?php get_template_part('template-parts/post') ?>
         <?php endwhile; ?>
-
-
+        <!-- réinitialise les données de publication -->
         <?php wp_reset_postdata(); ?>
     <?php endif;  ?>
 </div>

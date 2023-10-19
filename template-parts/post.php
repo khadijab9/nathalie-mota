@@ -12,7 +12,7 @@
         ?>
         <?php the_post_thumbnail('large', array(
           'class' => 'photoLightbox',
-          'data-reference' => get_field('Référence'),
+          'data-reference' => get_post_meta(get_the_ID(), 'Référence', true),
           'data-categorie' => esc_attr($categoryFound)
         )) ?>
 
@@ -21,7 +21,7 @@
         <img src="<?php echo get_template_directory_uri() . '/icon/Icon_fullscreen.png'; ?>" class="fullscreen-icon" id="fullscreen">
         <div class="text-overlay">
           <div class="textFormat">
-          <?php the_field('Référence') ?>
+          <?php echo get_post_meta(get_the_ID(), 'Référence', true) ?>
           </div>
           <div class="textCat">
           <?php $categories = get_the_terms(get_the_ID(), 'categorie');

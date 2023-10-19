@@ -5,28 +5,24 @@
         display: flex;
         flex-direction: column;
         cursor: pointer;
-    
         right: 0;
         margin-top: 15px;
         margin-right: 100px;
     }
 
-    @media screen and (max-width: 589px){
+    @media screen and (max-width: 589px) {
         margin-right: 40px;
     }
-        
-    }
+}
 
-    .line {
-        width: 80%;
-        height: 2px;
-        margin-bottom: 10px;
-        background-color: black;
-        // créer une animation fluide lorsque'on clique sur l'icone burger
-        transition: all 0.7s linear;
-   
-        
-    }
+.line {
+    width: 80%;
+    height: 2px;
+    margin-bottom: 10px;
+    background-color: black;
+    // créer une animation fluide lorsque'on clique sur l'icone burger
+    transition: all 0.7s linear;
+}
 
 
 //Le bouton burger affiche une animation de transition lorsqu'il est activé.
@@ -51,42 +47,37 @@
     display: flex;
 
     @media screen and (max-width :785px) {
-
         display: none;
+        position: fixed;
         flex-direction: column;
         z-index: 999;
-    height: calc(100% - 80px) ;
+        height: calc(100% - 80px);
         justify-content: center;
         align-items: center;
         background: red;
         transition: top 1s ease;
-        position: fixed;
         width: 100%;
-       bottom: 0;
-      
+        bottom: 0;
         margin: 0 !important;
         padding-left: 0;
         padding-top: 100px;
-      
-        
+
         &.active {
             display: block;
             animation: fadeMenu 1.5s forwards;
         }
-        
-    a {
-        @media screen and (max-width :785px) {
-            margin-right: 0 !important;
-            padding-bottom: 30px;
-            font-size: 40px;
-            color: white !important;
-            display: flex;
-            align-items: center;
-            flex-direction: column;
-          
-        }
 
-    }
+        a {
+            @media screen and (max-width :785px) {
+                margin-right: 0 !important;
+                padding-bottom: 30px;
+                font-size: 40px;
+                color: white !important;
+                display: flex;
+                align-items: center;
+                flex-direction: column;
+            }
+        }
     }
 
     @keyframes fadeMenu {
@@ -100,6 +91,4 @@
             transform: translateY(0);
         }
     }
-
-
 }

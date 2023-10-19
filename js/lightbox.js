@@ -1,123 +1,102 @@
-//document.addEventListener('DOMContentLoaded', function() {
- //selelction des elements du dom en fonctins de leur class
 const lightbox = document.getElementById("lightbox");
-//let iconFullList = document.querySelectorAll(".fullscreen-icon");
-const containerImg = lightbox.querySelector(".lightbox-contain") 
+const containerImg = lightbox.querySelector(".lightbox-contain")
 closeB = lightbox.querySelector(".close");
 prevArrow = lightbox.querySelector(".prevArrow");
 nextArrow = lightbox.querySelector(".nextArrow");
 elementRef = lightbox.querySelector(".reference");
-elementCat = lightbox.querySelector (".categorie")
+elementCat = lightbox.querySelector(".categorie")
 const lightboxImg = lightbox.querySelector(".photoLight");
- 
- 
-//let images = document.querySelectorAll('.photoLightbox');
 
+// Crée un tableau vide pour stocker les informations sur les images
 const photos2 = []
 
 
-// Création du contenu lightbox (toutes les photos), à redemander quand on change le contenu (sinon le tableau changera jamais)
-function buildContentLighbox () {
+// Fonction pour construire le contenu de la lightbox, à redemander quand on change le contenu 
+function buildContentLighbox() {
 	let iconFullList = document.querySelectorAll(".fullscreen-icon");
 	let images = document.querySelectorAll('.photoLightbox');
 
-	  // vide le contenu de photos2 à chaque appel
-	  photos2.length = 0;
-	console.log("buildContentLighbox() appel");
-images.forEach(image => {
-	console.log(image.getAttribute('src'))
-//	photos2.push({image: image.getAttribute('src')})
-//	photos2.push({image : image.getAttribute('data-reference')})
-const src = image.getAttribute('src');
-    const reference = image.getAttribute('data-reference');
-	const categorie = image.getAttribute('data-categorie'); // Récupérez l'attribut data-categorie
-    photos2.push({ image: src, reference: reference, categorie: categorie });
+	// vide le contenu du taleau à chaque appel de la fonction
+	photos2.length = 0;
 
-	console.log(image.getAttribute('data-reference'))
+	// parcourt chaque image, pour extraire l'URL, la référence et la catégorie en les ajoutant au tableau 
+	images.forEach(image => {
+		const src = image.getAttribute('src');
+		const reference = image.getAttribute('data-reference');
+		const categorie = image.getAttribute('data-categorie');
+		photos2.push({ image: src, reference: reference, categorie: categorie });
 
+	});
 
-});
+	// initialise la variable  à 0  pour suivre l'index de l'image actuel
+	let currentIndex = 0;
 
-console.log(photos2);
+	// Parcourez tous les éléments .fullscreen-icon et ajoutez un gestionnaire d'événement 
+	iconFullList.forEach((iconFull, index) => {
+		iconFull.addEventListener("click", function () {
+			currentIndex = index; // Met à jour currentIndex avec l'index de l'image cliquée
+			showImage(currentIndex);
+			// affiche la lightbox 
+			lightbox.style.display = 'block';
+		});
+	});
 
-
-  
-// déclare une variable et 'initialise à 0 
-let currentIndex = 0 ;
-
-// Parcourez tous les éléments .fullscreen-icon et ajoutez un gestionnaire d'événement à chacun
-iconFullList.forEach((iconFull, index) => {
-    iconFull.addEventListener("click", function(){
-		
-		console.log(iconFullList)
-        
-		currentIndex = index; // Met à jour currentIndex avec l'index de l'image cliquée
-		showImage(currentIndex);
-        // Ajoute la classe "active" à la lightbox pour l'afficher
-        lightbox.style.display = 'block';
-	
-    });
-});
-    
-	
-
-	 // Fonction pour fermer la lightbox
-     closeB.addEventListener("click", function () {
+	// Fonction pour fermer la lightbox
+	closeB.addEventListener("click", function () {
 		lightbox.style.display = "none";
-	   });
+	});
 
-	   // Gestionnaires d'événements pour les flèches précédente et suivante
-prevArrow.addEventListener("click", PrevImage);
-nextArrow.addEventListener("click", NextImage);
-console.log(prevArrow)
-console.log(nextArrow)
-
-	}
-
-// Fonction pour afficher une image dans la lightbox
-function showImage(index) {
-
-	
-	console.log("Index:", index);
-const photo = photos2[index];
-console.log("Photo:", photo); 
-lightboxImg.src = photo.image;
-elementRef.textContent = photo.reference;
-elementCat.textContent = photo.categorie;
-
-currentIndex = index;
-
-
+	// Gestionnaires d'événements pour la navigation précédente et suivante
+	prevArrow.addEventListener("click", PrevImage);
+	nextArrow.addEventListener("click", NextImage);
 }
+
+// Fonction pour afficher une image dans la lightbox en fonction de l'index
+function showImage(index) {
+	// Récupère les informations sur l'image à partir du tableau  en utilisat l'index
+	const photo = photos2[index];
+
+	// Met à jour l'élément HTML de l'image dans la lightbox avec l'URL de l'image actuelle
+	lightboxImg.src = photo.image;
+
+	// Met à jour les éléments de texte dans la lightbox avec la référence et la catégorie de l'image actuelle
+	elementRef.textContent = photo.reference;
+	elementCat.textContent = photo.categorie;
+
+	// Met à jour la variable "currentIndex" avec la nouvelle valeur d'index pour suivre l'image actuellement affichée
+	currentIndex = index;
+}
+
 
 
 // Fonction pour afficher l'image précédente
 function PrevImage() {
-		// met à jour de currentIndex en enlevant 1 au slide actuel pour retourner au slide précédent
-		currentIndex = (currentIndex - 1 ) ;
-		// si inférieur à 0 
-		if (currentIndex  < 0 ) {
-			//currentIndex est défini sur l'index de la dernière image du tabl pour passer à la dernière image.
-			 currentIndex = photos2.length - 1
-		}
-		showImage(currentIndex);
+	// pour afficher 'image précédente, on décrémente 1 au slide actuel 
+	currentIndex = (currentIndex - 1);
+	// si inférieur à 0 
+	if (currentIndex < 0) {
+		//currentIndex est défini sur l'index de la 1ere image du tabl pour passer à la dernière image.
+		currentIndex = photos2.length - 1
+	}
+	// Appelle la fonction "showImage" pour afficher l'image correspondant au nouvel index
+	showImage(currentIndex);
 }
 
 // Fonction pour afficher l'image suivante
 function NextImage() {
-		//met à jour de la variable currentIndex en ajoutant 1 au slide actuel 
-		currentIndex = (currentIndex + 1) ;
-		//si currentIndex est supéieur à la longueur du tableau , 
-		if (currentIndex > photos2.length -1 )  {
-		   // on repart à 0
-		   currentIndex = 0 
-		}
-    showImage(currentIndex);
+	//met à jour de la variable currentIndex en ajoutant 1 au slide actuel 
+	currentIndex = (currentIndex + 1);
+	//si currentIndex est supéieur à la longueur du tableau , 
+	if (currentIndex > photos2.length - 1) {
+		// on repart à 0 
+		currentIndex = 0
+	}
+
+
+	showImage(currentIndex);
 }
-
-buildContentLighbox () 
-
-
+//appel de la fonction pour initialiser la lightbox
+buildContentLighbox()
 
 
 
@@ -142,7 +121,9 @@ buildContentLighbox ()
 
 
 
-  
+
+
+
 
 
 

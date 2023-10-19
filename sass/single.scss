@@ -1,54 +1,44 @@
-/* .borderShadow{
-  border-top : 1px solid transparent;
-    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2); 
-   
-} */
+$color-arrow: black;
 
 .containerPost {
-margin-top: 100px ;
+    margin-top: 130px;
     margin-left: 100px;
     margin-right: 100px;
 
-    @media screen and (max-width: 589px){
+    @media screen and (max-width: 589px) {
         margin-left: 0;
         margin-right: 0;
     }
-    /* border-top: 1px solid blueviolet;
-box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px; */
 
     .post-content {
         display: flex;
         justify-content: space-between;
         margin-top: 15px;
         width: 100%;
-     
-        @media screen and (max-width: 589px){
-         flex-wrap: wrap-reverse;
 
-         
+        @media screen and (max-width: 589px) {
+            flex-wrap: wrap-reverse;
         }
+
         .post-meta {
             display: flex;
             flex-direction: column;
             justify-content: end;
             width: 50%;
-            // margin-left: 100px;
-        
             margin-right: 16px;
             border-bottom: 1px solid black;
-            
-              @media screen and (max-width: 589px){
-            width: 100%;
-            margin-right: 0;
-        }
-          
+
+            @media screen and (max-width: 589px) {
+                width: 100%;
+                margin-right: 0;
+            }
 
             .meta {
                 margin-bottom: 10px;
-                @media screen and (max-width: 589px){
-                    
-                   margin-right: 40px;
-                   margin-left: 40px;
+
+                @media screen and (max-width: 589px) {
+                    margin-right: 40px;
+                    margin-left: 40px;
                 }
             }
 
@@ -61,326 +51,263 @@ box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px; */
             font-size: 40px;
             font-style: italic;
             margin-bottom: 6px;
-@media screen and (max-width: 400px){
-font-size: 25px;
-}
-@media screen and (max-width: 589px){
-    
-   margin-right: 40px;
-   margin-left: 40px;
-}
-    
-}
+
+            @media screen and (max-width: 400px) {
+                font-size: 25px;
+            }
+
+            @media screen and (max-width: 589px) {
+                margin-right: 40px;
+                margin-left: 40px;
+            }
         }
-    
+    }
 
     .container-img {
-        // margin-right: 100px;
         width: 50%;
-    
         position: relative;
-        @media screen and (max-width: 589px){
+
+        @media screen and (max-width: 589px) {
             width: 100%;
             margin-left: 40px;
             margin-right: 40px;
-
-        
         }
-        
+
         .overlay {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.7); /* Couleur de fond semi-transparente (noir avec 50% d'opacité) */
-            //display: none; /* Initialement masqué */
-            overflow: hidden; /* Ajout de cette propriété pour empêcher le débordement */
-          
-           bottom: 0;
-        
-           opacity: 0;
-           transition: opacity 0.3s ease;
+            background-color: rgba(0, 0, 0, 0.7);
+            overflow: hidden;
+            bottom: 0;
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
-        .fullscreen-icon{
-  
+
+        .fullscreen-icon {
+            position: absolute;
+            display: none;
             font-size: 50px;
             height: 20px;
-            position: absolute;
             top: 4%;
             right: 0;
             transform: translate(-50%, -50%);
-            z-index : 10;
+            z-index: 10;
             cursor: pointer;
-          display: none;
-        
-       
-               }
-           
-      
-        
-               }
-
-        .photoLightbox{
-            display: flex;
-            width: 100%;
-            height: 100vh;
-            object-fit: cover;
-            
-        }
-        @media screen and (max-width: 530px){
-
-        }
-       
-
-        .attachment-large {
-            width: 100%;
-          
-         height: 100vh; 
-             object-fit: cover;
-            
-             
-        }
-       
-    }
-
-
-
-    .container-img {
-        &:hover {
-            .overlay {
-                opacity: 1;
-            }
-            .fullscreen-icon {
-                display: block;
-            }
         }
     }
 
+    .photoLightbox {
+        display: flex;
+        width: 100%;
+        height: 100vh;
+        object-fit: cover;
+    }
 
+    .attachment-large {
+        width: 100%;
+        height: 100vh;
+        object-fit: cover;
+    }
+}
 
+.container-img {
+    &:hover {
+        .overlay {
+            opacity: 1;
+        }
+
+        .fullscreen-icon {
+            display: block;
+        }
+    }
+}
 
 // container bouton contact et nav
-
 #containerBtn-nav {
     margin-left: 100px;
     margin-right: 100px;
 
-
-    @media screen and (max-width: 513px){
+    @media screen and (max-width: 513px) {
         margin-top: 25px;
         margin-bottom: 25px;
     }
-    @media screen and (max-width: 589px){
+
+    @media screen and (max-width: 589px) {
         margin-left: 0;
         margin-right: 0;
     }
-  
 
-.containerBtn {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    padding-right: 0;
-    height: 118px;
-    padding-bottom: 10px;
-    margin-top: 15px;
-    border-bottom: 1px solid black;
-
-  
-  //  @media screen and (max-width: 514px){
-    //    flex-wrap: wrap;
-    //}
-  
-  
-
-    .contact_btn {
-        width: 50%;
-        margin-top: 0;
+    .containerBtn {
         display: flex;
-        align-items: center;
         justify-content: space-between;
-        flex-wrap: wrap;
+        align-items: center;
+        width: 100%;
+        padding-right: 0;
+        height: 118px;
+        padding-bottom: 10px;
+        margin-top: 15px;
+        border-bottom: 1px solid black;
 
-      
-        @media screen and (max-width: 748px){
-            padding-bottom: 10px;
-        }
-        @media screen and (max-width: 513px){
-            margin-bottom: 30px;
-        }
-        @media screen and (max-width: 589px){
-            width: 100%;
-           margin-right: 40px;
-           margin-left: 40px;
-        }
-        #contact-button{
-            width: 40%;
-            height: 50px;
-            border-radius: 4px;
-            background-color: #D8D8D8;
-            border: none;
-            &:hover {
-                background-color: black;
-                color: white;
+        .contact_btn {
+            width: 50%;
+            margin-top: 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+
+            @media screen and (max-width: 748px) {
+                padding-bottom: 10px;
             }
-            @media screen and (max-width: 845px){
+
+            @media screen and (max-width: 513px) {
+                margin-bottom: 30px;
+            }
+
+            @media screen and (max-width: 589px) {
                 width: 100%;
+                margin-right: 40px;
+                margin-left: 40px;
             }
-           
-        }
 
+            #contact-button {
+                width: 40%;
+                height: 50px;
+                border-radius: 4px;
+                background-color: #D8D8D8;
+                border: none;
+                cursor: pointer;
 
+                &:hover {
+                    background-color: black;
+                    color: white;
+                }
 
+                @media screen and (max-width: 845px) {
+                    width: 100%;
+                }
+            }
 
-        .txt-contact {
-            text-transform: none;
-            font-family: 'poppins';
-            font-weight: 300;
-            @media screen and (max-width: 513px){
-                margin-top: 25px;
+            .txt-contact {
+                text-transform: none;
+                font-family: 'poppins';
+                font-weight: 300;
+
+                @media screen and (max-width: 513px) {
+                    margin-top: 25px;
+                }
+            }
+
+            form input {
+                padding: 10px 80px;
+                cursor: pointer;
             }
         }
 
-        form input {
-            padding: 10px 80px;
-            cursor: pointer;
-         
+        .containerNav {
+            @media screen and (max-width: 589px) {
+                display: none;
+            }
+
+            .post-carousel {
+                width: 80px;
+
+            }
+
+            .carousel-inner {
+                width: 50%;
+                object-fit: cover;
+            }
+
+            .attachment-thumbnail {
+                max-width: none;
+                width: 80px;
+                height: auto;
+            }
+
+            .carousel-navigation {
+                margin-top: -10px;
+                display: flex;
+                justify-content: space-around;
+            }
+
+            .imageThumbnail {
+                img {
+                    top: 0;
+                    left: 0;
+                }
+            }
+
+            .arrow {
+                display: flex;
+                justify-content: space-between;
+                width: 100%;
+
+                .prev-arrow {
+                    text-decoration: none;
+                    color: $color-arrow;
+                    font-size: 30px;
+                }
+
+                .next-arrow {
+                    text-decoration: none;
+                    color: $color-arrow;
+                    font-size: 30px;
+                }
+            }
 
         }
     }
-
-
-
-    .containerNav{
-        @media screen and (max-width: 589px){
-            display: none;
-        }
-
-    
-    .post-carousel {
-        width: 80px;
-
-    }
-
-    .carousel-inner {
-        width: 50%;
-        object-fit: cover;
-
-    }
-
-    .attachment-thumbnail {
-        max-width: none;
-        width: 80px;
-        height: auto;
-    }
-
-    .carousel-navigation {
-        margin-top: -10px;
-        display: flex;
-        justify-content: space-around;
-
-        .next-arrow {
-            font-size: 30px;
-        }
-
-        .prev-arrow {
-            font-size: 30px;
-        }
-    }
-
 }
-}}
-
-
-
-
-
 
 //photo connexes
-
 .photoApparente {
     margin-left: 100px;
     margin-right: 100px;
- 
-    @media screen and (max-width: 589px){
+
+    @media screen and (max-width: 589px) {
         margin-left: 40px;
         margin-right: 40px;
     }
-
 }
 
 .txt {
-
-
     margin-right: 100px;
     margin-top: 70px;
     margin-bottom: 50px;
-  
-    @media screen and (max-width: 589px){
-      display: flex;
-      justify-content: center;
-      margin: 0;
-      margin-bottom: 15px;
-      margin-top: 15px;
+
+    @media screen and (max-width: 589px) {
+        display: flex;
+        justify-content: center;
+        margin: 0;
+        margin-bottom: 15px;
+        margin-top: 15px;
     }
 }
 
 .photo-connexe {
-   /*  display: flex;
-    justify-content: space-between;
-  */
-  display: grid;
-  grid-template-columns: 50% 50%; /* Définit deux colonnes, chacune avec une largeur de 50% */
-  gap : 5px;
-  flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    gap: 5px;
+    flex-wrap: wrap;
 
- 
+    @media screen and (max-width : 576px) {
+        grid-template-columns: 1fr;
+    }
 
+    .photoLightbox {
+        width: 100%;
+        height: 40vw;
+        object-fit: cover;
 
-  @media screen and (max-width : 576px) {
-    grid-template-columns: 1fr;
-  
-    
-
-  }
-
-
-    
-       
-
-         .photoLightbox{
-          /*   width: 40vw;
-            /* La moitié de la largeur du viewport */
-           // height: 40vw;
-            /* La moitié de la largeur du viewport, pour former un carré */
-            //object-fit: cover; */
-            width: 100%;
-            /* La moitié de la largeur du viewport */
-            height: 40vw;
-         
-            /* La moitié de la largeur du viewport, pour former un carré */
-            object-fit: cover;
-
-            
-
-   
-    @media screen and (max-width : 576px){
-      height: 70vw;
-       }
-    
-
-  }
-        
-
-
-
-        
+        @media screen and (max-width : 576px) {
+            height: 70vw;
         }
-    
-
-
+    }
+}
 
 //bouton toutes les photos
 .btn-photo {
@@ -403,15 +330,12 @@ font-size: 25px;
         background-color: black;
         color: white;
     }
-    
+
     @media screen and (max-width: 992px) {
         width: 40%;
-
     }
 
     @media screen and (min-width: 320px) and (max-width :500px) {
         width: 60%;
     }
-
-
 }

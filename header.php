@@ -24,7 +24,6 @@
                     else : ?>
                         <h1 class="site-title"><?php bloginfo('name'); ?></h1>
                     <?php endif; ?>
-
                 </a>
 
             </div>
@@ -35,14 +34,11 @@
             </div>
 
             <?php
-            // affiche un menu de navigation
             wp_nav_menu(array(
-                'theme_location' => 'main-menu',
+                'theme_location' => 'main-menu', //specifie l'emplacement du menu à afficher
                 'menu_class' => 'navbar-nav mr-auto menu-full',
                 'container' => false,
             )); ?>
-
-
         </nav>
     </header>
 
